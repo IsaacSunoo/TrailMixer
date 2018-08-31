@@ -5,21 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>List Of Trails</title>
+<title>Trail Details</title>
 </head>
-<h2>Trails</h2>
+<h2>Trail Details</h2>
 <body>
-	
+
 	<!--  list will need to be called trails -->
 	<!--  mv object = trails -->
-	<!--  mv view = ListOfTrails -->
+	<!--  mv view = TrailDetails -->
+	<!--  make sure Java names in Trails.java correlate to names here -->
 
 	<table>
 		<tr>
 			<th>Trail</th>
-			<th>Difficulty</th>
-			<th>Distance</th>
-			<th>Altitude</th>
+			<th>Description</th>
+			<th>Location</th>
+
 		</tr>
 	</table>
 
@@ -28,17 +29,11 @@
 			<tr>
 				<input type=hidden name="id" value="${t.id}">
 				<td>${t.name}</td>
-				<td>${t.altitude}</td>
-				<td>${t.difficulty}</td>
-				<td>${t.distance}</td>
-				<td>
-					<form action="Details.do" method="GET">
-						<input type="hidden" name="id" value="${t.id}"> 
-						<input type="submit" value="Trail Details">
-					</form>
-				</td>
+				<td>${t.description}</td>
+				<td>${t.address}</td>
 			</tr>
 		</table>
 	</c:forEach>
+
 </body>
 </html>
