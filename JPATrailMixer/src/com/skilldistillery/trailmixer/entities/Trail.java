@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -38,6 +39,9 @@ public class Trail {
 	
 	@ManyToMany(mappedBy="trails")
 	private List<Profile> profiles;
+	
+	@OneToMany(mappedBy="trail")
+	private List<ProfileTrail> pts;
 //	end of fields
 
 	public Trail() {
@@ -126,6 +130,14 @@ public class Trail {
 		this.profiles = profiles;
 	}
 	
+	public List<ProfileTrail> getPts() {
+		return pts;
+	}
+
+	public void setPts(List<ProfileTrail> pts) {
+		this.pts = pts;
+	}
+
 	public void addProfile(Profile profile) {
 		if (profiles == null) {
 			profiles = new ArrayList<>();
@@ -140,6 +152,26 @@ public class Trail {
 		if (profiles != null && profiles.contains(profile)) {
 			profiles.remove(profile);
 			profile.removeTrail(this);
+		}
+	}
+	
+	public void addPt(ProfileTrail pt) {
+		if (pts == null) {
+			pts = new ArrayList<>();
+		}
+		if (!pts.contains(pt)) {
+			pts.add(pt);
+			if (pt.getTrail() != null) {
+				pt.getTrail().getPts().remove(pt);
+			}
+			pt.setTrail(this);
+		}
+	}
+	
+	public void removePt(ProfileTrail pt) {
+		pt.setTrail(null);
+		if (pts != null) {
+			pts.remove(pt);
 		}
 	}
 
