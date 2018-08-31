@@ -177,9 +177,9 @@ public class Trail {
 
 	@Override
 	public String toString() {
-		return "Trail [Id=" + id + ", name=" + name + ", description=" + description + ", altitude=" + altitude
-				+ ", image=" + image + ", difficulty=" + difficulty + ", distance=" + distance + ", address=" + address
-				+ "]";
+		return "Trail [name=" + name + ", description=" + description + ", altitude=" + altitude + ", image=" + image
+				+ ", distance=" + distance + "]";
 	}
+
 
 }

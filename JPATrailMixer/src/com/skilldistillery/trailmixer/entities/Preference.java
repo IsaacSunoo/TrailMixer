@@ -80,8 +80,7 @@ public class Preference {
 
 	@Override
 	public String toString() {
-		return "Preference [Id=" + id + ", difficulty=" + difficulty + ", area=" + area + ", altitude=" + altitude
-				+ ", profile=" + profile + "]";
+		return "Preference [altitude=" + altitude + "]";
 	}
 
 }

@@ -276,8 +276,9 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [Id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age="
-				+ age + ", address=" + address + ", image=" + image + ", bio=" + bio + "]";
+		return "Profile [user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", image=" + image + ", bio=" + bio + ", gender=" + gender + ", activeUser=" + activeUser + "]";
 	}
+
 
 }

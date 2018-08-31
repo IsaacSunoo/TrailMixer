@@ -15,11 +15,11 @@ public class ProfileTrail {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name="profile_id")
+	@JoinColumn(name = "profile_id")
 	private Profile profile;
 
 	@ManyToOne
-	@JoinColumn(name="trail_id")
+	@JoinColumn(name = "trail_id")
 	private Trail trail;
 
 	private int rating;
@@ -68,7 +68,7 @@ public class ProfileTrail {
 
 	@Override
 	public String toString() {
-		return "ProfileTrail [Id=" + id + ", profile=" + profile + ", trail=" + trail + ", rating=" + rating + "]";
+		return "ProfileTrail [rating=" + rating + "]";
 	}
 
 }
