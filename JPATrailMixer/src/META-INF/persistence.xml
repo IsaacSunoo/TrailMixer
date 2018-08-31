@@ -9,15 +9,15 @@
     </provider>
     
     <!-- Entities -->
-    <class>com/skilldistillery/trailmixer/entities/Address</class>
-    <class>com/skilldistillery/trailmixer/entities/Area</class>
-    <class>com/skilldistillery/trailmixer/entities/Difficulty</class>
-    <class>com/skilldistillery/trailmixer/entities/Preference</class>
-    <class>com/skilldistillery/trailmixer/entities/Profile</class>
-    <class>com/skilldistillery/trailmixer/entities/ProfileTrail</class>
-    <class>com/skilldistillery/trailmixer/entities/Reason</class>
-    <class>com/skilldistillery/trailmixer/entities/Trail</class>
-    <class>com/skilldistillery/trailmixer/entities/User</class>
+    <class>com.skilldistillery.trailmixer.entities.Address</class>
+    <class>com.skilldistillery.trailmixer.entities.Area</class>
+    <class>com.skilldistillery.trailmixer.entities.Difficulty</class>
+    <class>com.skilldistillery.trailmixer.entities.Preference</class>
+    <class>com.skilldistillery.trailmixer.entities.Profile</class>
+    <class>com.skilldistillery.trailmixer.entities.ProfileTrail</class>
+    <class>com.skilldistillery.trailmixer.entities.Reason</class>
+    <class>com.skilldistillery.trailmixer.entities.Trail</class>
+    <class>com.skilldistillery.trailmixer.entities.User</class>
     <!-- End Entitites -->
 
     <properties>

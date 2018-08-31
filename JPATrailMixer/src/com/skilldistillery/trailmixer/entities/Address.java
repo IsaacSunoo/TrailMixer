@@ -13,10 +13,8 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 
-	@Column(name = "address")
 	private String street;
 
-	@Column(name = "address2")
 	private String street2;
 
 	private String city;
