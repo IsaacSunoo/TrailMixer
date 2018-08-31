@@ -39,6 +39,8 @@ CREATE TABLE IF NOT EXISTS `address` (
   `street2` VARCHAR(45) NULL,
   `city` VARCHAR(45) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
+  `latitude` DOUBLE NULL,
+  `longitude` DOUBLE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -250,9 +252,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trailmixer`;
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`) VALUES (1, '123 Main St', NULL, 'Denver', 'Colorado');
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`) VALUES (2, '1122 Main St', NULL, 'Denver', 'Colorado');
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`) VALUES (3, '12345 Main St', NULL, 'Denver', 'Colorado');
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (1, '123 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (2, '1122 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (3, '12345 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 
 COMMIT;
 
