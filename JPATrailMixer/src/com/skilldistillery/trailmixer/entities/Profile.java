@@ -54,7 +54,7 @@ public class Profile {
 	@OneToMany(mappedBy="profile")
 	private List<ProfileTrail> pts;
 	
-	@OneToMany(mappedBy="profile")
+	@ManyToMany(mappedBy="profile")
 	private List<Reason> reasons;
 	
 	@ManyToMany
@@ -258,11 +258,20 @@ public class Profile {
 	}
 	
 	public void addReason(Reason reason) {
-		
+		if (reasons == null) {
+			reasons = new ArrayList<>();
+		}
+		if (!reasons.contains(reason)) {
+			reasons.add(reason);
+			reason.addProfile(this);
+		}
 	}
 	
 	public void removeReason(Reason reason) {
-		
+		if (reasons != null && reasons.contains(reason)) {
+			reasons.remove(reason);
+			reason.removeProfile(this);
+		}
 	}
 
 	@Override
