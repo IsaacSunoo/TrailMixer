@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 public class TrailMixerController {
 	
 	@Autowired 
-	private
+	private TrailMixerDAO;
+	
+	
 
 }
