@@ -19,31 +19,31 @@ public class TrailController {
 		return trails;
 	}
 	
-	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
+	@RequestMapping(path="ListOfTrailsDifficulty.do", method = RequestMethod.GET)
 	public List<Trail> searchTrailDifficulty(int difficulty) {
 		List<Trail> trails = dao.searchByDifficulty(difficulty); 
 		return trails;
 	}
 	
-	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
+	@RequestMapping(path="ListOfTrailsDistance.do", method = RequestMethod.GET)
 	public List<Trail> searchTrailDistance(double distance) {
 		List<Trail> trails = dao.searchByDistance(distance); 
 		return trails;
 	}
 	
-	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
+	@RequestMapping(path="ListOfTrailsAltitude.do", method = RequestMethod.GET)
 	public List<Trail> searchTrailAltitude(int altitude) {
 		List<Trail> trails = dao.searchByAltitude(altitude); 
 		return trails;
 	}
 	
-	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
+	@RequestMapping(path="ListOfTrailsRating.do", method = RequestMethod.GET)
 	public List<Trail> searchTrailRating(int rating) {
 		List<Trail> trails = dao.searchByRating(rating); 
 		return trails;
 	}
 	
-	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
+	@RequestMapping(path="ListOfTrailsKeyword.do", method = RequestMethod.GET)
 	public List<Trail> searchTrailKeyword(String keyword) {
 		List<Trail> trails = dao.searchByKeyword(keyword); 
 		return trails;
