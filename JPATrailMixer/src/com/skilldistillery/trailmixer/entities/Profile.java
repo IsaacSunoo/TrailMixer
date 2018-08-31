@@ -1,5 +1,8 @@
 package com.skilldistillery.trailmixer.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -36,6 +40,14 @@ public class Profile {
 	private String image;
 
 	private String bio;
+	
+	private String gender;
+
+	@OneToMany(mappedBy = "profile")
+	private List<Preference> preferences;
+	
+	@OneToMany(mappedBy="profile")
+	private List<ProfileTrail> pts;
 // end of fields
 
 	public Profile() {
@@ -113,6 +125,70 @@ public class Profile {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public List<Preference> getPreferences() {
+		return preferences;
+	}
+
+	public void setPreferences(List<Preference> preferences) {
+		this.preferences = preferences;
+	}
+
+	public List<ProfileTrail> getPts() {
+		return pts;
+	}
+
+	public void setPts(List<ProfileTrail> pts) {
+		this.pts = pts;
+	}
+
+	public void addPreference(Preference pref) {
+		if (preferences == null) {
+			preferences = new ArrayList<>();
+		}
+		if (!preferences.contains(pref)) {
+			preferences.add(pref);
+			if (pref.getProfile() != null) {
+				pref.getProfile().getPreferences().remove(pref);
+			}
+			pref.setProfile(this);
+		}
+	}
+
+	public void removePreference(Preference pref) {
+		pref.setProfile(null);
+		if (preferences != null) {
+			preferences.remove(pref);
+		}
+	}
+	
+	public void addPt(ProfileTrail pt) {
+		if (pts == null) {
+			pts = new ArrayList<>();
+		}
+		if (!pts.contains(pt)) {
+			pts.add(pt);
+			if (pt.getProfile() != null) {
+				pt.getProfile().getPts().remove(pt);
+			}
+			pt.setProfile(this);
+		}
+	}
+	
+	public void removePt(ProfileTrail pt) {
+		pt.setProfile(null);
+		if (pts != null) {
+			pts.remove(this);
+		}
 	}
 
 	@Override
