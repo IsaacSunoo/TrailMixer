@@ -13,12 +13,9 @@ public class Address {
 	private int id;
 
 	private String street;
-
 	private String street2;
-
 	private String city;
 	private String state;
-
 	private String latitude;
 	private String longitude;
 //	end of fields
