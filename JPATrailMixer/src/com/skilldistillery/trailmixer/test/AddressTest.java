@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.skilldistillery.trailmixer.entities.Address;
-import com.skilldistillery.trailmixer.entities.Profile;
 
 class AddressTest {
 	private EntityManagerFactory emf; 
@@ -35,11 +34,5 @@ class AddressTest {
 	public void test_address_with_street_number() {
 		assertEquals("123 Main St", add.getStreet()); 
 	}
-	
-	@Test
-	public void test_one_address_to_one_trail() {
-		
-	}
-	
 
 }

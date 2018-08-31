@@ -18,7 +18,7 @@ public class Reason {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String reason;
+	private String name;
 	
 	@ManyToMany
 	@JoinTable(name="profile_reason",
@@ -37,13 +37,6 @@ public class Reason {
 		id = id;
 	}
 
-	public String getReason() {
-		return reason;
-	}
-
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
 
 	public List<Profile> getProfiles() {
 		return profiles;
@@ -53,6 +46,14 @@ public class Reason {
 		this.profiles = profiles;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public void addProfile(Profile profile) {
 		if (profiles == null) {
 			profiles = new ArrayList<>();
@@ -72,7 +73,9 @@ public class Reason {
 
 	@Override
 	public String toString() {
-		return "Reason [Id=" + id + ", reason=" + reason + "]";
+		return "Reason [id=" + id + ", name=" + name + "]";
 	}
+
+
 
 }

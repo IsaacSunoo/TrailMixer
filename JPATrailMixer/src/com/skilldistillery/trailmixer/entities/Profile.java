@@ -54,7 +54,7 @@ public class Profile {
 	@OneToMany(mappedBy="profile")
 	private List<ProfileTrail> pts;
 	
-	@ManyToMany(mappedBy="profile")
+	@ManyToMany(mappedBy="profiles")
 	private List<Reason> reasons;
 	
 	@ManyToMany
