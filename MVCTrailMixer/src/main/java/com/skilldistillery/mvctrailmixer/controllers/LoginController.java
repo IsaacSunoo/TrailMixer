@@ -1,4 +1,4 @@
-package com.skilldistilery.mvctrailmixer.controllers;
+package com.skilldistillery.mvctrailmixer.controllers;
 
 import javax.servlet.http.HttpSession;
 

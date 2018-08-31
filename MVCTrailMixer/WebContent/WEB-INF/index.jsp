@@ -34,6 +34,9 @@
 </nav>
 
 <h2>Trail Mixer</h2>
+<br>
+
+lorem ipsum
 
 
   

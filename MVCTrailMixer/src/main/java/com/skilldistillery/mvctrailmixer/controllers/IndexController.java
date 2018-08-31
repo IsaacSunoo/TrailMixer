@@ -1,4 +1,4 @@
-package com.skilldistilery.mvctrailmixer.controllers;
+package com.skilldistillery.mvctrailmixer.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,5 +12,4 @@ public class IndexController {
 	public String homePage(Model model) {
 		return "index";
 	}
-
 }
