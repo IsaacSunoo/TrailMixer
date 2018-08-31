@@ -8,10 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Transactional
 @Component
-public class TrailMixerDAO {
-
+public class ProfileDAOImpl {
+	
 	@PersistenceContext
 	private EntityManager em;
-	
-	
+
 }

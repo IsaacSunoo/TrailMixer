@@ -1,5 +1,5 @@
 package com.skilldistillery.mvctrailmixer.data;
 
-public class TrailMixerDAOImpl {
+public class ProfileTrailDAO {
 
 }
