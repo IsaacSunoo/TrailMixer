@@ -266,9 +266,19 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trailmixer`;
-INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`, `active`) VALUES (1, 1, 'John', 'Wick', 34, 1, 'https://skilldistillery.com/wp-content/uploads/2017/01/AndyCPicSDWEB-250x250.jpg', 'I enjoy spending time with my dog.', NULL, NULL);
-INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`, `active`) VALUES (2, 2, 'test', 'user', 23, 2, 'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2015%2F01%2Foffice-space_320.jpg%3Fw%3D320&w=700&q=85', NULL, NULL, NULL);
-INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`, `active`) VALUES (3, 3, 'Steve', 'Rogers', 143, 3, 'http://cdn2-www.mandatory.com/assets/uploads/2014/03/Captain-America-The-Winter-Soldier.jpg', NULL, NULL, NULL);
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`, `active`) VALUES (1, 1, 'John', 'Wick', 34, 1, 'https://skilldistillery.com/wp-content/uploads/2017/01/AndyCPicSDWEB-250x250.jpg', 'I enjoy spending time with my dog.', 'Male', 1);
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`, `active`) VALUES (2, 2, 'test', 'user', 23, 2, 'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2015%2F01%2Foffice-space_320.jpg%3Fw%3D320&w=700&q=85', NULL, 'Male', 1);
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`, `active`) VALUES (3, 3, 'Steve', 'Rogers', 143, 3, 'http://cdn2-www.mandatory.com/assets/uploads/2014/03/Captain-America-The-Winter-Soldier.jpg', NULL, 'Male', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `area`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trailmixer`;
+INSERT INTO `area` (`id`, `city`, `state`) VALUES (1, 'Denver', 'Colorado');
 
 COMMIT;
 
@@ -283,6 +293,18 @@ INSERT INTO `difficulty` (`id`, `name`) VALUES (2, 'Easy');
 INSERT INTO `difficulty` (`id`, `name`) VALUES (3, 'Moderate');
 INSERT INTO `difficulty` (`id`, `name`) VALUES (4, 'Hard');
 INSERT INTO `difficulty` (`id`, `name`) VALUES (5, 'Expert');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `preference`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trailmixer`;
+INSERT INTO `preference` (`id`, `difficulty_id`, `trail_distance`, `area_id`, `altitude`, `profile_id`) VALUES (1, 2, 8, 1, 10000, 1);
+INSERT INTO `preference` (`id`, `difficulty_id`, `trail_distance`, `area_id`, `altitude`, `profile_id`) VALUES (2, 5, 20, 1, 15000, 2);
+INSERT INTO `preference` (`id`, `difficulty_id`, `trail_distance`, `area_id`, `altitude`, `profile_id`) VALUES (3, 5, 50, 1, 20000, 3);
 
 COMMIT;
 
@@ -345,6 +367,20 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `profile_trail`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trailmixer`;
+INSERT INTO `profile_trail` (`id`, `profile_id`, `trail_id`, `rating`) VALUES (DEFAULT, 1, 1, 4);
+INSERT INTO `profile_trail` (`id`, `profile_id`, `trail_id`, `rating`) VALUES (DEFAULT, 1, 2, 5);
+INSERT INTO `profile_trail` (`id`, `profile_id`, `trail_id`, `rating`) VALUES (DEFAULT, 1, 6, 5);
+INSERT INTO `profile_trail` (`id`, `profile_id`, `trail_id`, `rating`) VALUES (DEFAULT, 2, 4, 5);
+INSERT INTO `profile_trail` (`id`, `profile_id`, `trail_id`, `rating`) VALUES (DEFAULT, 3, 7, 4);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `reason`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -352,6 +388,22 @@ USE `trailmixer`;
 INSERT INTO `reason` (`id`, `name`) VALUES (1, 'Fun');
 INSERT INTO `reason` (`id`, `name`) VALUES (2, 'Social');
 INSERT INTO `reason` (`id`, `name`) VALUES (3, 'Fitness');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `profile_reason`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trailmixer`;
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (1, 1);
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (1, 2);
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (1, 3);
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (2, 2);
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (2, 1);
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (2, 3);
+INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (3, 3);
 
 COMMIT;
 
