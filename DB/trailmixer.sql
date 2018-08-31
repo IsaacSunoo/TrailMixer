@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `city` VARCHAR(45) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
   `latitude` VARCHAR(50) NULL,
-  `longitude` VARCHAR(50) NULL,
+  `longitude` DOUBLE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -257,6 +257,7 @@ USE `trailmixer`;
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (1, '123 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (2, '1122 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (3, '12345 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (4, '123 Test Trail', NULL, 'Denver', 'Colorado', NULL, NULL);
 
 COMMIT;
 
@@ -314,7 +315,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trailmixer`;
-INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Cherry Creek Trail', 'A moderately trafficked point-to-point trail located near Denver, Colorado that features a river and is good for all skill levels. The trail offers a number of activity options and is best used from March until October. Dogs are also able to use this trail.', 5668, NULL, 2, 11.2, NULL);
+INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (1, 'test trail', 'testing', 5000, NULL, 3, 23, 4);
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Washington Park Loop', 'Washington Park Loop is a 2.3 mile heavily trafficked loop trail located near Denver, Colorado that features a lake and is good for all skill levels. The trail offers a number of activity options and is best used from April until October. Dogs are also able to use this trail but must be kept on leash.', 5600, NULL, 1, 2.3, NULL);
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Sloan Lake Park', 'Sloan Lake Park is a 2.6 mile loop trail located near Denver, Colorado and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be kept on leash.', 5321, NULL, 1, 2.6, NULL);
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Highline Canal Trail', 'Highline Canal Trail is a 16.5 mile out and back trail located near Englewood, Colorado that features a lake and is rated as moderate. The trail is primarily used for hiking, trail running, and mountain biking and is accessible year-round. Dogs are also able to use this trail.', 5511, NULL, 2, 16.5, NULL);

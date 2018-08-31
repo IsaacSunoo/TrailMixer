@@ -54,6 +54,9 @@ public class Profile {
 	@OneToMany(mappedBy="profile")
 	private List<ProfileTrail> pts;
 	
+	@OneToMany(mappedBy="profile")
+	private List<Reason> reasons;
+	
 	@ManyToMany
 	@JoinTable()
 	private List<Profile> friends;
@@ -190,6 +193,14 @@ public class Profile {
 		this.activeUser = activeUser;
 	}
 
+	public List<Reason> getReasons() {
+		return reasons;
+	}
+
+	public void setReasons(List<Reason> reasons) {
+		this.reasons = reasons;
+	}
+
 	public void addPreference(Preference pref) {
 		if (preferences == null) {
 			preferences = new ArrayList<>();
@@ -244,6 +255,14 @@ public class Profile {
 			trails.remove(trail);
 			trail.removeProfile(this);
 		}
+	}
+	
+	public void addReason(Reason reason) {
+		
+	}
+	
+	public void removeReason(Reason reason) {
+		
 	}
 
 	@Override
