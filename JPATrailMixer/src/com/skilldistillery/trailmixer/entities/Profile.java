@@ -44,6 +44,9 @@ public class Profile {
 	private String bio;
 	
 	private String gender;
+	
+	@Column(name="active")
+	private int activeUser;
 
 	@OneToMany(mappedBy = "profile")
 	private List<Preference> preferences;
@@ -177,6 +180,14 @@ public class Profile {
 
 	public void setTrails(List<Trail> trails) {
 		this.trails = trails;
+	}
+
+	public int getActiveUser() {
+		return activeUser;
+	}
+
+	public void setActiveUser(int activeUser) {
+		this.activeUser = activeUser;
 	}
 
 	public void addPreference(Preference pref) {
