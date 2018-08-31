@@ -32,17 +32,17 @@ class TrailTest {
 
 	@Test
 	public void test_one_trail_to_many_profiles() {
-		assertEquals("male", tr.getProfiles().get(0).getGender()); 
+		assertEquals("Male", tr.getProfiles().get(0).getGender()); 
 	}
 	
 	@Test
 	public void test_many_trails_to_one_address() {
-		assertEquals("", tr.getAddress().getCity()); 
+		assertEquals("Denver", tr.getAddress().getCity()); 
 	}
 	
 	@Test
 	public void test_many_trails_to_one_difficulty() {
-		assertEquals("Beginner", tr.getDifficulty().getName()); 
+		assertEquals("Moderate", tr.getDifficulty().getName()); 
 	}
 	
 

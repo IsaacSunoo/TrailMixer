@@ -36,7 +36,7 @@ class ProfileTrailTest {
 
 	@Test
 	public void test_profiletrail_to_profile_on_rating() {
-		assertEquals(4, pt.getRating()); 
+		assertEquals(4, prof.getPts().get(0).getRating()); 
 	}
 
 }
