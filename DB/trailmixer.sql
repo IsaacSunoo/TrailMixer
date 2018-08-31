@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `img_url` VARCHAR(500) NULL,
   `bio` VARCHAR(500) NULL,
   `gender` VARCHAR(45) NULL,
-  `active` INT NULL,
+  `active` INT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_user_profile_idx` (`user_id` ASC),
   INDEX `fk_profile_address_idx` (`address_id` ASC),
