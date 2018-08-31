@@ -1,12 +1,12 @@
 package com.skilldistillery.trailmixer.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,13 +31,8 @@ class DifficultyTest {
 	}
 
 	@Test
-	public void test_one_difficulty_to_many_preferences() {
-		
-	}
-	
-	@Test
-	public void test_one_difficulty_to_many_trails() {
-		
+	public void test_difficulty_by_name() {
+		assertEquals("Beginner", diff.getName());
 	}
 
 }

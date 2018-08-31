@@ -1,12 +1,12 @@
 package com.skilldistillery.trailmixer.test;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,8 +31,8 @@ class AreaTest {
 	}
 
 	@Test
-	public void test_one_area_to_many_preferences() {
-		
+	public void test_area_with_city() {
+		assertEquals("Denver", area.getCity()); 
 	}
 
 }

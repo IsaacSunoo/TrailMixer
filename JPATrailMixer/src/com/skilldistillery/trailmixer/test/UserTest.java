@@ -1,5 +1,7 @@
 package com.skilldistillery.trailmixer.test;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -30,7 +32,7 @@ class UserTest {
 
 	@Test
 	public void test_one_user_to_one_profile() {
-		
+		assertEquals("johnWick@gmail.com", user.getUsername()); 
 	}
 
 }

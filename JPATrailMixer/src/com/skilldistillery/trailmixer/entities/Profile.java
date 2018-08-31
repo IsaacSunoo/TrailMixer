@@ -54,7 +54,7 @@ public class Profile {
 	@OneToMany(mappedBy="profile")
 	private List<ProfileTrail> pts;
 	
-	@ManyToMany(mappedBy="profile")
+	@ManyToMany(mappedBy="profiles")
 	private List<Reason> reasons;
 	
 	@ManyToMany
@@ -276,8 +276,9 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [Id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age="
-				+ age + ", address=" + address + ", image=" + image + ", bio=" + bio + "]";
+		return "Profile [user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", image=" + image + ", bio=" + bio + ", gender=" + gender + ", activeUser=" + activeUser + "]";
 	}
+
 
 }

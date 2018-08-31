@@ -1,5 +1,7 @@
 package com.skilldistillery.trailmixer.test;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -30,7 +32,7 @@ class ReasonTest {
 
 	@Test
 	public void test_one_reason_to_many_profiles() {
-		
+		assertEquals("John", re.getProfiles().get(0).getFirstName());
 	}
 
 }
