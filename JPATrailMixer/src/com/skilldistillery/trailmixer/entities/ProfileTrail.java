@@ -15,9 +15,11 @@ public class ProfileTrail {
 	private int Id;
 
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="profile_id")
 	private Profile profile;
 
+	@ManyToOne
+	@JoinColumn(name="trail_id")
 	private Trail trail;
 
 	private int rating;

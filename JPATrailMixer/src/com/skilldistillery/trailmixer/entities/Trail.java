@@ -13,16 +13,16 @@ public class Trail {
 	private int Id;
 	
 	private String name;
-	
 	private String description;
-	
 	private int altitude;
-	
 	private String image;
+
 	
 	private Difficulty difficulty;
 	
+	
 	private double distance;
+	
 	
 	private Address address;
 

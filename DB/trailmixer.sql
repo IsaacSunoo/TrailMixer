@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `address_id` INT NOT NULL,
   `img_url` VARCHAR(500) NULL,
   `bio` VARCHAR(500) NULL,
+  `gender` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_profile_idx` (`user_id` ASC),
   INDEX `fk_profile_address_idx` (`address_id` ASC),
@@ -264,9 +265,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trailmixer`;
-INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`) VALUES (1, 1, 'John', 'Wick', 34, 1, 'https://skilldistillery.com/wp-content/uploads/2017/01/AndyCPicSDWEB-250x250.jpg', 'I enjoy spending time with my dog.');
-INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`) VALUES (2, 2, 'test', 'user', 23, 2, 'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2015%2F01%2Foffice-space_320.jpg%3Fw%3D320&w=700&q=85', NULL);
-INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`) VALUES (3, 3, 'Steve', 'Rogers', 143, 3, 'http://cdn2-www.mandatory.com/assets/uploads/2014/03/Captain-America-The-Winter-Soldier.jpg', NULL);
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (1, 1, 'John', 'Wick', 34, 1, 'https://skilldistillery.com/wp-content/uploads/2017/01/AndyCPicSDWEB-250x250.jpg', 'I enjoy spending time with my dog.', NULL);
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (2, 2, 'test', 'user', 23, 2, 'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2015%2F01%2Foffice-space_320.jpg%3Fw%3D320&w=700&q=85', NULL, NULL);
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (3, 3, 'Steve', 'Rogers', 143, 3, 'http://cdn2-www.mandatory.com/assets/uploads/2014/03/Captain-America-The-Winter-Soldier.jpg', NULL, NULL);
 
 COMMIT;
 

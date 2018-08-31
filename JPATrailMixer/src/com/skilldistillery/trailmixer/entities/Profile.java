@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -48,6 +50,10 @@ public class Profile {
 	
 	@OneToMany(mappedBy="profile")
 	private List<ProfileTrail> pts;
+	
+	@ManyToMany
+	@JoinTable()
+	private List<Profile> friends;
 // end of fields
 
 	public Profile() {
@@ -151,6 +157,14 @@ public class Profile {
 		this.pts = pts;
 	}
 
+	public List<Profile> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<Profile> friends) {
+		this.friends = friends;
+	}
+
 	public void addPreference(Preference pref) {
 		if (preferences == null) {
 			preferences = new ArrayList<>();
@@ -187,7 +201,7 @@ public class Profile {
 	public void removePt(ProfileTrail pt) {
 		pt.setProfile(null);
 		if (pts != null) {
-			pts.remove(this);
+			pts.remove(pt);
 		}
 	}
 
