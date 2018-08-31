@@ -10,7 +10,7 @@ public class Difficulty {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String name;
 //	end of fields
@@ -19,11 +19,11 @@ public class Difficulty {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getName() {
@@ -36,7 +36,7 @@ public class Difficulty {
 
 	@Override
 	public String toString() {
-		return "Difficulty [Id=" + Id + ", name=" + name + "]";
+		return "Difficulty [Id=" + id + ", name=" + name + "]";
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.skilldistillery.trailmixer.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +10,7 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String street;
 
@@ -20,8 +19,8 @@ public class Address {
 	private String city;
 	private String state;
 
-	private double latitude;
-	private double longitude;
+	private String latitude;
+	private String longitude;
 //	end of fields
 
 	public Address() {
@@ -33,17 +32,17 @@ public class Address {
 		this.state = state;
 	}
 
-	public Address(double latitude, double longitude) {
+	public Address(String latitude, String longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getStreet() {
@@ -78,25 +77,25 @@ public class Address {
 		this.state = state;
 	}
 
-	public double getLatitude() {
+	public String getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 
-	public double getLongitude() {
+	public String getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 
 	@Override
 	public String toString() {
-		return "Address [Id=" + Id + ", street=" + street + ", street2=" + street2 + ", city=" + city + ", state="
+		return "Address [Id=" + id + ", street=" + street + ", street2=" + street2 + ", city=" + city + ", state="
 				+ state + "]";
 	}
 }

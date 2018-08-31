@@ -12,7 +12,7 @@ public class ProfileTrail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	@ManyToOne
 	@JoinColumn(name="profile_id")
@@ -35,11 +35,11 @@ public class ProfileTrail {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public Profile getProfile() {
@@ -68,7 +68,7 @@ public class ProfileTrail {
 
 	@Override
 	public String toString() {
-		return "ProfileTrail [Id=" + Id + ", profile=" + profile + ", trail=" + trail + ", rating=" + rating + "]";
+		return "ProfileTrail [Id=" + id + ", profile=" + profile + ", trail=" + trail + ", rating=" + rating + "]";
 	}
 
 }

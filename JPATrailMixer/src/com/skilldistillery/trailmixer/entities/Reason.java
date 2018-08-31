@@ -10,7 +10,7 @@ public class Reason {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String reason;
 
@@ -18,11 +18,11 @@ public class Reason {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getReason() {
@@ -35,7 +35,7 @@ public class Reason {
 
 	@Override
 	public String toString() {
-		return "Reason [Id=" + Id + ", reason=" + reason + "]";
+		return "Reason [Id=" + id + ", reason=" + reason + "]";
 	}
 
 }
