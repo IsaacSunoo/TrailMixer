@@ -14,7 +14,7 @@
 	<form:input path="email" />
 	<br />
 	<form:label path="password">Password:</form:label>
-	<form:input path="passwor" />
+	<form:input path="password" />
 	<br />
 	<input type="submit" value="Login" />
 	</form:form>

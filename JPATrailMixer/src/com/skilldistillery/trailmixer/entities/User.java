@@ -11,7 +11,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	private String username;
 
 	private String password;
@@ -30,7 +30,7 @@ public class User {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 	public String getUsername() {
