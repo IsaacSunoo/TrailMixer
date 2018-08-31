@@ -10,7 +10,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String username;
 
@@ -26,11 +26,11 @@ public class User {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getUsername() {
@@ -51,7 +51,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [Id=" + Id + ", username=" + username + ", password=" + password + "]";
+		return "User [Id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
 
 }

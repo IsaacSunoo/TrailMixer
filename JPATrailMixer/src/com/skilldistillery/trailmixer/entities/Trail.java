@@ -17,7 +17,7 @@ public class Trail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String name;
 	private String description;
@@ -55,11 +55,11 @@ public class Trail {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getName() {
@@ -145,7 +145,7 @@ public class Trail {
 
 	@Override
 	public String toString() {
-		return "Trail [Id=" + Id + ", name=" + name + ", description=" + description + ", altitude=" + altitude
+		return "Trail [Id=" + id + ", name=" + name + ", description=" + description + ", altitude=" + altitude
 				+ ", image=" + image + ", difficulty=" + difficulty + ", distance=" + distance + ", address=" + address
 				+ "]";
 	}

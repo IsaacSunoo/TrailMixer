@@ -10,7 +10,7 @@ public class Area {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String city;
 	private String state;
@@ -20,11 +20,11 @@ public class Area {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getCity() {
@@ -45,7 +45,7 @@ public class Area {
 
 	@Override
 	public String toString() {
-		return "Area [Id=" + Id + ", city=" + city + ", state=" + state + "]";
+		return "Area [Id=" + id + ", city=" + city + ", state=" + state + "]";
 	}
 
 }

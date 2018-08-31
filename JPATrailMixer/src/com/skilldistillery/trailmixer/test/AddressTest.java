@@ -1,16 +1,17 @@
 package com.skilldistillery.trailmixer.test;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.skilldistillery.trailmixer.entities.Address;
+import com.skilldistillery.trailmixer.entities.Profile;
 
 class AddressTest {
 	private EntityManagerFactory emf; 
@@ -31,8 +32,8 @@ class AddressTest {
 	}
 
 	@Test
-	public void test_one_address_to_one_profile() {
-		
+	public void test_address_with_street_number() {
+		assertEquals("123 Main St", add.getStreet()); 
 	}
 	
 	@Test

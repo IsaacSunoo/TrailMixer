@@ -20,7 +20,7 @@ public class Profile {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	@OneToOne
 	@JoinColumn(name = "user_id")
@@ -79,11 +79,11 @@ public class Profile {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public User getUser() {
@@ -248,7 +248,7 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [Id=" + Id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age="
+		return "Profile [Id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age="
 				+ age + ", address=" + address + ", image=" + image + ", bio=" + bio + "]";
 	}
 

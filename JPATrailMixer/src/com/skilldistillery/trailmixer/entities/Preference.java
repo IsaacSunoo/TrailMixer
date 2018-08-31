@@ -12,7 +12,7 @@ public class Preference {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	@ManyToOne
 	@JoinColumn(name = "difficulty_id")
@@ -39,11 +39,11 @@ public class Preference {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public Difficulty getDifficulty() {
@@ -80,7 +80,7 @@ public class Preference {
 
 	@Override
 	public String toString() {
-		return "Preference [Id=" + Id + ", difficulty=" + difficulty + ", area=" + area + ", altitude=" + altitude
+		return "Preference [Id=" + id + ", difficulty=" + difficulty + ", area=" + area + ", altitude=" + altitude
 				+ ", profile=" + profile + "]";
 	}
 
