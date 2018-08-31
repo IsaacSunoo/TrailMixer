@@ -54,6 +54,12 @@ public class Profile {
 	@ManyToMany
 	@JoinTable()
 	private List<Profile> friends;
+	
+	@ManyToMany
+	@JoinTable(name="profile_trail",
+	joinColumns=@JoinColumn(name="profile_id"),
+	inverseJoinColumns=@JoinColumn(name="trail_id"))
+	private List<Trail> trails;
 // end of fields
 
 	public Profile() {
@@ -165,6 +171,14 @@ public class Profile {
 		this.friends = friends;
 	}
 
+	public List<Trail> getTrails() {
+		return trails;
+	}
+
+	public void setTrails(List<Trail> trails) {
+		this.trails = trails;
+	}
+
 	public void addPreference(Preference pref) {
 		if (preferences == null) {
 			preferences = new ArrayList<>();
@@ -202,6 +216,22 @@ public class Profile {
 		pt.setProfile(null);
 		if (pts != null) {
 			pts.remove(pt);
+		}
+	}
+	
+	public void addTrail(Trail trail) {
+		if (trails == null) {
+			trails = new ArrayList<>();
+		}
+		if (!trails.contains(trail)) {
+		trail.addProfile(this);
+		}
+	}
+	
+	public void removeTrail(Trail trail) {
+		if (trails != null && trails.contains(trail)) {
+			trails.remove(trail);
+			trail.removeProfile(this);
 		}
 	}
 

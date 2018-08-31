@@ -29,7 +29,6 @@ public class ProfileTrail {
 	}
 
 	public ProfileTrail(Profile profile, Trail trail, int rating) {
-		super();
 		this.profile = profile;
 		this.trail = trail;
 		this.rating = rating;

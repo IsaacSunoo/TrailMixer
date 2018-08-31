@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `preference` (
   PRIMARY KEY (`id`),
   INDEX `fk_profile_preference_idx` (`profile_id` ASC),
   INDEX `fk_area_preference_idx` (`area_id` ASC),
-  INDEX `fk_difficulty_preference_idx` (`difficulty_id` ASC),
+  INDEX `fk_preference_difficulty_idx` (`difficulty_id` ASC),
   CONSTRAINT `fk_profile_preference`
     FOREIGN KEY (`profile_id`)
     REFERENCES `profile` (`id`)
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `preference` (
     REFERENCES `area` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_difficulty_preference`
+  CONSTRAINT `fk_preference_difficulty`
     FOREIGN KEY (`difficulty_id`)
     REFERENCES `difficulty` (`id`)
     ON DELETE NO ACTION
