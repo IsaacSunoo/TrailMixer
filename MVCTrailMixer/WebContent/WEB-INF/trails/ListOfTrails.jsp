@@ -9,9 +9,10 @@
 </head>
 <h2>Trails</h2>
 <body>
-
-	<!-- list will need to be called trails -->
-	<!--  mv object will need to be set to trails -->
+	
+	<!--  list will need to be called trails -->
+	<!--  mv object = trails -->
+	<!--  mv view = ListOfTrails -->
 
 	<table>
 		<tr>
@@ -30,10 +31,14 @@
 				<td>${t.altitude}</td>
 				<td>${t.difficulty}</td>
 				<td>${t.distance}</td>
+				<td>
+					<form action="Details.do" method="GET">
+						<input type="hidden" name="id" value="${t.id}"> 
+						<input type="submit" value="Trail Details">
+					</form>
+				</td>
 			</tr>
 		</table>
 	</c:forEach>
-
-
 </body>
 </html>

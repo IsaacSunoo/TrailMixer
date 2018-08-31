@@ -10,8 +10,9 @@
 <h2>Trail Details</h2>
 <body>
 
-	<!-- list will need to be called trails -->
-	<!--  mv object will need to be set to trails -->
+	<!--  list will need to be called trails -->
+	<!--  mv object = trails -->
+	<!--  mv view = TrailDetails -->
 	<!--  make sure Java names in Trails.java correlate to names here -->
 
 	<table>
