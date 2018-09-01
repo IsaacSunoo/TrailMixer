@@ -6,25 +6,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
+import com.skilldistillery.mvctrailmixer.data.TrailsDAOImpl;
 import com.skilldistillery.trailmixer.entities.Trail;
 
 @Controller 
 public class TrailController {
-	@Autowired
-	private TrailsDAO dao; 
+	// @Autowired
+	private TrailsDAO dao = new TrailsDAOImpl(); 
 
 	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
-	public List<Trail> getTrailList() {
+	public ModelAndView getTrailList() {
+		ModelAndView mv = new ModelAndView(); 
 		List<Trail> trails = dao.getListOfTrails(); 
-		return trails;
+		mv.addObject("trails", trails); 
+		mv.setViewName("trails/ListOfTrails");
+		return mv;
+	}
+	
+	@RequestMapping(path="TrailDetails.do", method = RequestMethod.GET)
+	public ModelAndView getDetails(int id) {
+		ModelAndView mv = new ModelAndView(); 
+		Trail trail = dao.getTrailDetails(id);  
+		mv.addObject("trail", trail); 
+		mv.setViewName("trails/TrailDetails");
+		return mv;
 	}
 	
 	@RequestMapping(path="ListOfTrailsDifficulty.do", method = RequestMethod.GET)
-	public List<Trail> searchTrailDifficulty(int difficulty) {
+	public ModelAndView searchTrailDifficulty(int difficulty) {
+		ModelAndView mv = new ModelAndView(); 
 		List<Trail> trails = dao.searchByDifficulty(difficulty); 
-		return trails;
+		mv.addObject("trails", trails); 
+		mv.setViewName("trails/ListOfTrails");
+		return mv;
 	}
 	
 	@RequestMapping(path="ListOfTrailsDistance.do", method = RequestMethod.GET)

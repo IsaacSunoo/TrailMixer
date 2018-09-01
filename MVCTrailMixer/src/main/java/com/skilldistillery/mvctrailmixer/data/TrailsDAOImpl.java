@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 import com.skilldistillery.trailmixer.entities.Trail;
 
 public class TrailsDAOImpl implements TrailsDAO{
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("VideoStore");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("TrailMixer");
 	private EntityManager em = emf.createEntityManager();
 
 	@Override
@@ -20,7 +20,15 @@ public class TrailsDAOImpl implements TrailsDAO{
 		List<Trail> trails = em.createQuery(query, Trail.class).getResultList(); 
 		return trails;
 	}
+	
+	@Override
+	public Trail getTrailDetails(int id) {
+		String query = "SELECT t FROM Trail t WHERE t.id = :id"; 
+		Trail tr = em.createQuery(query, Trail.class).setParameter("id", id).getSingleResult(); 
+		return tr; 
+	}
 
+	// "search by" methods
 	@Override
 	public List<Trail> searchByDifficulty(int difficulty) {
 		String query = "SELECT t FROM Trail t WHERE t.difficulty = :difficulty";
@@ -63,6 +71,22 @@ public class TrailsDAOImpl implements TrailsDAO{
 	public List<Trail> searchByKeyword(String keyword) {
 		String query = "SELECT t FROM Trail t WHERE t.name CONTAINS :keyword";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("keyword", keyword).getResultList();
+		return trails;
+	}
+	
+	// "sort by" methods 
+	
+	@Override
+	public List<Trail> sortByDifficulty() {
+		String query = "SELECT t FROM Trail t WHERE t.difficulty = :difficulty";
+		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
+		return trails;
+	}
+
+	@Override
+	public List<Trail> sortByDistance() {
+		String query = "SELECT t FROM Trail t WHERE t.distance = :finalDistance";
+		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
 		return trails;
 	}
 

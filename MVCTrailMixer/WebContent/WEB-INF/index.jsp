@@ -21,7 +21,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Trails</a>
+        <a class="nav-link" href="ListOfTrails.do">Trails</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Matches</a>

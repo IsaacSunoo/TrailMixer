@@ -9,10 +9,22 @@
 </head>
 <h2>Trails</h2>
 <body>
-	
-	<!--  list will need to be called trails -->
-	<!--  mv object = trails -->
-	<!--  mv view = ListOfTrails -->
+
+	<select>
+		<option value="sort">sort by: </option> 
+		<form action="ListOfTrailsDifficulty.do" method="GET">
+			<option value="difficulty">difficulty</option>
+		</form>
+		<form action="ListOfTrailsDistance.do" method="GET">
+			<option value="distance">distance</option>
+		</form>
+		<form action="ListOfTrailsAltitude.do" method="GET">
+			<option value="altitude">altitude</option>
+		</form>
+		<form action="ListOfTrailsRating.do" method="GET">
+			<option value="rating">rating</option>
+		</form>
+	</select>
 
 	<table>
 		<tr>
@@ -21,24 +33,21 @@
 			<th>Distance</th>
 			<th>Altitude</th>
 		</tr>
-	</table>
 
-	<c:forEach var="t" items="${trails}">
-		<table>
+		<c:forEach var="t" items="${trails}">
 			<tr>
-				<input type=hidden name="id" value="${t.id}">
 				<td>${t.name}</td>
-				<td>${t.altitude}</td>
 				<td>${t.difficulty}</td>
 				<td>${t.distance}</td>
+				<td>${t.altitude}</td>
 				<td>
-					<form action="Details.do" method="GET">
-						<input type="hidden" name="id" value="${t.id}"> 
-						<input type="submit" value="Trail Details">
+					<form action="TrailDetails.do" method="GET">
+						<input type="hidden" name="id" value="${t.id}"> <input
+							type="submit" value="Trail Details">
 					</form>
 				</td>
 			</tr>
-		</table>
-	</c:forEach>
+		</c:forEach>
+	</table>
 </body>
 </html>
