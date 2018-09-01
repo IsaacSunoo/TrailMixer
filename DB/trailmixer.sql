@@ -226,21 +226,6 @@ CREATE TABLE IF NOT EXISTS `profile_reason` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-USE `trailmixer`;
-
-DELIMITER $$
-
-USE `trailmixer`$$
-DROP TRIGGER IF EXISTS `profile_BEFORE_DELETE` $$
-USE `trailmixer`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `trailmixer`.`profile_BEFORE_DELETE` BEFORE DELETE ON `profile` FOR EACH ROW
-BEGIN
-
-END
-$$
-
-
-DELIMITER ;
 SET SQL_MODE = '';
 DROP USER IF EXISTS trailuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -257,9 +242,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trailmixer`;
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (1, 'johnWick@gmail.com', 'myDoggo', NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (2, 'test@user.com', 'testuser', NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (3, 'captAmerica@usa.org', '1234', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (1, 'johnWick@gmail.com', 'myDoggo', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (2, 'test@user.com', 'testuser', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (3, 'captAmerica@usa.org', '1234', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (4, 'anotherTest@gmail.com', '1111', 0);
 
 COMMIT;
 
@@ -423,3 +409,18 @@ INSERT INTO `profile_reason` (`profile_id`, `reason_id`) VALUES (3, 3);
 
 COMMIT;
 
+USE `trailmixer`;
+
+DELIMITER $$
+
+USE `trailmixer`$$
+DROP TRIGGER IF EXISTS `profile_BEFORE_DELETE` $$
+USE `trailmixer`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `trailmixer`.`profile_BEFORE_DELETE` BEFORE DELETE ON `profile` FOR EACH ROW
+BEGIN
+
+END
+$$
+
+
+DELIMITER ;
