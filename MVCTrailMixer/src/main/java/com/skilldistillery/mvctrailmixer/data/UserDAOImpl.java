@@ -45,6 +45,7 @@ public class UserDAOImpl implements UserDAO {
 		User updatedUser = em.find(User.class, user.getId());
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setUsername(user.getUsername());
+		updatedUser.setActiveUser(1);
 		
 		return updatedUser;
 	}
