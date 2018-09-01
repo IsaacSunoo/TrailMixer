@@ -5,7 +5,8 @@ import com.skilldistillery.trailmixer.entities.User;
 public interface UserDAO {
 	  User getUserByUserNameAndPassword(String userName, String password);
 	  User findUserById(int userId);
-	  User updateUser(int userId, User user);
-	  User deleteUser(int userId, User user);
+	  User updateUser(User user);
+	  boolean deleteUser(int userId);
+	  User addUser(User user);
 
 }

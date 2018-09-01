@@ -43,6 +43,12 @@ public class LoginController {
 			mv.setViewName("WEB-INF/login.jsp");
 			errors.rejectValue("userName", "error.userName", "Invalid credentials");
 		}
+		else if (daoUser.getActiveUser() == 0){
+//			if the user is set to inactive, don't take them to the login page.
+//			instead, we need to ask them to set the account back to active
+			mv.setViewName("WEB-INF/login.jsp");
+			errors.rejectValue("userName", "error.userName", "Invalid credentials");
+		}
 		else {
 			// load the User object into session, and redirect to the account page, account.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);

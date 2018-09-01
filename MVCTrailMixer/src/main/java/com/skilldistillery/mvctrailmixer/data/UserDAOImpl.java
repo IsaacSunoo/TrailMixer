@@ -41,8 +41,33 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
+	public User updateUser(User user) {
+		User updatedUser = em.find(User.class, user.getId());
+		updatedUser.setPassword(user.getPassword());
+		updatedUser.setUsername(user.getUsername());
 		
-		return null;
+		return updatedUser;
+	}
+	
+/* instead of deleting the user, i am setting the "active status" to 0. when the 
+ * user logs in, we will check to see if it is an active user before we direct 
+ * them to the account page
+*/
+	@Override
+	public boolean deleteUser(int userId) {
+		User u = em.find(User.class, userId);
+		
+		u.setActiveUser(0);
+		
+		return (u.getActiveUser() == 0);
+	}
+
+	@Override
+	public User addUser(User user) {
+		em.persist(user);
+		em.flush();
+		
+		return user;
+		
 	}
 }
