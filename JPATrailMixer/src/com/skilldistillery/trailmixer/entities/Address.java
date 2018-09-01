@@ -18,7 +18,7 @@ public class Address {
 	private String state;
 	private String latitude;
 	private String longitude;
-//	end of fields
+	//	end of fields
 
 	public Address() {
 	}

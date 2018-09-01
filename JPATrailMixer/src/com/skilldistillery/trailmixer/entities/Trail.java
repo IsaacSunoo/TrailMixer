@@ -23,7 +23,7 @@ public class Trail {
 	private String name;
 	private String description;
 	private int altitude;
-	
+
 	@Column(name = "img_url")
 	private String image;
 
@@ -36,13 +36,13 @@ public class Trail {
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
-	
+
 	@ManyToMany(mappedBy="trails")
 	private List<Profile> profiles;
-	
+
 	@OneToMany(mappedBy="trail")
 	private List<ProfileTrail> pts;
-//	end of fields
+	//	end of fields
 
 	public Trail() {
 	}
@@ -129,7 +129,7 @@ public class Trail {
 	public void setProfiles(List<Profile> profiles) {
 		this.profiles = profiles;
 	}
-	
+
 	public List<ProfileTrail> getPts() {
 		return pts;
 	}
@@ -147,14 +147,14 @@ public class Trail {
 			profile.addTrail(this);
 		}
 	}
-	
+
 	public void removeProfile(Profile profile) {
 		if (profiles != null && profiles.contains(profile)) {
 			profiles.remove(profile);
 			profile.removeTrail(this);
 		}
 	}
-	
+
 	public void addPt(ProfileTrail pt) {
 		if (pts == null) {
 			pts = new ArrayList<>();
@@ -167,7 +167,7 @@ public class Trail {
 			pt.setTrail(this);
 		}
 	}
-	
+
 	public void removePt(ProfileTrail pt) {
 		pt.setTrail(null);
 		if (pts != null) {

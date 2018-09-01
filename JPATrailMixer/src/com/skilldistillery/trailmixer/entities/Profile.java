@@ -42,29 +42,29 @@ public class Profile {
 	private String image;
 
 	private String bio;
-	
+
 	private String gender;
-	
+
 
 	@OneToMany(mappedBy = "profile")
 	private List<Preference> preferences;
-	
+
 	@OneToMany(mappedBy="profile")
 	private List<ProfileTrail> pts;
-	
+
 	@ManyToMany(mappedBy="profiles")
 	private List<Reason> reasons;
-	
+
 	@ManyToMany
 	@JoinTable()
 	private List<Profile> friends;
-	
+
 	@ManyToMany
 	@JoinTable(name="profile_trail",
 	joinColumns=@JoinColumn(name="profile_id"),
 	inverseJoinColumns=@JoinColumn(name="trail_id"))
 	private List<Trail> trails;
-// end of fields
+	// end of fields
 
 	public Profile() {
 	}
@@ -210,7 +210,7 @@ public class Profile {
 			preferences.remove(pref);
 		}
 	}
-	
+
 	public void addPt(ProfileTrail pt) {
 		if (pts == null) {
 			pts = new ArrayList<>();
@@ -223,30 +223,30 @@ public class Profile {
 			pt.setProfile(this);
 		}
 	}
-	
+
 	public void removePt(ProfileTrail pt) {
 		pt.setProfile(null);
 		if (pts != null) {
 			pts.remove(pt);
 		}
 	}
-	
+
 	public void addTrail(Trail trail) {
 		if (trails == null) {
 			trails = new ArrayList<>();
 		}
 		if (!trails.contains(trail)) {
-		trail.addProfile(this);
+			trail.addProfile(this);
 		}
 	}
-	
+
 	public void removeTrail(Trail trail) {
 		if (trails != null && trails.contains(trail)) {
 			trails.remove(trail);
 			trail.removeProfile(this);
 		}
 	}
-	
+
 	public void addReason(Reason reason) {
 		if (reasons == null) {
 			reasons = new ArrayList<>();
@@ -256,7 +256,7 @@ public class Profile {
 			reason.addProfile(this);
 		}
 	}
-	
+
 	public void removeReason(Reason reason) {
 		if (reasons != null && reasons.contains(reason)) {
 			reasons.remove(reason);

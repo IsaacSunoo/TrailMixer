@@ -25,7 +25,7 @@ public class ProfileTrail {
 	private Trail trail;
 
 	private int rating;
-//	end of fields
+	//	end of fields
 
 	public ProfileTrail() {
 	}

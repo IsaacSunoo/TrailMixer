@@ -34,22 +34,22 @@ class ProfileTest {
 	public void test_one_profile_to_one_user() {
 		assertEquals(1, prof.getUser().getId()); 
 	}
-	
+
 	@Test
 	public void test_one_profile_to_many_preferences() {
 		assertEquals(10000, prof.getPreferences().get(0).getAltitude()); 
 	}
-	
+
 	@Test
 	public void test_one_profile_to_one_address() {
 		assertEquals("Colorado", prof.getAddress().getState()); 
 	}
-	
+
 	@Test
 	public void test_one_profile_to_many_trails() {
 		assertEquals("test trail", prof.getTrails().get(0).getName()); 
 	}
-	
+
 	@Test
 	public void test_one_profile_to_many_reasons() {
 		assertEquals("Fun", prof.getReasons().get(0).getName()); 
