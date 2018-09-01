@@ -1,5 +1,6 @@
 package com.skilldistillery.trailmixer.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,9 @@ public class User {
 	private String username;
 
 	private String password;
+	
+	@Column(name="active")
+	private int activeUser;
 //	end of fields
 
 	public User() {
@@ -49,9 +53,17 @@ public class User {
 		this.password = password;
 	}
 
+	public int getActiveUser() {
+		return activeUser;
+	}
+
+	public void setActiveUser(int activeUser) {
+		this.activeUser = activeUser;
+	}
+
 	@Override
 	public String toString() {
-		return "User [Id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [Id=" + id + ", username=" + username + "]";
 	}
 
 }

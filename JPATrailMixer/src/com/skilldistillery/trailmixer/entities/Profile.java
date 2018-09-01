@@ -45,8 +45,6 @@ public class Profile {
 	
 	private String gender;
 	
-	@Column(name="active")
-	private int activeUser;
 
 	@OneToMany(mappedBy = "profile")
 	private List<Preference> preferences;
@@ -86,7 +84,7 @@ public class Profile {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 	public User getUser() {
@@ -185,14 +183,6 @@ public class Profile {
 		this.trails = trails;
 	}
 
-	public int getActiveUser() {
-		return activeUser;
-	}
-
-	public void setActiveUser(int activeUser) {
-		this.activeUser = activeUser;
-	}
-
 	public List<Reason> getReasons() {
 		return reasons;
 	}
@@ -277,7 +267,7 @@ public class Profile {
 	@Override
 	public String toString() {
 		return "Profile [user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-				+ ", image=" + image + ", bio=" + bio + ", gender=" + gender + ", activeUser=" + activeUser + "]";
+				+ ", image=" + image + ", bio=" + bio + ", gender=" + gender + "]";
 	}
 
 

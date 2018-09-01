@@ -8,7 +8,6 @@
 </head>
 <body>
 
-	<!--  need to add gender to DB and Profile entity-->
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
@@ -21,7 +20,7 @@
 		<li><input name="bio" value="${bio}"></li>
 	</ul>
 	
-	<!--  profile pictures would be to the right of this in out html -->
+	<!--  profile pictures would be to the right of this in our html -->
 
 	<form action="EditProfile.do" method="GET">
 		<input type="hidden" name="id" value="${profile.id}"> 

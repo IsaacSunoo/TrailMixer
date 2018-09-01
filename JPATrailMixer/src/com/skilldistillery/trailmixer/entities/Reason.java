@@ -34,7 +34,7 @@ public class Reason {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 

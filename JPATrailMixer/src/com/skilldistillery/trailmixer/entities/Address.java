@@ -39,7 +39,7 @@ public class Address {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 	public String getStreet() {

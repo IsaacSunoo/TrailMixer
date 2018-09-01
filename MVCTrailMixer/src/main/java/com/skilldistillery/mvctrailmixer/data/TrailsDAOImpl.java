@@ -45,6 +45,7 @@ public class TrailsDAOImpl implements TrailsDAO{
 
 	@Override
 	public List<Trail> searchByAltitude(int altitude) {
+//		should this search for max altitude? and return all the trails below that altitude
 		String query = "SELECT t FROM Trail t WHERE t.altitude = :altitude";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("altitude", altitude).getResultList();
 		return trails;
@@ -52,6 +53,7 @@ public class TrailsDAOImpl implements TrailsDAO{
 
 	@Override
 	public List<Trail> searchByRating(int rating) {
+//		same thing here. return a list of trails where the rating is equal to greater than their rating
 		String query = "SELECT pt FROM ProfileTrail pt WHERE pt.rating = :rating";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("rating", rating).getResultList();
 		return trails;
