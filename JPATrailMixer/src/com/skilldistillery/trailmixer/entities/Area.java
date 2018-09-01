@@ -24,7 +24,7 @@ public class Area {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 	public String getCity() {

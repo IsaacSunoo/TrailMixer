@@ -43,7 +43,7 @@ public class Preference {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 	public Difficulty getDifficulty() {

@@ -41,7 +41,7 @@ public class ProfileTrail {
 	}
 
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 
 	public Profile getProfile() {
