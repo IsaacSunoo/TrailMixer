@@ -9,9 +9,11 @@ public interface TrailsDAO {
 	public Trail getTrailDetails(int id); 
 	public List<Trail> searchByDifficulty(int difficulty); 
 	public List<Trail> searchByDistance(double distance); 
-	public List<Trail> searchByAltitude(int altitude); 
+	public List<Trail> searchByMaxAltitude(int altitude); 
 	public List<Trail> searchByRating(int rating); 
 	public List<Trail> searchByKeyword(String keyword); 
 	public List<Trail> sortByDifficulty(); 
 	public List<Trail> sortByDistance(); 
+	public List<Trail> sortByAltitude(); 
+	public List<Trail> sortByRating(); 
 }

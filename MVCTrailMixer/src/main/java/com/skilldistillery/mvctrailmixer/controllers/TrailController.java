@@ -16,6 +16,8 @@ import com.skilldistillery.trailmixer.entities.Trail;
 public class TrailController {
 	// @Autowired
 	private TrailsDAO dao = new TrailsDAOImpl(); 
+	
+	// list of trails and details
 
 	@RequestMapping(path="ListOfTrails.do", method = RequestMethod.GET)
 	public ModelAndView getTrailList() {
@@ -35,6 +37,8 @@ public class TrailController {
 		return mv;
 	}
 	
+	// search by 
+	
 	@RequestMapping(path="ListOfTrailsDifficulty.do", method = RequestMethod.GET)
 	public ModelAndView searchTrailDifficulty(int difficulty) {
 		ModelAndView mv = new ModelAndView(); 
@@ -52,7 +56,7 @@ public class TrailController {
 	
 	@RequestMapping(path="ListOfTrailsAltitude.do", method = RequestMethod.GET)
 	public List<Trail> searchTrailAltitude(int altitude) {
-		List<Trail> trails = dao.searchByAltitude(altitude); 
+		List<Trail> trails = dao.searchByMaxAltitude(altitude); 
 		return trails;
 	}
 	
@@ -66,6 +70,70 @@ public class TrailController {
 	public List<Trail> searchTrailKeyword(String keyword) {
 		List<Trail> trails = dao.searchByKeyword(keyword); 
 		return trails;
+	}
+	
+	// sort by 
+	
+	@RequestMapping(path="ListOfTrailsSorted.do", method = RequestMethod.GET)
+	public ModelAndView searchTrailSorted(String sortBy) {
+		ModelAndView mv = new ModelAndView(); 
+		// switch statement
+		List<Trail> trails = null; 
+		switch (sortBy) {
+		case "difficulty":
+			trails = dao.sortByDifficulty(); 
+			break;
+		case "distance":
+			trails = dao.sortByDistance(); 
+			break; 
+		case "altitude": 
+			trails = dao.sortByAltitude(); 
+			break; 
+//		case "rating":
+//			trails = dao.sortByRating()(); 
+//			break; 
+		default:
+			trails = dao.getListOfTrails(); 
+			break;
+		}
+		mv.addObject("trails", trails); 
+		mv.setViewName("trails/ListOfTrails");
+		return mv;
+	}
+	
+	@RequestMapping(path="ListOfTrailsSearched.do", method = RequestMethod.GET)
+	public ModelAndView searchTrail(String searchBy, String search) {
+		ModelAndView mv = new ModelAndView(); 
+		double d = Double.MAX_VALUE;
+		int i = Integer.MAX_VALUE; 
+		try {
+			d = Double.parseDouble(search); 
+			i = Integer.parseInt(search); 
+		}
+		catch (NumberFormatException nfe) {
+			
+		}
+		List<Trail> trails = null; 
+		switch (searchBy) {
+		case "difficulty": 
+			trails = dao.searchByDifficulty(i); 
+			break; 
+		case "distance": 
+			trails = dao.searchByDistance(d); 
+			break; 
+		case "altitude": 
+			trails = dao.searchByMaxAltitude(i); 
+			break; 
+		case "rating": 
+			trails = dao.searchByRating(i); 
+			break; 
+		default:
+			trails = dao.getListOfTrails(); 
+			break; 
+		}
+		mv.addObject("trails", trails); 
+		mv.setViewName("trails/ListOfTrails");
+		return mv;
 	}
 	
 }

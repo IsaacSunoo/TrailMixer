@@ -31,11 +31,11 @@ public class TrailsDAOImpl implements TrailsDAO{
 	// "search by" methods
 	@Override
 	public List<Trail> searchByDifficulty(int difficulty) {
-		String query = "SELECT t FROM Trail t WHERE t.difficulty = :difficulty";
+		String query = "SELECT t FROM Trail t WHERE t.difficulty.id = :difficulty";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("difficulty", difficulty).getResultList();
 		return trails;
 	}
-
+	
 	@Override
 	public List<Trail> searchByDistance(double distance) {
 		double finalDistance = 0.0; 
@@ -46,22 +46,21 @@ public class TrailsDAOImpl implements TrailsDAO{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		String query = "SELECT t FROM Trail t WHERE t.distance = :finalDistance";
+		String query = "SELECT t FROM Trail t WHERE t.distance <= :finalDistance ORDER BY t.distance DESC";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("finalDistance", finalDistance).getResultList();
 		return trails;
 	}
 
 	@Override
-	public List<Trail> searchByAltitude(int altitude) {
-//		should this search for max altitude? and return all the trails below that altitude
-		String query = "SELECT t FROM Trail t WHERE t.altitude = :altitude";
+	public List<Trail> searchByMaxAltitude(int altitude) {
+		String query = "SELECT t FROM Trail t WHERE t.altitude <= :altitude ORDER BY t.altitude DESC";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("altitude", altitude).getResultList();
 		return trails;
 	}
 
+//	return a list of trails where the rating is equal to greater than their rating
 	@Override
 	public List<Trail> searchByRating(int rating) {
-//		same thing here. return a list of trails where the rating is equal to greater than their rating
 		String query = "SELECT pt FROM ProfileTrail pt WHERE pt.rating = :rating";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("rating", rating).getResultList();
 		return trails;
@@ -78,14 +77,29 @@ public class TrailsDAOImpl implements TrailsDAO{
 	
 	@Override
 	public List<Trail> sortByDifficulty() {
-		String query = "SELECT t FROM Trail t WHERE t.difficulty = :difficulty";
+		String query = "SELECT t FROM Trail t ORDER BY t.difficulty DESC";
 		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
 		return trails;
 	}
 
 	@Override
 	public List<Trail> sortByDistance() {
-		String query = "SELECT t FROM Trail t WHERE t.distance = :finalDistance";
+		String query = "SELECT t FROM Trail t ORDER BY t.distance DESC";
+		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
+		return trails;
+	}
+	
+	@Override
+	public List<Trail> sortByAltitude() {
+		String query = "SELECT t FROM Trail t ORDER BY t.altitude DESC";
+		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
+		return trails;
+	}
+	
+	// need to write query for order by rating 
+	@Override
+	public List<Trail> sortByRating() {
+		String query = "";
 		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
 		return trails;
 	}

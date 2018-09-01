@@ -10,22 +10,34 @@
 <h2>Trails</h2>
 <body>
 
-	<select>
-		<option value="sort">sort by: </option> 
-		<form action="ListOfTrailsDifficulty.do" method="GET">
+		<form action="ListOfTrailsSorted.do" method="GET">
+		Sort By:
+	<select name="sortBy">
+			<option value="none">---</option>
 			<option value="difficulty">difficulty</option>
-		</form>
-		<form action="ListOfTrailsDistance.do" method="GET">
 			<option value="distance">distance</option>
-		</form>
-		<form action="ListOfTrailsAltitude.do" method="GET">
 			<option value="altitude">altitude</option>
-		</form>
-		<form action="ListOfTrailsRating.do" method="GET">
 			<option value="rating">rating</option>
-		</form>
 	</select>
-
+		<input type="submit" value="submit"/>
+		</form>
+		
+		<form action="ListOfTrailsSearched.do" method="GET">
+		Search By:
+	<select name="searchBy">
+			<option value="none">---</option>
+			<option value="difficulty">difficulty</option>
+			<option value="distance">distance</option>
+			<option value="altitude">altitude</option>
+			<option value="rating">rating</option>
+	</select>
+	<input type="text" name="search">
+		<input type="submit" value="submit"/>
+		</form>
+		
+		
+<fieldset style="box-shadow: 5px 5px 10px gray; display: inline-block">
+<legend> Trails </legend>
 	<table>
 		<tr>
 			<th>Trail</th>
@@ -49,5 +61,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</fieldset>
 </body>
 </html>
