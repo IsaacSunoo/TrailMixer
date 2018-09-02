@@ -34,12 +34,6 @@ public class Difficulty {
 		this.name = name;
 	}
 
-	//	public String cleanToString() {
-	//		Difficulty d = new Difficulty();  
-	//		String s = "" + d.getName(); 
-	//		return s; 
-	//	}
-
 	@Override
 	public String toString() {
 		return "Difficulty [Id=" + id + ", name=" + name + "]";

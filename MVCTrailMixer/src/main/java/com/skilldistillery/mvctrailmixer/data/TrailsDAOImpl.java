@@ -66,9 +66,12 @@ public class TrailsDAOImpl implements TrailsDAO{
 		return trails;
 	}
 
+	// Liam - syntax error on 72 and 73 
 	@Override
 	public List<Trail> searchByKeyword(String keyword) {
+															// here 
 		String query = "SELECT t FROM Trail t WHERE t.name CONTAINS :keyword";
+																						// and here 
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("keyword", "%" + keyword + "%").getResultList();
 		return trails;
 	}
