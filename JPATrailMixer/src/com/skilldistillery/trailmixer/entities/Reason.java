@@ -19,7 +19,7 @@ public class Reason {
 	private int id;
 
 	private String name;
-	
+
 	@ManyToMany
 	@JoinTable(name="profile_reason",
 	joinColumns=@JoinColumn(name="reason_id"),
@@ -45,7 +45,7 @@ public class Reason {
 	public void setProfiles(List<Profile> profiles) {
 		this.profiles = profiles;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -63,7 +63,7 @@ public class Reason {
 			profile.addReason(this);
 		}
 	}
-	
+
 	public void removeProfile(Profile profile) {
 		if (profiles != null && profiles.contains(profile)) {
 			profiles.remove(profile);

@@ -35,17 +35,17 @@ class PreferenceTest {
 	public void test_preference_with_id() {
 		assertEquals(1, pref.getId()); 
 	}
-	
+
 	@Test
 	public void test_many_preferences_to_one_difficulty() {
 		assertEquals("Easy", pref.getDifficulty().getName()); 
 	}
-	
+
 	@Test
 	public void test_many_preferences_to_one_profile() {
 		assertEquals("John", pref.getProfile().getFirstName()); 
 	}
-	
+
 	@Test
 	public void test_many_preferences_to_one_area() {
 		assertEquals("Denver", pref.getArea().getCity()); 
