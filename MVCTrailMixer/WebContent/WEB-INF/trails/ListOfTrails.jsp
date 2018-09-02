@@ -56,8 +56,8 @@
 				<tr>
 					<td>${t.name}</td>
 					<td>${t.difficulty.name}</td>
-					<td>${t.distance}</td>
-					<td>${t.altitude}</td>
+					<td>${t.distance} mi</td>
+					<td>${t.altitude} ft</td>
 					<td>
 						<form action="TrailDetails.do" method="GET">
 							<input type="hidden" name="id" value="${t.id}"> <input
