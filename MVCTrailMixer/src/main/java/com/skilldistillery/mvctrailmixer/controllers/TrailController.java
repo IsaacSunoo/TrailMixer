@@ -37,61 +37,34 @@ public class TrailController {
 		return mv;
 	}
 	
-	// search by 
-	
-	@RequestMapping(path="ListOfTrailsDifficulty.do", method = RequestMethod.GET)
-	public ModelAndView searchTrailDifficulty(int difficulty) {
-		ModelAndView mv = new ModelAndView(); 
-		List<Trail> trails = dao.searchByDifficulty(difficulty); 
-		mv.addObject("trails", trails); 
-		mv.setViewName("trails/ListOfTrails");
-		return mv;
-	}
-	
-	@RequestMapping(path="ListOfTrailsDistance.do", method = RequestMethod.GET)
-	public List<Trail> searchTrailDistance(double distance) {
-		List<Trail> trails = dao.searchByDistance(distance); 
-		return trails;
-	}
-	
-	@RequestMapping(path="ListOfTrailsAltitude.do", method = RequestMethod.GET)
-	public List<Trail> searchTrailAltitude(int altitude) {
-		List<Trail> trails = dao.searchByMaxAltitude(altitude); 
-		return trails;
-	}
-	
-	@RequestMapping(path="ListOfTrailsRating.do", method = RequestMethod.GET)
-	public List<Trail> searchTrailRating(int rating) {
-		List<Trail> trails = dao.searchByRating(rating); 
-		return trails;
-	}
-	
-	@RequestMapping(path="ListOfTrailsKeyword.do", method = RequestMethod.GET)
-	public List<Trail> searchTrailKeyword(String keyword) {
-		List<Trail> trails = dao.searchByKeyword(keyword); 
-		return trails;
-	}
-	
 	// sort by 
 	
 	@RequestMapping(path="ListOfTrailsSorted.do", method = RequestMethod.GET)
 	public ModelAndView searchTrailSorted(String sortBy) {
 		ModelAndView mv = new ModelAndView(); 
-		// switch statement
 		List<Trail> trails = null; 
 		switch (sortBy) {
-		case "difficulty":
-			trails = dao.sortByDifficulty(); 
+		case "difficultyHard":
+			trails = dao.sortByDifficultyHard(); 
 			break;
-		case "distance":
-			trails = dao.sortByDistance(); 
+		case "difficultyEasy":
+			trails = dao.sortByDifficultyEasy(); 
+			break;
+		case "distanceFar":
+			trails = dao.sortByDistanceFar(); 
 			break; 
-		case "altitude": 
-			trails = dao.sortByAltitude(); 
+		case "distanceShort":
+			trails = dao.sortByDistanceShort(); 
 			break; 
-//		case "rating":
-//			trails = dao.sortByRating()(); 
-//			break; 
+		case "altitudeHigh": 
+			trails = dao.sortByAltitudeHigh(); 
+			break; 
+		case "altitudeLow": 
+			trails = dao.sortByAltitudeLow(); 
+			break; 
+		case "rating":
+			trails = dao.sortByRating(); 
+			break; 
 		default:
 			trails = dao.getListOfTrails(); 
 			break;
@@ -100,6 +73,8 @@ public class TrailController {
 		mv.setViewName("trails/ListOfTrails");
 		return mv;
 	}
+	
+	// search by 
 	
 	@RequestMapping(path="ListOfTrailsSearched.do", method = RequestMethod.GET)
 	public ModelAndView searchTrail(String searchBy, String search) {
@@ -136,4 +111,9 @@ public class TrailController {
 		return mv;
 	}
 	
+	@RequestMapping(path="KeywordSearch.do", method = RequestMethod.GET)
+	public List<Trail> searchTrailKeyword(String keyword) {
+		List<Trail> trails = dao.searchByKeyword(keyword); 
+		return trails;
+	}
 }

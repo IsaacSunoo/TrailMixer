@@ -14,10 +14,13 @@
 		Sort By:
 	<select name="sortBy">
 			<option value="none">---</option>
-			<option value="difficulty">difficulty</option>
-			<option value="distance">distance</option>
-			<option value="altitude">altitude</option>
-			<option value="rating">rating</option>
+			<option value="difficultyHard">Difficulty (Hardest to Easiest)</option>
+			<option value="difficultyEasy">Difficulty (Easiest to Hardest)</option>
+			<option value="distanceFar">Distance (Farthest to Shortest)</option>
+			<option value="distanceShort">Distance (Shortest to Farthest)</option>
+			<option value="altitudeHigh">Altitude (Highest to Lowest)</option>
+			<option value="altitudeLow">Altitude (Lowest to Highest)</option>
+			<option value="rating">Rating</option>
 	</select>
 		<input type="submit" value="submit"/>
 		</form>
@@ -33,6 +36,12 @@
 	</select>
 	<input type="text" name="search">
 		<input type="submit" value="submit"/>
+		</form>
+		
+		<form action="KeywordSearch.do" method="GET">
+		Search By Keyword:
+			<input type="text" name="keyword">
+			<input type="submit" value="submit"/>
 		</form>
 		
 		

@@ -12,8 +12,11 @@ public interface TrailsDAO {
 	public List<Trail> searchByMaxAltitude(int altitude); 
 	public List<Trail> searchByRating(int rating); 
 	public List<Trail> searchByKeyword(String keyword); 
-	public List<Trail> sortByDifficulty(); 
-	public List<Trail> sortByDistance(); 
-	public List<Trail> sortByAltitude(); 
+	public List<Trail> sortByDifficultyHard(); 
+	public List<Trail> sortByDifficultyEasy(); 
+	public List<Trail> sortByDistanceFar(); 
+	public List<Trail> sortByDistanceShort(); 
+	public List<Trail> sortByAltitudeHigh(); 
+	public List<Trail> sortByAltitudeLow(); 
 	public List<Trail> sortByRating(); 
 }
