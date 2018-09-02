@@ -1,14 +1,16 @@
-package com.skilldistillery.trailmixer.test;
-
-import static org.junit.jupiter.api.Assertions.fail;
+package com.skilldistillery.trailmixer.entities;
 
 import javax.persistence.Entity;
-
-import org.junit.jupiter.api.Test;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 class TrailsPopulateTest {
 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String type;
@@ -26,8 +28,8 @@ class TrailsPopulateTest {
 	private int descent;
 	private int high;
 	private int low;
-	private double latitude;
-	private double longitude;
+	private String latitude;
+	private String longitude;
 	private String conditionStatus;
 	private String coditionDetails;
 	private String conditionDate;
@@ -37,7 +39,7 @@ class TrailsPopulateTest {
 
 	public TrailsPopulateTest(int id, String name, String type, String summary, String difficulty, double stars,
 			String location, String url, String imgSqSmall, String imgSmall, String imgSmallMed, String imgMedium,
-			double length, int ascent, int descent, int high, int low, double latitude, double longitude,
+			double length, int ascent, int descent, int high, int low, String latitude, String longitude,
 			String conditionStatus, String coditionDetails, String conditionDate) {
 		this.id = id;
 		this.name = name;
@@ -199,19 +201,19 @@ class TrailsPopulateTest {
 		this.low = low;
 	}
 
-	public double getLatitude() {
+	public String getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 
-	public double getLongitude() {
+	public String getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 
@@ -237,11 +239,6 @@ class TrailsPopulateTest {
 
 	public void setConditionDate(String conditionDate) {
 		this.conditionDate = conditionDate;
-	}
-
-	@Test
-	void test() {
-		fail("Not yet implemented");
 	}
 
 }

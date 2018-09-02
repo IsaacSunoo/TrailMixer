@@ -1,11 +1,11 @@
-package com.skilldistillery.trailmixer.test;
+package com.skilldistillery.trailmixer.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 class TrailsPopulateTestTest {
 
 	private List<TrailsPopulateTest> trails = new ArrayList<>();

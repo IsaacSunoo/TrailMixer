@@ -11,7 +11,7 @@ public class Difficulty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	private String name;
 	//	end of fields
 

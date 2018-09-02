@@ -3,6 +3,7 @@ package com.skilldistillery.trailmixer.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,13 +28,13 @@ public class Trail {
 	@Column(name = "img_url")
 	private String image;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "difficulty_id")
 	private Difficulty difficulty;
 
 	private double distance;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "address_id")
 	private Address address;
 

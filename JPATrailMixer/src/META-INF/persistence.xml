@@ -18,6 +18,9 @@
     <class>com.skilldistillery.trailmixer.entities.Reason</class>
     <class>com.skilldistillery.trailmixer.entities.Trail</class>
     <class>com.skilldistillery.trailmixer.entities.User</class>
+    <class>com.skilldistillery.trailmixer.entities.TestAPI</class>
+    <class>com.skilldistillery.trailmixer.entities.TrailsPopulateTest</class>
+    <class>com.skilldistillery.trailmixer.entities.TrailsPopulateTestTest</class>
     <!-- End Entitites -->
 
     <properties>
