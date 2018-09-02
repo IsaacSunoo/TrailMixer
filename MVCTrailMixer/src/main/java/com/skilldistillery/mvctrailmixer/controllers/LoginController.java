@@ -29,7 +29,7 @@ public class LoginController {
 		}
 		
 		model.addAttribute("user", new User());
-		return "WEB-INF/login.jsp";
+		return "login";
 	}
 	
 	
@@ -40,13 +40,13 @@ public class LoginController {
 		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
 		if(daoUser == null) {
 			// show them the login page
-			mv.setViewName("WEB-INF/login.jsp");
+			mv.setViewName("login");
 			errors.rejectValue("userName", "error.userName", "Invalid credentials");
 		}
 		else if (daoUser.getActiveUser() == 0){
 //			if the user is set to inactive, don't take them to the login page.
 //			instead, we need to ask them to set the account back to active
-			mv.setViewName("WEB-INF/login.jsp");
+			mv.setViewName("login");
 			errors.rejectValue("userName", "error.userName", "Invalid credentials");
 		}
 		else {
