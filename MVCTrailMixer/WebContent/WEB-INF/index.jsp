@@ -48,9 +48,12 @@
 <br>
 <div class="text-center">
 <h2> Welcome To Trail Mixer!</h2>
-</div>
 <br>
 
+<form action="HikeGenerator.do" method="GET">
+	<input type="submit" value="Take a Hike!">
+</form>
+</div>
 
 
 
