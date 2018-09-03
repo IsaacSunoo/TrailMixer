@@ -7,23 +7,21 @@
 <meta charset="UTF-8">
 <title>Trail Mixer</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.do">Home</a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="ListOfTrails.do">Trails</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profile.do">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="SignUp.jsp">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
             </li>
         </ul>
     </div>
@@ -49,6 +47,28 @@
 <div class="text-center">
 <h2> Welcome To Trail Mixer!</h2>
 <br>
+
+<div id="HikingImages" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="http://coloradoadventureswithkids.com/wp-content/uploads/2017/08/vaca-29-of-37.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.visitmontrose.com/ImageRepository/Document?documentID=898" alt="Second Slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://c1.staticflickr.com/4/3691/33177152415_94e7588b2c_b.jpg" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#HikingImages" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 <form action="HikeHomepage.do" method="GET">
 	<input type="submit" value="Take a Hike!">

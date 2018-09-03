@@ -41,7 +41,7 @@ public class LoginController {
 		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
 		if(daoUser == null) {
 			// show them the login page
-			mv.setViewName("login");
+			mv.setViewName("login"); 
 			errors.rejectValue("userName", "error.userName", "Invalid credentials");
 		}
 		else if (daoUser.getActiveUser() == 0){

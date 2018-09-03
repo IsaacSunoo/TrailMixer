@@ -34,23 +34,25 @@
 
 <h2>Hike</h2>
 
-<p>Need someone to go hiking with? With our Find A Hike feature, you can search through groups 
+Need someone to go hiking with? With our Find A Hike feature, you can search through groups 
 to find the people you'd like to go hiking with. You can also see which trail they are going on 
-so that you pick the perfect hike for you!</p>
+so that you pick the perfect hike for you!	
 
 <form action="FindHike.do" method="GET">
 	<input type="submit" value="Find a Hike">
 </form>
 
-<p>Can't find a hike you like? Create A Hike allows you to make your own hike, including everything 
-from the people you go with to the trail you select. </p>
+<br>
+Can't find a hike you like? Create A Hike allows you to make your own hike, including everything 
+from the people you go with to the trail you select.
 
 <form action="CreateHike.do" method="GET">
 	<input type="submit" value="Create a Hike">
 </form>
 
-<p>Can't remember that one trail you went on a few weeks ago? Select Your Hikes to see the trails
-you've previously conquered as well as the people you went with.</p>
+<br>
+Can't remember that one trail you went on a few weeks ago? Select Your Hikes to see the trails
+you've previously conquered as well as the people you went with.
 
 <form action="ViewHikes.do" method="GET">
 	<input type="submit" value="Your Hikes">
