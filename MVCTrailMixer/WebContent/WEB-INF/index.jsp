@@ -20,7 +20,7 @@
                 <a class="nav-link" href="profile.do">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="SignUp.jsp">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>

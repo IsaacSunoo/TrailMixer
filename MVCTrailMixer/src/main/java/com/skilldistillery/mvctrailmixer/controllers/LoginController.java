@@ -30,7 +30,7 @@ public class LoginController {
 		}
 		
 		model.addAttribute("user", new User());
-		return "login";
+		return "trails/login";
 	}
 	
 	

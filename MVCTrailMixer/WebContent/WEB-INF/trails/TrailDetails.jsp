@@ -36,7 +36,7 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Right</a>
+                <a class="nav-link" href="#">Next</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="login.do">Login</a>
@@ -80,8 +80,18 @@
 		</tr>
 		<tr>
 			<td>${trail.address.street}</td>
-			<td>${trail.address.city}</td>
-			<td>${trail.address.state}</td>
+		</tr>
+		<tr>
+			<td>${trail.address.city}, </td>
+		</tr>
+		<tr>
+			<td>${trail.address.state} </td>
+		</tr>
+		<tr>
+			<td>Latitude: ${trail.address.latitude}</td>
+		</tr>
+		<tr>
+			<td>Longitude: ${trail.address.longitude}</td>
 		</tr>
 	</table>
 	

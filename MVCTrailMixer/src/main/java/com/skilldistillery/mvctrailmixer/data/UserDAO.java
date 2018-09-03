@@ -1,5 +1,6 @@
 package com.skilldistillery.mvctrailmixer.data;
 
+import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
 public interface UserDAO {
@@ -8,5 +9,6 @@ public interface UserDAO {
 	  User updateUser(User user);
 	  boolean deleteUser(int userId);
 	  User addUser(User user);
+	  Profile addProfile(Profile profile);
 
 }

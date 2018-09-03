@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
 @Transactional
@@ -69,6 +70,16 @@ public class UserDAOImpl implements UserDAO {
 		em.flush();
 		
 		return user;
+		
+	}
+
+	@Override
+	public Profile addProfile(Profile profile) {
+		
+		em.persist(profile);
+		em.flush();
+		
+		return profile;
 		
 	}
 }
