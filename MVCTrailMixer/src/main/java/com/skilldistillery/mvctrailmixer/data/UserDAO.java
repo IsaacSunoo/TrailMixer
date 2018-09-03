@@ -10,5 +10,7 @@ public interface UserDAO {
 	  boolean deleteUser(int userId);
 	  User addUser(User user);
 	  Profile addProfile(Profile profile);
+	  boolean duplicateUsername(String username);
+	  
 
 }

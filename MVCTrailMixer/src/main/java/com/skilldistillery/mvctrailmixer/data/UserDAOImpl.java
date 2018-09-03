@@ -1,5 +1,6 @@
 package com.skilldistillery.mvctrailmixer.data;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,6 +16,8 @@ import com.skilldistillery.trailmixer.entities.User;
 @Transactional
 @Component
 public class UserDAOImpl implements UserDAO {
+	
+	public static final String userQuery = "Select u from User u";
 	
 	private Map<Integer, User> users;
 
@@ -81,5 +84,17 @@ public class UserDAOImpl implements UserDAO {
 		
 		return profile;
 		
+	}
+
+	@Override
+	public boolean duplicateUsername(String username) {
+		boolean duplicate = true;
+		List<User> allUsers = em.createQuery(userQuery, User.class).getResultList();
+		for (User user : allUsers) {
+			if (user.getUsername().equalsIgnoreCase(username)) {
+				duplicate = false;
+			}
+		}
+		return duplicate;
 	}
 }

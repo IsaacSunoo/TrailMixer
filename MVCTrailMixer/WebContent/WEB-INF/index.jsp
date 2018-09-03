@@ -70,11 +70,15 @@
   </a>
 </div>
 
+<br>
 <form action="HikeHomepage.do" method="GET">
-	<input type="submit" value="Take a Hike!">
+	<button type="submit" class="btn btn-dark">Take A Hike!</button>
 </form>
 </div>
 
+
+<!-- <button type="button" class="btn btn-dark">Dark</button> -->
+<!-- 	<input type="submit" value="Take a Hike!"> -->
 
 
   
