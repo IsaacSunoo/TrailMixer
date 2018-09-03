@@ -21,9 +21,10 @@ public class LoginController {
 
 	@RequestMapping(path="login.do", method = RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
-		//  If a user is logged in and requests login.do, they should be redirected to index.do
+
 		User userInSession = (User) session.getAttribute(USER_IN_SESSION_KEY);
 		
+		// If a user is logged in and requests login.do they will be redirected to index.do
 		if(userInSession != null) {
 			return "redirect:index.do";
 		}
@@ -52,7 +53,7 @@ public class LoginController {
 		else {
 			// load the User object into session, and redirect to the account page, account.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
-			mv.setViewName("redirect:account.do");
+			mv.setViewName("redirect:profile.do");
 		}
 		
 		return mv;

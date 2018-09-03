@@ -17,10 +17,7 @@
                 <a class="nav-link" href="ListOfTrails.do">Trails</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="//codeply.com">Codeply</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="profile.do">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
@@ -39,10 +36,10 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Right</a>
+                <a class="nav-link" href="login.do">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.do">Login</a>
+                <a class="nav-link" href="logout.do">Logout</a>
             </li>
         </ul>
     </div>
