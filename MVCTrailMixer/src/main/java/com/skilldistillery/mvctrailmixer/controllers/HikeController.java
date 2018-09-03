@@ -11,8 +11,33 @@ import org.springframework.web.servlet.ModelAndView;
 public class HikeController {
 
 	@RequestMapping(path="HikeHomepage.do", method = RequestMethod.GET)
-	public String showHomepage() {
-		return "HikeHomepage";
+	public ModelAndView showHomepage() {
+		ModelAndView mv = new ModelAndView(); 
+		mv.setViewName("hikes/HikeHomepage");
+		return mv;
 	}
+	
+	@RequestMapping(path="FindHike.do", method = RequestMethod.GET)
+	public ModelAndView showHikes() {
+		ModelAndView mv = new ModelAndView(); 
+		mv.setViewName("hikes/FindAHike");
+		return mv;
+	}
+	
+	@RequestMapping(path="CreateHike.do", method = RequestMethod.GET)
+	public ModelAndView createHike() {
+		ModelAndView mv = new ModelAndView(); 
+		mv.setViewName("hikes/CreateAHike");
+		return mv;
+	}
+	
+	@RequestMapping(path="ViewHikes.do", method = RequestMethod.GET)
+	public ModelAndView viewHikes() {
+		ModelAndView mv = new ModelAndView(); 
+		mv.setViewName("hikes/YourHikes");
+		return mv;
+	}
+	
+	
 	
 }
