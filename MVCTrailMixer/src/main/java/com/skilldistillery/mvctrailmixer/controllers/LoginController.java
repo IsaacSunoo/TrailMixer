@@ -73,8 +73,9 @@ public class LoginController {
 	public ModelAndView createAccount(HttpSession session) {
 	ModelAndView mv = new ModelAndView();
 	mv.addObject("user", new User());
-	mv.setViewName("SignUp");
+	mv.setViewName("trails/SignUp");
 	return mv;
 	
 	}
 }
+	
