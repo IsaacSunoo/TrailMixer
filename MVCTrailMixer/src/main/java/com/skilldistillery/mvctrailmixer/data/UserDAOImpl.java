@@ -138,4 +138,48 @@ public class UserDAOImpl implements UserDAO {
 		Preference pref = em.createQuery(query, Preference.class).setParameter("id", id).getSingleResult(); 
 		return pref;
 	}
+	
+	public User getUserInformation(int id) {
+		String query = "SELECT u FROM User u WHERE u.id = :id";
+		User user = em.createQuery(query, User.class)
+				.setParameter("id", id)
+				.getSingleResult();
+		return user;
+	}
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

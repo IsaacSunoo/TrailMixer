@@ -18,4 +18,5 @@ public interface UserDAO {
 	  public Profile findProfileById(int profileId);
 	  public Profile updateProfile(Profile prof);
 	  public Preference getPreferenceByProfileId(int profileId); 
+	  public User getUserInformation(int id);
 }
