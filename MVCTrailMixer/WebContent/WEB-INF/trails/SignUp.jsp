@@ -17,27 +17,7 @@
 	<form:label path="password">Password:</form:label>
 	<form:input path="password" />
 	<br />
-	<form:label path="firstName">First Name:</form:label>
-	<form:input path="firstName" />
-	<br />
-	<form:label path="lastName">Last Name:</form:label>
-	<form:input path="password" />
-	<br />
-	<form:label path="age">Age:</form:label>
-	<form:input path="age" />
-	<br />
-	<form:label path="gender">Gender:</form:label>
-	<form:input path="gender" />
-	<br />
-	<form:label path="street">Street:</form:label>
-	<form:input path="street" />
-	<br />
-	<form:label path="city">City:</form:label>
-	<form:input path="city" />
-	<br />
-	<form:label path="state">State:</form:label>
-	<form:input path="state" />
-	<br />
+
 	<button type="submit" class="btn btn-dark">Create Account</button>
 	</form:form>
 

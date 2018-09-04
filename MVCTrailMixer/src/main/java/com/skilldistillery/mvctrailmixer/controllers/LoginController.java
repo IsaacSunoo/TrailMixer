@@ -66,7 +66,7 @@ public class LoginController {
 		// remove user from session
 		session.removeAttribute(USER_IN_SESSION_KEY);
 		
-		return "redirect:index.do";
+		return "redirect:login.do";
 	}
 	
 	@RequestMapping(path="SignUp.do", method = RequestMethod.GET)
