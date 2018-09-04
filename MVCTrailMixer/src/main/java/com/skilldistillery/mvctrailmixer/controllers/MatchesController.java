@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
+import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.Trail;
 
@@ -16,25 +17,36 @@ public class MatchesController {
 	@Autowired
 	private TrailsDAO tdao;
 	
+	@Autowired
+	private UserDAO udao;
+	
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatchesByDistance(Profile profile) {
+	public String getMatchesByDistance(int id) {
+		Profile profile = udao.findProfileById(id);
 		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();
 		
-		for (Trail trail : trails) {
-			if (trail.getAddress().getCity().equalsIgnoreCase(profile.getPreferences().get(0).getArea().getCity())) {
-				if (trail.getDifficulty().getId() <= profile.getPreferences().get(0).getDifficulty().getId()) {
-					if (trail.getAltitude() <= profile.getPreferences().get(0).getAltitude()) {
-						if (trail.getDistance() <= profile.getPreferences().get(0).getDistance()) {
-							mv.addObject("trails", trail);
+		if (profile.getPreferences().get(0) != null) {
+			for (Trail trail : trails) {
+				if (trail.getAddress().getCity()
+						.equalsIgnoreCase(profile.getPreferences().get(0).getArea().getCity())) {
+					if (trail.getDifficulty().getId() <= profile.getPreferences().get(0).getDifficulty().getId()) {
+						if (trail.getAltitude() <= profile.getPreferences().get(0).getAltitude()) {
+							if (trail.getDistance() <= profile.getPreferences().get(0).getDistance()) {
+								mv.addObject("trails", trail);
+							}
 						}
-					} 
+					}
 				}
 			} 
+			return "hikes/matches";
 		}
-		return "hikes/matches";
+		else {
+			mv.addObject("trails", trails); 
+			return "trails/ListOfTrails";
+		}
 	}
 	
 }

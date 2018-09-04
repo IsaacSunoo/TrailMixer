@@ -111,4 +111,10 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return duplicate;
 	}
+	
+	@Override
+	public Profile findProfileById(int profileId) {
+		Profile p = em.find(Profile.class, profileId);
+		return p;
+	}
 }
