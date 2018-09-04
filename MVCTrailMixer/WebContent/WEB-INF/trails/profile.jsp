@@ -6,43 +6,53 @@
 <meta charset="UTF-8">
 <title>Profile</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Hikes</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.do">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="ListOfTrails.do">Trails</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Matches</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.do">Log Out</a>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.do">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile.do">Profile</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="ListOfTrails.do">Trails</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="matches.do">Find Hike</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Trail Mixer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="login.do">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.do">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
+<img class="profile-pic" width = "150px" height ="150px" alt="profile picture" src="image/empty_profile_pic.jpg"/>
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
-	<ul>
-		<li><input name="name" value="${name}"></li>
-		<li><input name="age" value="${age}"></li>
-		<li><input name="location" value="${address}"></li>
-		<li><input name="gender" value="${gender}"></li>
-		<li><input name="preferences" value="${preferences}"></li>
-		<li><input name="bio" value="${bio}"></li>
-	</ul>
+		<!-- <p>John Wick</p> -->
+		<p>${profile.firstName}</p>
+		<p>${profile.lastName}</p>
+	
 	
 	<!--  profile pictures would be to the right of this in our html -->
 
