@@ -69,6 +69,14 @@ public class ProfileController {
 		return mv;
 	}
 	
+	@RequestMapping(path="profile.do", method = RequestMethod.GET)
+	public ModelAndView getUserInfo(int id) {
+		ModelAndView mv = new ModelAndView();
+		User user = dao.getUserInformation(id);
+		mv.addObject("user", user);
+		return mv;
+	}
+	
 }
 
 
