@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.trailmixer.entities.Address;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
@@ -90,8 +91,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Profile addProfile(Profile profile) {
+	public Profile addProfile(Profile profile, Address address) {
 		
+		profile.setAddress(address);
 		em.persist(profile);
 		em.flush();
 		
