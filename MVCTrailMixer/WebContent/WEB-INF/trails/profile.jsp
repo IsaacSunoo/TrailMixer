@@ -50,8 +50,8 @@
 	<!--  view object = Profile-->
 
 		
-		<p>${profile.firstName}</p>
-		<p>${profile.lastName}</p> 
+		<%-- <p>${user.firstName}</p>
+		<p>${user.lastName}</p>  --%>
 	
 	
 
