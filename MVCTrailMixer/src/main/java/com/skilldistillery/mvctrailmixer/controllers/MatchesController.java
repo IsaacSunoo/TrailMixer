@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
+import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.Trail;
 
@@ -16,10 +17,14 @@ public class MatchesController {
 	@Autowired
 	private TrailsDAO tdao;
 	
+	@Autowired
+	private UserDAO udao;
+	
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatchesByDistance(Profile profile) {
+	public String getMatchesByDistance(int id) {
+		Profile profile = udao.findProfileById(id);
 		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();
 		
