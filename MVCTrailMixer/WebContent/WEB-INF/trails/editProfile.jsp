@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="preference.difficulty" for="difficulty">Difficulty: </form:label></td>
-				<td><form:input path="preference.diffuculty" type="text" name="difficulty" value="${preference.difficulty.name}" /></td>
+				<td><form:input path="preference.difficulty" type="text" name="difficulty" value="${preference.difficulty.name}" /></td>
 			</tr> 
 			<tr>
 				<td><form:label path="preference.distance" for="distance">Distance: </form:label></td>

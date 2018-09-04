@@ -134,7 +134,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public Preference getPreferenceByProfileId(int id) {
-		String query = "SELECT pref FROM Preference pref JOIN Profile prof ON prof.id = pref.profile.id WHERE prof.id = :id"; 
+		String query = "SELECT pref FROM Preference pref JOIN FETCH Profile prof ON prof.id = pref.profile.id WHERE prof.id = :id"; 
 		Preference pref = em.createQuery(query, Preference.class).setParameter("id", id).getSingleResult(); 
 		return pref;
 	}
