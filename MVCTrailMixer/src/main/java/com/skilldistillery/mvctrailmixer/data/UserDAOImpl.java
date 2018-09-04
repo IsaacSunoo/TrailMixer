@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
-import com.skilldistillery.trailmixer.entities.Address;
+import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
@@ -130,5 +130,12 @@ public class UserDAOImpl implements UserDAO {
 		updatedProf.setAddress(prof.getAddress());
 		updatedProf.setPreferences(prof.getPreferences());
 		return updatedProf;
+	}
+	
+	@Override
+	public Preference getPreferenceByProfileId(int id) {
+		String query = "SELECT pref FROM Preference pref JOIN Profile prof ON prof.id = pref.profile.id WHERE prof.id = :id"; 
+		Preference pref = em.createQuery(query, Preference.class).setParameter("id", id).getSingleResult(); 
+		return pref;
 	}
 }
