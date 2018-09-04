@@ -248,6 +248,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (2, 
 INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (3, 'captAmerica@usa.org', '1234', 1, 0);
 INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (4, 'anotherTest@gmail.com', '1111', 0, 0);
 INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (5, 'admin@admin.com', 'admin', 1, 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (6, 'morganReid@gmail.com', 'soccer', 1, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (7, 'emilyRataj@gmail.com', 'unavailable', 1, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (8, 'kassidyCook@gmail.com', 'diving', 1, 0);
 
 COMMIT;
 
@@ -261,6 +264,9 @@ INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (2, '1122 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (3, '12345 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (4, '123 Test Trail', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (5, '1234 Duke St', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (6, '1234 Paris St', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (7, '123 Stanford St', NULL, 'Denver', 'Colorado', NULL, NULL);
 
 COMMIT;
 
@@ -275,6 +281,9 @@ INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `addre
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (3, 3, 'Steve', 'Rogers', 143, 3, 'http://cdn2-www.mandatory.com/assets/uploads/2014/03/Captain-America-The-Winter-Soldier.jpg', NULL, 'Male');
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (4, 4, 'another', 'test', 22, 2, NULL, NULL, 'Female');
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (5, 5, 'admin', 'user', 30, 1, NULL, NULL, 'Female');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (6, 6, 'Morgan', 'Reid', 24, 5, 'https://i.pinimg.com/originals/f7/24/c2/f724c28307d99e7bc34d800ec5149454.jpg', 'Soccer!', 'Female');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (7, 7, 'Emily', 'Ratajkowski', 26, 6, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFSGmMaRZ9XR2YMRK1GC98AuI8jO8yDchPXfKjSm9KQ0te9mkUeg', 'Modeling', 'Female');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (8, 8, 'Kassidy', 'Cook', 25, 7, 'https://s.hdnux.com/photos/72/17/50/15268372/3/920x920.jpg', 'Diving, travel', 'Female');
 
 COMMIT;
 
