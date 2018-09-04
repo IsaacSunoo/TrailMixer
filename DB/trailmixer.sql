@@ -251,6 +251,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (5, 
 INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (6, 'morganReid@gmail.com', 'soccer', 1, 0);
 INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (7, 'emilyRataj@gmail.com', 'unavailable', 1, 0);
 INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (8, 'kassidyCook@gmail.com', 'diving', 1, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (9, 'ISun@sd.com', 'coding', 1, 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (10, 'owenHarris@sd.com', 'coding', 1, 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (11, 'LiamK@sd.com', 'coding', 1, 1);
 
 COMMIT;
 
@@ -267,6 +270,7 @@ INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (5, '1234 Duke St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (6, '1234 Paris St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (7, '123 Stanford St', NULL, 'Denver', 'Colorado', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (8, '7400 E Orchard Rd', NULL, 'Denver', 'Colorado', NULL, NULL);
 
 COMMIT;
 
@@ -284,6 +288,9 @@ INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `addre
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (6, 6, 'Morgan', 'Reid', 24, 5, 'https://i.pinimg.com/originals/f7/24/c2/f724c28307d99e7bc34d800ec5149454.jpg', 'Soccer!', 'Female');
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (7, 7, 'Emily', 'Ratajkowski', 26, 6, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFSGmMaRZ9XR2YMRK1GC98AuI8jO8yDchPXfKjSm9KQ0te9mkUeg', 'Modeling', 'Female');
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (8, 8, 'Kassidy', 'Cook', 25, 7, 'https://s.hdnux.com/photos/72/17/50/15268372/3/920x920.jpg', 'Diving, travel', 'Female');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (9, 9, 'Isaac', 'Sunoo', 24, 8, 'https://pbs.twimg.com/profile_images/741703039355064320/ClVbjlG-_400x400.jpg', 'Coding is life!', 'Male');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (10, 10, 'Owen', 'Harris', 23, 8, 'https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters/p-guardians-of-the-galaxy-bradley.jpg', 'Baseball is life!', 'Male');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (11, 11, 'Liam', 'Kimbley', 32, 8, 'https://media.wmagazine.com/photos/5a6276541f0ccf26968b8269/2:1/w_1600/1316.w.MS.royals.image2.jpg', 'Coding is life!', 'Male');
 
 COMMIT;
 
