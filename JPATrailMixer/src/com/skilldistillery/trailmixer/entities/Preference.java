@@ -1,5 +1,6 @@
 package com.skilldistillery.trailmixer.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,9 @@ public class Preference {
 	@ManyToOne
 	@JoinColumn(name = "difficulty_id")
 	private Difficulty difficulty;
+	
+	@Column(name = "trail_distance")
+	private double distance;
 
 	@ManyToOne
 	@JoinColumn(name = "area_id")
@@ -76,6 +80,14 @@ public class Preference {
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
 	}
 
 	@Override

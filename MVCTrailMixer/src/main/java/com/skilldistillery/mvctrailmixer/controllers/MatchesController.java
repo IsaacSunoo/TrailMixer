@@ -24,7 +24,9 @@ public class MatchesController {
 		List<Trail> trails = tdao.getListOfTrails();
 		
 		for (Trail trail : trails) {
-			if (trail.getDistance() >= profile.getPreferences().)
+			if (trail.getDistance() <= profile.getPreferences().get(0).getDistance()) {
+				mv.addObject("trails", trails);
+			}
 		}
 		
 		return "hikes/matches";
