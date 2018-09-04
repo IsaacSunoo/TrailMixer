@@ -2,6 +2,7 @@ package com.skilldistillery.mvctrailmixer.data;
 
 import java.util.List;
 
+import com.skilldistillery.trailmixer.entities.ProfileTrail;
 import com.skilldistillery.trailmixer.entities.Trail;
 
 public interface TrailsDAO {
@@ -18,5 +19,6 @@ public interface TrailsDAO {
 	public List<Trail> sortByDistanceShort(); 
 	public List<Trail> sortByAltitudeHigh(); 
 	public List<Trail> sortByAltitudeLow(); 
-	public List<Trail> sortByRating(); 
+	public List<Double> sortByRating();
+	public Double getTrailRating(int id); 
 }

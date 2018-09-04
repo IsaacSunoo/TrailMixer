@@ -52,12 +52,14 @@
 			<th>Difficulty</th>
 			<th>Distance</th>
 			<th>Altitude</th>
+			<th>Rating</th>
 		</tr>
 		<tr>
 			<td>${trail.name}</td>
 			<td>${trail.difficulty.name}</td>
 			<td>${trail.distance}mi</td>
 			<td>${trail.altitude}ft</td>
+			<td>${rating}</td>
 		</tr>
 	</table>
 

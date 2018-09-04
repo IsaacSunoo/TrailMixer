@@ -23,7 +23,6 @@ class ProfileTrailTest {
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("TrailMixer");
 		em = emf.createEntityManager();
-		prof = em.find(Profile.class, 1); 
 	}
 
 	@AfterEach()
@@ -34,13 +33,14 @@ class ProfileTrailTest {
 
 	@Test
 	public void test_profiletrail_to_profile_on_rating() {
-		assertEquals(4, prof.getPts().get(0).getRating()); 
+		prof = em.find(Profile.class, 1); 
+		assertEquals(Double.valueOf(4.0), prof.getPts().get(0).getRating()); 
 	}
 
 	@Test
 	public void test_profiletrail_to_trail_on_rating() {
 		tr = em.find(Trail.class, 1); 
-		assertEquals(4, tr.getPts().get(0).getRating()); 
+		assertEquals(Double.valueOf(4.0), tr.getPts().get(0).getRating()); 
 	}
 
 }
