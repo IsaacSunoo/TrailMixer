@@ -91,9 +91,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Profile addProfile(Profile profile, Address address) {
+	public Profile addProfile(Profile profile) {
 		
-		profile.setAddress(address);
 		em.persist(profile);
 		em.flush();
 		

@@ -13,7 +13,7 @@ public interface UserDAO {
 	  User updateUser(User user);
 	  boolean deleteUser(int userId);
 	  User addUser(User user);
-	  Profile addProfile(Profile profile, Address address);
+	  Profile addProfile(Profile profile);
 	  boolean duplicateUsername(String username);
 	  Map<String, User> getUsers();
 	  
