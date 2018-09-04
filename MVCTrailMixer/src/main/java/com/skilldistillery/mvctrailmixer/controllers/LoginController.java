@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
 @Controller
@@ -31,8 +31,7 @@ public class LoginController {
 		if(userInSession != null) {
 			return "trails/profile";
 		}
-		
-		model.addAttribute("user", new User());
+		model.addAttribute("user", userInSession);
 		return "trails/login";
 	}
 	
@@ -55,6 +54,8 @@ public class LoginController {
 		else {
 			// load the User object into session, and redirect to the account page, account.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
+			Profile profile = dao.findProfileById(daoUser.getId());
+			mv.addObject("profile", profile);
 			mv.setViewName("trails/profile");
 		}
 		return mv;
