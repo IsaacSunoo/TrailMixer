@@ -23,18 +23,25 @@ public class MatchesController {
 		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();
 		
-		for (Trail trail : trails) {
-			if (trail.getAddress().getCity().equalsIgnoreCase(profile.getPreferences().get(0).getArea().getCity())) {
-				if (trail.getDifficulty().getId() <= profile.getPreferences().get(0).getDifficulty().getId()) {
-					if (trail.getAltitude() <= profile.getPreferences().get(0).getAltitude()) {
-						if (trail.getDistance() <= profile.getPreferences().get(0).getDistance()) {
-							mv.addObject("trails", trail);
+		if (profile.getPreferences().get(0) != null) {
+			for (Trail trail : trails) {
+				if (trail.getAddress().getCity()
+						.equalsIgnoreCase(profile.getPreferences().get(0).getArea().getCity())) {
+					if (trail.getDifficulty().getId() <= profile.getPreferences().get(0).getDifficulty().getId()) {
+						if (trail.getAltitude() <= profile.getPreferences().get(0).getAltitude()) {
+							if (trail.getDistance() <= profile.getPreferences().get(0).getDistance()) {
+								mv.addObject("trails", trail);
+							}
 						}
-					} 
+					}
 				}
 			} 
+			return "hikes/matches";
 		}
-		return "hikes/matches";
+		else {
+			mv.addObject("trails", trails); 
+			return "trails/ListOfTrails";
+		}
 	}
 	
 }
