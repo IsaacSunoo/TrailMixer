@@ -24,13 +24,13 @@ public class ProfileTrail {
 	@JoinColumn(name = "trail_id")
 	private Trail trail;
 
-	private int rating;
+	private double rating;
 	//	end of fields
 
 	public ProfileTrail() {
 	}
 
-	public ProfileTrail(Profile profile, Trail trail, int rating) {
+	public ProfileTrail(Profile profile, Trail trail, Double rating) {
 		this.profile = profile;
 		this.trail = trail;
 		this.rating = rating;
@@ -60,11 +60,11 @@ public class ProfileTrail {
 		this.trail = trail;
 	}
 
-	public int getRating() {
+	public Double getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 

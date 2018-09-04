@@ -36,13 +36,10 @@
 	<form action="ListOfTrailsSorted.do" method="GET">
 		Sort By: <select name="sortBy">
 			<option value="none">---</option>
-			<option value="difficultyHard">Difficulty (Hardest to
-				Easiest)</option>
-			<option value="difficultyEasy">Difficulty (Easiest to
-				Hardest)</option>
+			<option value="difficultyHard">Difficulty (Hardest to Easiest)</option>
+			<option value="difficultyEasy">Difficulty (Easiest to Hardest)</option>
 			<option value="distanceFar">Distance (Farthest to Shortest)</option>
-			<option value="distanceShort">Distance (Shortest to
-				Farthest)</option>
+			<option value="distanceShort">Distance (Shortest to Farthest)</option>
 			<option value="altitudeHigh">Altitude (Highest to Lowest)</option>
 			<option value="altitudeLow">Altitude (Lowest to Highest)</option>
 			<option value="rating">Rating</option>
@@ -55,14 +52,9 @@
 			<option value="difficulty">Difficulty (1-5)</option>
 			<option value="distance">Distance</option>
 			<option value="altitude">Altitude</option>
-			<option value="rating">Rating</option>
+			<option value="keyword">Keyword</option>
 		</select> <input type="text" name="search"> <input type="submit"
 			value="submit" />
-	</form>
-
-	<form action="KeywordSearch.do" method="GET">
-		Search By Keyword: <input type="text" name="keyword"> <input
-			type="submit" value="submit" />
 	</form>
 
 	<fieldset style="box-shadow: 5px 5px 10px gray; display: inline-block">

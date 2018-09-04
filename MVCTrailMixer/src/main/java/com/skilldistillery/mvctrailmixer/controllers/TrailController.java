@@ -2,7 +2,6 @@ package com.skilldistillery.mvctrailmixer.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +30,9 @@ public class TrailController {
 	@RequestMapping(path="TrailDetails.do", method = RequestMethod.GET)
 	public ModelAndView getDetails(int id) {
 		ModelAndView mv = new ModelAndView(); 
-		Trail trail = dao.getTrailDetails(id);  
+		Trail trail = dao.getTrailDetails(id); 
+		Double rating = dao.getTrailRating(id);
+		mv.addObject("rating", rating); 
 		mv.addObject("trail", trail); 
 		mv.setViewName("trails/TrailDetails");
 		return mv;
@@ -43,6 +44,7 @@ public class TrailController {
 	public ModelAndView searchTrailSorted(String sortBy) {
 		ModelAndView mv = new ModelAndView(); 
 		List<Trail> trails = null; 
+		List<Double> trailRatings = null; 
 		switch (sortBy) {
 		case "difficultyHard":
 			trails = dao.sortByDifficultyHard(); 
@@ -63,12 +65,13 @@ public class TrailController {
 			trails = dao.sortByAltitudeLow(); 
 			break; 
 		case "rating":
-			trails = dao.sortByRating(); 
+			trailRatings = dao.sortByRating(); 
 			break; 
 		default:
 			trails = dao.getListOfTrails(); 
 			break;
 		}
+		mv.addObject("ratings", trailRatings); 
 		mv.addObject("trails", trails); 
 		mv.setViewName("trails/ListOfTrails");
 		return mv;
@@ -99,8 +102,8 @@ public class TrailController {
 		case "altitude": 
 			trails = dao.searchByMaxAltitude(i); 
 			break; 
-		case "rating": 
-			trails = dao.searchByRating(i); 
+		case "keyword": 
+			trails = dao.searchByKeyword(search); 
 			break; 
 		default:
 			trails = dao.getListOfTrails(); 
@@ -110,10 +113,5 @@ public class TrailController {
 		mv.setViewName("trails/ListOfTrails");
 		return mv;
 	}
-	
-	@RequestMapping(path="KeywordSearch.do", method = RequestMethod.GET)
-	public List<Trail> searchTrailKeyword(String keyword) {
-		List<Trail> trails = dao.searchByKeyword(keyword); 
-		return trails;
-	}
+
 }

@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.trailmixer.entities.ProfileTrail;
 import com.skilldistillery.trailmixer.entities.Trail;
 
 //@Transactional
@@ -32,6 +33,8 @@ public class TrailsDAOImpl implements TrailsDAO{
 		Trail tr = em.createQuery(query, Trail.class).setParameter("id", id).getSingleResult(); 
 		return tr; 
 	}
+	
+	
 
 	// "search by" methods
 	
@@ -71,12 +74,9 @@ public class TrailsDAOImpl implements TrailsDAO{
 		return trails;
 	}
 
-	// Liam - syntax error on 72 and 73 
 	@Override
 	public List<Trail> searchByKeyword(String keyword) {
-															// here 
-		String query = "SELECT t FROM Trail t WHERE t.name CONTAINS :keyword";
-																						// and here 
+		String query = "SELECT t FROM Trail t WHERE t.name LIKE :keyword";
 		List<Trail> trails = em.createQuery(query, Trail.class).setParameter("keyword", "%" + keyword + "%").getResultList();
 		return trails;
 	}
@@ -126,10 +126,17 @@ public class TrailsDAOImpl implements TrailsDAO{
 	}
 	
 	@Override
-	public List<Trail> sortByRating() {
-		String query = "SELECT t FROM Trail t JOIN ProfileTrail pt ON t.id = pt.trail.id ORDER BY pt.rating DESC";
-		List<Trail> trails = em.createQuery(query, Trail.class).getResultList();
-		return trails;
+	public List<Double> sortByRating() {
+		String query = "SELECT AVG(pt.rating) FROM ProfileTrail pt ORDER BY pt.rating DESC";
+		List<Double> trailRatings = em.createQuery(query, Double.class).getResultList();
+		return trailRatings;
+	}
+	
+	@Override
+	public Double getTrailRating(int id) {
+		String query = "SELECT AVG(pt.rating) FROM ProfileTrail pt WHERE pt.trail.id = :tid";
+		Double rating = em.createQuery(query, Double.class).setParameter("tid", id).getSingleResult();
+		return rating;
 	}
 
 }
