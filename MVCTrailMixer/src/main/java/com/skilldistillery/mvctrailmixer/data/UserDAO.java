@@ -17,5 +17,5 @@ public interface UserDAO {
 	  boolean duplicateUsername(String username);
 	  Map<String, User> getUsers();
 	  public Profile findProfileById(int profileId);
-
+	  public Profile updateProfile(Profile prof);
 }

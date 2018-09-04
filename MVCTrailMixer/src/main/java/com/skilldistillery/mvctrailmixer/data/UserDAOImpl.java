@@ -117,4 +117,18 @@ public class UserDAOImpl implements UserDAO {
 		Profile p = em.find(Profile.class, profileId);
 		return p;
 	}
+	
+	@Override
+	public Profile updateProfile(Profile prof) {
+		Profile updatedProf = em.find(Profile.class, prof.getId());
+		updatedProf.setFirstName(prof.getFirstName());
+		updatedProf.setLastName(prof.getLastName());
+		updatedProf.setAge(prof.getAge());
+		updatedProf.setImage(prof.getImage());
+		updatedProf.setBio(prof.getBio());
+		updatedProf.setGender(prof.getGender());
+		updatedProf.setAddress(prof.getAddress());
+		updatedProf.setPreferences(prof.getPreferences());
+		return updatedProf;
+	}
 }

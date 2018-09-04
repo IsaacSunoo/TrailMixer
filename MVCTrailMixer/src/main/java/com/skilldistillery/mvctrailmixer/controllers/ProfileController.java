@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
 @Controller
@@ -43,10 +45,30 @@ public class ProfileController {
 		}
 	}
 	
-	@RequestMapping(path="editProfile.do", method = RequestMethod.GET)
-	public ModelAndView editProfile() {
+	@RequestMapping(path="EditProfile.do", method = RequestMethod.GET)
+	public ModelAndView editProfile(@RequestParam(name="id") int id) {
 		ModelAndView mv = new ModelAndView();
+		Profile prof = dao.findProfileById(id); 
+		mv.addObject(prof); 
+		mv.setViewName("trails/editProfile");
 		return mv;
 	}
+	
+	
+	
+//	@RequestMapping(path="EditProfile.do", method = RequestMethod.POST)
+//	public ModelAndView editProfile(Profile prof) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("editProf1", prof); 
+//		mv.addObject("editProf2", prof); 
+//		mv.addObject("editProf3", prof); 
+//		mv.addObject("editProf4", prof); 
+//		mv.addObject("editProf5", prof); 
+//		mv.addObject("editProf6", prof); 
+//		return mv;
+//	}
+	
+//	 mv.addObject("cmdObjectOne", new CommandObjectOne());
+//	 mv.addObject("cmdObjectTwo", new CommandObjectTwo());
 
 }

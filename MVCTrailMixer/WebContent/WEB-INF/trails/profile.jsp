@@ -52,7 +52,7 @@
 	</form>
 	
 	<form action="EditProfile.do" method="GET">
-		<input type="hidden" name="id" value="${profile.id}"> 
+		<input type="hidden" name="id" value="1"> 
 		<input type="submit" value="Edit Profile">
 	</form>
 
