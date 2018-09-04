@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
@@ -26,9 +27,9 @@ public class LoginController {
 
 		User userInSession = (User) session.getAttribute(USER_IN_SESSION_KEY);
 		
-		// If a user is logged in and requests login.do they will be redirected to index.do
+		// If a user is logged in and requests login.do they will be redirected to their profile page
 		if(userInSession != null) {
-			return "index";
+			return "trails/profile";
 		}
 		
 		model.addAttribute("user", new User());
@@ -56,7 +57,6 @@ public class LoginController {
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
 			mv.setViewName("trails/profile");
 		}
-		
 		return mv;
 	}
 	
@@ -78,4 +78,10 @@ public class LoginController {
 	
 	}
 }
-	
+//@RequestMapping(path="profile.do", method = RequestMethod.GET)
+//public ModelAndView getUserInfo(int id) {
+//	ModelAndView mv = new ModelAndView();
+//	User user = dao.getUserInformation(id);
+//	mv.addObject("user", user);
+//	return mv;
+//}
