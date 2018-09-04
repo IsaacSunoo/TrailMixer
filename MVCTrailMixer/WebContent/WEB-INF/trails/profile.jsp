@@ -23,6 +23,11 @@
 	
 	<!--  profile pictures would be to the right of this in our html -->
 
+	<form action="TrailMatches.do" method="GET">
+		<input type="hidden" name="id" value="${profile.id}"> 
+		<input type="submit" value="Trail Matches">
+	</form>
+	
 	<form action="EditProfile.do" method="GET">
 		<input type="hidden" name="id" value="${profile.id}"> 
 		<input type="submit" value="Edit Profile">
