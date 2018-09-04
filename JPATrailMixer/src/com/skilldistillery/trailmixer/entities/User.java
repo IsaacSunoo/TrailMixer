@@ -19,6 +19,9 @@ public class User {
 
 	@Column(name="active")
 	private int activeUser;
+	
+	@Column(name="admin")
+	private int adminUser;
 	//	end of fields
 
 	public User() {
@@ -59,6 +62,14 @@ public class User {
 
 	public void setActiveUser(int activeUser) {
 		this.activeUser = activeUser;
+	}
+
+	public int getAdminUser() {
+		return adminUser;
+	}
+
+	public void setAdminUser(int adminUser) {
+		this.adminUser = adminUser;
 	}
 
 	@Override

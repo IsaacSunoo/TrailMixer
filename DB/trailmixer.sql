@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `active` TINYINT(1) NULL DEFAULT 1,
+  `admin` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -226,21 +227,6 @@ CREATE TABLE IF NOT EXISTS `profile_reason` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-USE `trailmixer`;
-
-DELIMITER $$
-
-USE `trailmixer`$$
-DROP TRIGGER IF EXISTS `profile_BEFORE_DELETE` $$
-USE `trailmixer`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `trailmixer`.`profile_BEFORE_DELETE` BEFORE DELETE ON `profile` FOR EACH ROW
-BEGIN
-
-END
-$$
-
-
-DELIMITER ;
 SET SQL_MODE = '';
 DROP USER IF EXISTS trailuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -257,10 +243,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trailmixer`;
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (1, 'johnWick@gmail.com', 'myDoggo', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (2, 'test@user.com', 'testuser', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (3, 'captAmerica@usa.org', '1234', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`) VALUES (4, 'anotherTest@gmail.com', '1111', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (1, 'johnWick@gmail.com', 'myDoggo', 1, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (2, 'test@user.com', 'testuser', 1, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (3, 'captAmerica@usa.org', '1234', 1, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (4, 'anotherTest@gmail.com', '1111', 0, 0);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `admin`) VALUES (5, 'admin@admin.com', 'admin', 1, 1);
 
 COMMIT;
 
@@ -274,9 +261,6 @@ INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (2, '1122 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (3, '12345 Main St', NULL, 'Denver', 'Colorado', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (4, '123 Test Trail', NULL, 'Denver', 'Colorado', NULL, NULL);
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (5, '701 S Franklin St', NULL, 'Denver', 'Colorado', NULL, NULL);
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (6, '1700 N Sheridan Blvd', NULL, 'Denver', 'Colorado', NULL, NULL);
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `latitude`, `longitude`) VALUES (7, '1312 W Geddes Ave', NULL, 'Denver', 'Colorado', NULL, NULL);
 
 COMMIT;
 
@@ -289,6 +273,8 @@ USE `trailmixer`;
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (1, 1, 'John', 'Wick', 34, 1, 'https://skilldistillery.com/wp-content/uploads/2017/01/AndyCPicSDWEB-250x250.jpg', 'I enjoy spending time with my dog.', 'Male');
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (2, 2, 'test', 'user', 23, 2, 'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fewedit.files.wordpress.com%2F2015%2F01%2Foffice-space_320.jpg%3Fw%3D320&w=700&q=85', NULL, 'Male');
 INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (3, 3, 'Steve', 'Rogers', 143, 3, 'http://cdn2-www.mandatory.com/assets/uploads/2014/03/Captain-America-The-Winter-Soldier.jpg', NULL, 'Male');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (4, 4, 'another', 'test', 22, 2, NULL, NULL, 'Female');
+INSERT INTO `profile` (`id`, `user_id`, `first_name`, `last_name`, `age`, `address_id`, `img_url`, `bio`, `gender`) VALUES (5, 5, 'admin', 'user', 30, 1, NULL, NULL, 'Female');
 
 COMMIT;
 
@@ -335,9 +321,9 @@ COMMIT;
 START TRANSACTION;
 USE `trailmixer`;
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (1, 'test trail', 'testing', 5000, NULL, 3, 23, 4);
-INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Washington Park Loop', 'Washington Park Loop is a 2.3 mile heavily trafficked loop trail located near Denver, Colorado that features a lake and is good for all skill levels. The trail offers a number of activity options and is best used from April until October. Dogs are also able to use this trail but must be kept on leash.', 5600, NULL, 1, 2.3, 5);
-INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Sloan Lake Park', 'Sloan Lake Park is a 2.6 mile loop trail located near Denver, Colorado and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be kept on leash.', 5321, NULL, 1, 2.6, 6);
-INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Highline Canal Trail', 'Highline Canal Trail is a 16.5 mile out and back trail located near Englewood, Colorado that features a lake and is rated as moderate. The trail is primarily used for hiking, trail running, and mountain biking and is accessible year-round. Dogs are also able to use this trail.', 5511, NULL, 2, 16.5, 7);
+INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Washington Park Loop', 'Washington Park Loop is a 2.3 mile heavily trafficked loop trail located near Denver, Colorado that features a lake and is good for all skill levels. The trail offers a number of activity options and is best used from April until October. Dogs are also able to use this trail but must be kept on leash.', 5600, NULL, 1, 2.3, NULL);
+INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Sloan Lake Park', 'Sloan Lake Park is a 2.6 mile loop trail located near Denver, Colorado and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be kept on leash.', 5321, NULL, 1, 2.6, NULL);
+INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Highline Canal Trail', 'Highline Canal Trail is a 16.5 mile out and back trail located near Englewood, Colorado that features a lake and is rated as moderate. The trail is primarily used for hiking, trail running, and mountain biking and is accessible year-round. Dogs are also able to use this trail.', 5511, NULL, 2, 16.5, NULL);
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Beaver Brook and Chavez Trail Loop', 'Beaver Brook and Chavez Trail Loop is a 5.1 mile heavily trafficked loop trail located near Golden, Colorado that features a river and is rated as moderate. The trail offers a number of activity options and is best used from March until November. Dogs are also able to use this trail but must be kept on leash.', 7755, NULL, 3, 5.1, NULL);
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Bear Creek Trail to Sister City Park', 'Bear Creek Trail to Sister City Park is a 4.7 mile moderately trafficked out and back trail located near Lakewood, Colorado that features beautiful wild flowers and is rated as moderate. The trail offers a number of activity options and is best used from May until October.', 9520, NULL, 3, 4.7, NULL);
 INSERT INTO `trail` (`id`, `name`, `description`, `altitude`, `img_url`, `difficulty_id`, `distance`, `address_id`) VALUES (DEFAULT, 'Maxwell Falls Lower Trail', 'Maxwell Falls Lower Trail is a 4.2 mile heavily trafficked loop trail located near Evergreen, Colorado that features a waterfall and is rated as moderate. The trail offers a number of activity options and is best used from March until October. Dogs are also able to use this trail but must be kept on leash.', 8484, NULL, 2, 4.2, NULL);
