@@ -25,12 +25,6 @@ public class IndexController {
 		return "index";
 	}
 	
-	@RequestMapping(path="SignUp.do", method = RequestMethod.GET)
-	public String addUserPage(Model model) {
-		model.addAttribute("user", new User());
-		return "trails/SignUp";
-	}
-	
 	@RequestMapping(path="addUser.do", method = RequestMethod.POST)
 	public String addNewUser(User user, Profile profile, Address address, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -38,10 +32,12 @@ public class IndexController {
 		profile.setAddress(address);
 		Profile newProfile = dao.addProfile(profile);
 		User newUser = dao.addUser(user);
-//		session.setAttribute(LoginController.USER_IN_SESSION_KEY, newUser);
+		session.setAttribute(LoginController.USER_IN_SESSION_KEY, newUser);
 		mv.addObject("profile", newProfile);
 		
 		return "redirect:profile.do";
 	}
+	
+	
 	
 }

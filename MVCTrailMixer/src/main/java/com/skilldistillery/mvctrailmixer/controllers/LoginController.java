@@ -3,6 +3,7 @@ package com.skilldistillery.mvctrailmixer.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.User;
 
+@Controller
 public class LoginController {
 	
 	@Autowired
@@ -33,22 +35,21 @@ public class LoginController {
 		return "trails/login";
 	}
 	
-	
 	@RequestMapping(path="login.do", method = RequestMethod.POST)
 	public ModelAndView loginUser(User inputUser, Errors errors, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
-		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
+		User daoUser = dao.getUserByUserName(inputUser.getUsername());
 		if(daoUser == null) {
 			// show them the login page
 			mv.setViewName("trails/login"); 
-			errors.rejectValue("userName", "error.userName", "Invalid credentials");
+			errors.rejectValue("username", "error.username", "Invalid credentials");
 		}
 		else if (daoUser.getActiveUser() == 0){
 //			if the user is set to inactive, don't take them to the login page.
 //			instead, we need to ask them to set the account back to active
 			mv.setViewName("trails/login");
-			errors.rejectValue("userName", "error.userName", "Invalid credentials");
+			errors.rejectValue("username", "error.username", "Invalid credentials");
 		}
 		else {
 			// load the User object into session, and redirect to the account page, account.do
@@ -76,5 +77,4 @@ public class LoginController {
 	return mv;
 	
 	}
-
 }

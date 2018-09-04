@@ -1,10 +1,11 @@
 package com.skilldistillery.mvctrailmixer.data;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -19,22 +20,34 @@ public class UserDAOImpl implements UserDAO {
 	
 	public static final String userQuery = "Select u from User u";
 	
-	private Map<Integer, User> users;
+	private Map<String, User> users;
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	public User getUserByUserNameAndPassword(String userName, String password) {
-		User u = null;
-		Set<Integer> keys = users.keySet();
-		for (Integer key : keys) {
-			User user = users.get(key);
-			if (user.getUsername().equals(userName) && user.getPassword().equals(password)) {
-				u = user;
-				break;
-			}
+	public Map<String, User> getUsers() {
+		String query = "Select u from User u";
+		List<User> userList = em.createQuery(query).getResultList();
+		users = new HashMap<>();
+		for (User user : userList) {
+			users.put(user.getUsername(), user);
 		}
+		return users;
+	}
+	
+	@Override
+	public User getUserByUserName(String userName) {
+		String query = "Select u from User u where u.username = :name";
+		User u = null;
+		try {
+			u = em.createQuery(query, User.class)
+					.setParameter("name", userName)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			
+		}
+		
 		return u;
 	}
 

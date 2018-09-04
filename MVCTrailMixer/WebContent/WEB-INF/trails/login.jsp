@@ -11,13 +11,13 @@
 </head>
 <body>
 	<form:form action="login.do" method="POST" modelAttribute="user">
-	<form:label path="email">Email:</form:label>
-	<form:input path="email" />
+	<form:label path="username">Email:</form:label>
+	<form:input path="username" />
 	<br />
 	<form:label path="password">Password:</form:label>
 	<form:input path="password" />
 	<br />
-	<input type="submit" value="Login" />
+	<button type="submit" class="btn btn-dark">Login</button>
 	</form:form>
 
 

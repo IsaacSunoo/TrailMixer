@@ -7,9 +7,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Component;
 
 import com.skilldistillery.trailmixer.entities.Trail;
 
+//@Transactional
+//@Component
 public class TrailsDAOImpl implements TrailsDAO{
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("TrailMixer");
 	private EntityManager em = emf.createEntityManager();

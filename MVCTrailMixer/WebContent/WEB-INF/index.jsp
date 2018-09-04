@@ -54,16 +54,16 @@
 <div id="HikingImages" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" width="100%" src="http://coloradoadventureswithkids.com/wp-content/uploads/2017/08/vaca-29-of-37.jpg" alt="Hanging Lakes" height="500px">
+      <img class="d-block w-100" width="100%" src="http://coloradoadventureswithkids.com/wp-content/uploads/2017/08/vaca-29-of-37.jpg" alt="Hanging Lakes" height="525px">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" width="100%" src="https://www.visitmontrose.com/ImageRepository/Document?documentID=898" alt="Second Slide" height="500px">
+      <img class="d-block w-100" width="100%" src="https://www.visitmontrose.com/ImageRepository/Document?documentID=898" alt="Second Slide" height="525px">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" width="100%" src="https://c1.staticflickr.com/4/3691/33177152415_94e7588b2c_b.jpg" alt="Third slide" height="500px">
+      <img class="d-block w-100" width="100%" src="https://c1.staticflickr.com/4/3691/33177152415_94e7588b2c_b.jpg" alt="Third slide" height="525px">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#HikingImages" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
