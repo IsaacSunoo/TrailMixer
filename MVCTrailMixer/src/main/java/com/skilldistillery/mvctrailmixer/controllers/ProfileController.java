@@ -21,15 +21,19 @@ public class ProfileController {
 	private UserDAO dao;
 	
 	@RequestMapping("profile.do")
-	public String account(HttpSession session) {
+	public ModelAndView account(Profile profile, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
 		
 		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 		
 		if(userInSession == null) {
-			return "redirect:index.do";
+			mv.setViewName("redirect:index.do");
+			return mv;
 		}
 		
-		return "trails/profile"; 
+		mv.addObject("profile", profile);
+		mv.setViewName("trails/profile");
+		return mv; 
 	}
 	
 	@RequestMapping(path="DeleteProfile.do", method=RequestMethod.POST)

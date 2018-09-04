@@ -22,6 +22,7 @@ public class User {
 	
 	@Column(name="admin")
 	private int adminUser;
+	
 	//	end of fields
 
 	public User() {

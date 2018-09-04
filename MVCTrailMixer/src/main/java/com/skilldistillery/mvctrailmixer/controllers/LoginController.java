@@ -39,6 +39,7 @@ public class LoginController {
 	public ModelAndView loginUser(User inputUser, Errors errors, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
+		System.out.println(inputUser.getUsername()+ "****************************");
 		User daoUser = dao.getUserByUserName(inputUser.getUsername());
 		if(daoUser == null) {
 			// show them the login page

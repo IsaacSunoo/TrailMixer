@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 					.setParameter("name", userName)
 					.getSingleResult();
 		} catch (NoResultException e) {
-			
+			System.err.println("You are hosed*************");
 		}
 		
 		return u;
