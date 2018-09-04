@@ -51,7 +51,7 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="EditProfile.do", method = RequestMethod.GET)
-	public ModelAndView editProfile(int id) {
+	public ModelAndView editProfile(@RequestParam int id) {
 		ModelAndView mv = new ModelAndView();
 		Profile prof = dao.findProfileById(id); 
 		Preference pref = dao.getPreferenceByProfileId(id); 
@@ -78,19 +78,3 @@ public class ProfileController {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
