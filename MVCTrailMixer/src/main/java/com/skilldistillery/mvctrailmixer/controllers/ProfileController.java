@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
@@ -53,7 +54,9 @@ public class ProfileController {
 	public ModelAndView editProfile(@RequestParam(name="id") int id) {
 		ModelAndView mv = new ModelAndView();
 		Profile prof = dao.findProfileById(id); 
+		Preference pref = dao.getPreferenceByProfileId(id); 
 		mv.addObject(prof); 
+		mv.addObject(pref); 
 		mv.setViewName("trails/editProfile");
 		return mv;
 	}
