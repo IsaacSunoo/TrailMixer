@@ -49,9 +49,9 @@
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
-		<!-- <p>John Wick</p> -->
-		<p>${profile.firstName}</p>
-		<p>${profile.lastName}</p>
+		
+		<p>Here	${profile.firstName}</p>
+		<p>${profile.lastName}</p> 
 	
 	
 	<!--  profile pictures would be to the right of this in our html -->
