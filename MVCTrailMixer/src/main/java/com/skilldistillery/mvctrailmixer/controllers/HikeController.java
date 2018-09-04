@@ -38,6 +38,13 @@ public class HikeController {
 		return mv;
 	}
 	
+	@RequestMapping(path="matches.do", method = RequestMethod.GET)
+	public ModelAndView displayMatches() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("hikes/matches");
+		return mv;
+	}
+	
 	
 	
 }

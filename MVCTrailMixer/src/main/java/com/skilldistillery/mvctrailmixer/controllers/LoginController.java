@@ -26,7 +26,7 @@ public class LoginController {
 		
 		// If a user is logged in and requests login.do they will be redirected to index.do
 		if(userInSession != null) {
-			return "redirect:index.do";
+			return "index";
 		}
 		
 		model.addAttribute("user", new User());
@@ -41,19 +41,19 @@ public class LoginController {
 		User daoUser = dao.getUserByUserNameAndPassword(inputUser.getUsername(), inputUser.getPassword());
 		if(daoUser == null) {
 			// show them the login page
-			mv.setViewName("login"); 
+			mv.setViewName("trails/login"); 
 			errors.rejectValue("userName", "error.userName", "Invalid credentials");
 		}
 		else if (daoUser.getActiveUser() == 0){
 //			if the user is set to inactive, don't take them to the login page.
 //			instead, we need to ask them to set the account back to active
-			mv.setViewName("login");
+			mv.setViewName("trails/login");
 			errors.rejectValue("userName", "error.userName", "Invalid credentials");
 		}
 		else {
 			// load the User object into session, and redirect to the account page, account.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
-			mv.setViewName("redirect:profile.do");
+			mv.setViewName("trails/profile");
 		}
 		
 		return mv;
@@ -66,6 +66,15 @@ public class LoginController {
 		session.removeAttribute(USER_IN_SESSION_KEY);
 		
 		return "redirect:index.do";
+	}
+	
+	@RequestMapping(path="SignUp.do", method = RequestMethod.GET)
+	public ModelAndView createAccount(HttpSession session) {
+	ModelAndView mv = new ModelAndView();
+	mv.addObject("user", new User());
+	mv.setViewName("SignUp");
+	return mv;
+	
 	}
 
 }

@@ -23,7 +23,7 @@
         <a class="nav-link" href="ListOfTrails.do">Trails</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Matches</a>
+        <a class="nav-link" href="matches.do">Matches</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Login</a>
@@ -39,7 +39,7 @@ to find the people you'd like to go hiking with. You can also see which trail th
 so that you pick the perfect hike for you!	
 
 <form action="FindHike.do" method="GET">
-	<input type="submit" value="Find a Hike">
+	<button type="submit" class="btn btn-dark">Find a Hike</button>
 </form>
 
 <br>
@@ -47,7 +47,7 @@ Can't find a hike you like? Create A Hike allows you to make your own hike, incl
 from the people you go with to the trail you select.
 
 <form action="CreateHike.do" method="GET">
-	<input type="submit" value="Create a Hike">
+	<button type="submit" class="btn btn-dark">Create a Hike</button>
 </form>
 
 <br>
@@ -55,8 +55,12 @@ Can't remember that one trail you went on a few weeks ago? Select Your Hikes to 
 you've previously conquered as well as the people you went with.
 
 <form action="ViewHikes.do" method="GET">
-	<input type="submit" value="Your Hikes">
+	<button type="submit" class="btn btn-dark">Your Hikes</button>
 </form>
 
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

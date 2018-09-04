@@ -15,7 +15,7 @@ import com.skilldistillery.trailmixer.entities.User;
 public class ProfileController {
 	
 	@Autowired
-	private UserDAO udao;
+	private UserDAO dao;
 	
 	@RequestMapping("profile.do")
 	public String account(HttpSession session) {
@@ -23,22 +23,22 @@ public class ProfileController {
 		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 		
 		if(userInSession == null) {
-			return "redirect:login.do";
+			return "redirect:index.do";
 		}
 		
-		return "profile"; 
+		return "trails/profile"; 
 	}
 	
 	@RequestMapping(path="DeleteProfile.do", method=RequestMethod.POST)
 	public String deleteProfile(Model model, int id, HttpSession session) {
-		if (udao.deleteUser(id)) {
+		if (dao.deleteUser(id)) {
 			session.removeAttribute(LoginController.USER_IN_SESSION_KEY);
 			
 			return "redirect:index.do";
 		}
 		else {
-			model.addAttribute("profile", udao.findUserById(id));
-			return "profile";
+			model.addAttribute("profile", dao.findUserById(id));
+			return "trails/profile";
 		}
 	}
 
