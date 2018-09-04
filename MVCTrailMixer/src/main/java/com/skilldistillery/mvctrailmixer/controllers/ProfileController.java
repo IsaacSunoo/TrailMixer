@@ -51,7 +51,7 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="EditProfile.do", method = RequestMethod.GET)
-	public ModelAndView editProfile(@RequestParam(name="id") int id) {
+	public ModelAndView editProfile(int id) {
 		ModelAndView mv = new ModelAndView();
 		Profile prof = dao.findProfileById(id); 
 		Preference pref = dao.getPreferenceByProfileId(id); 
@@ -61,21 +61,12 @@ public class ProfileController {
 		return mv;
 	}
 	
-	
-	
-//	@RequestMapping(path="EditProfile.do", method = RequestMethod.POST)
-//	public ModelAndView editProfile(Profile prof) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("editProf1", prof); 
-//		mv.addObject("editProf2", prof); 
-//		mv.addObject("editProf3", prof); 
-//		mv.addObject("editProf4", prof); 
-//		mv.addObject("editProf5", prof); 
-//		mv.addObject("editProf6", prof); 
-//		return mv;
-//	}
-	
-//	 mv.addObject("cmdObjectOne", new CommandObjectOne());
-//	 mv.addObject("cmdObjectTwo", new CommandObjectTwo());
+	@RequestMapping(path="EditProfile.do", method = RequestMethod.POST)
+	public ModelAndView editProfile(Profile prof) {
+		ModelAndView mv = new ModelAndView();
+		dao.updateProfile(prof); 
+		// update preferences by profile 
+		return mv;
+	}
 
 }

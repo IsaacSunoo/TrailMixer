@@ -11,7 +11,7 @@
 </head>
 <body>
 	
-	<form action="editProfile.do" method="POST" modelAttribute="profile">
+	<form action="editProfile.do" method="POST">
 		<table>
 			<tr>
 				<td><input type="hidden" name="id" value="${profile.id}" /></td>
@@ -45,15 +45,15 @@
 	</form>
 	
 	
-	<form action="editPreferences" method="POST" modelAttribute="profile">
+	<form action="editPreferences" method="POST">
 		<table>
 			<tr>
-				<td><input type="hidden" name="id" value="${profile.id}" /></td>
+				<td><input type="hidden" name="id" value="${preference.id}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="preference.difficulty.name" for="difficulty">Difficulty: </form:label></td>
-				<td><form:input path="preference.diffuculty.name" type="text" name="difficulty" value="${preference.difficulty.name}" /></td>
-			</tr>
+				<td><form:label path="preference.difficulty" for="difficulty">Difficulty: </form:label></td>
+				<td><form:input path="preference.diffuculty" type="text" name="difficulty" value="${preference.difficulty.name}" /></td>
+			</tr> 
 			<tr>
 				<td><form:label path="preference.distance" for="distance">Distance: </form:label></td>
 				<td><form:input path="preference.distance" type="text" name="distance" value="${preference.distance}" /></td>
