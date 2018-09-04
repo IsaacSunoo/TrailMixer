@@ -50,11 +50,10 @@
 	<!--  view object = Profile-->
 
 		
-		<p>Here	${profile.firstName}</p>
+		<p>${profile.firstName}</p>
 		<p>${profile.lastName}</p> 
 	
 	
-	<!--  profile pictures would be to the right of this in our html -->
 
 	<form action="TrailMatches.do" method="GET">
 		<input type="hidden" name="id" value="${profile.id}"> 
