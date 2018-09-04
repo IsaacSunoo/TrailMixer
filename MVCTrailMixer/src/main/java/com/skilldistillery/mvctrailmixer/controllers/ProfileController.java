@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.User;
@@ -40,6 +41,12 @@ public class ProfileController {
 			model.addAttribute("profile", dao.findUserById(id));
 			return "trails/profile";
 		}
+	}
+	
+	@RequestMapping(path="editProfile.do", method = RequestMethod.GET)
+	public ModelAndView editProfile() {
+		ModelAndView mv = new ModelAndView();
+		return mv;
 	}
 
 }
