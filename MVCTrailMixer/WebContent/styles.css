@@ -16,10 +16,11 @@ p {
   text-align: center;
 }
 
-table, tr, th{
+table, tr, th, td{
   text-align: center;
   border-collapse: collapse;
 }
+
 
 
 

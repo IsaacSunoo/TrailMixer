@@ -57,10 +57,12 @@
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
-		<p>Name: ${profile.firstName} ${profile.lastName}</p> 
-		<p>Age: ${profile.age}</p> 
-		<p>Gender: ${profile.gender}</p> 
-		<p>About Me: ${profile.bio}</p> 
+	
+
+		<p><b>Name: </b> ${profile.firstName} ${profile.lastName}</p> 
+		<p><b>Age: </b>${profile.age}</p> 
+		<p><b>Gender: </b>${profile.gender}</p> 
+		<p><b>About Me: </b>${profile.bio}</p> 
 		
 	
 	
