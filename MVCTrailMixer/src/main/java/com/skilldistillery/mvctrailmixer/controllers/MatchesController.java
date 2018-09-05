@@ -26,8 +26,12 @@ public class MatchesController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatchesByDistance(@RequestParam int id) {
-		Profile profile = udao.findProfileById(id);
+	public String getMatches(@RequestParam int profileId) {
+		if (profileId == 0) {
+			return "trails/login";
+		}
+		
+		Profile profile = udao.findProfileById(profileId);
 		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();
 		
