@@ -26,7 +26,7 @@ public class MatchesController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatches(@RequestParam int profileId) {
+	public String getMatches(@RequestParam(value="profileId", defaultValue= "0") int profileId) {
 		if (profileId == 0) {
 			return "trails/login";
 		}
