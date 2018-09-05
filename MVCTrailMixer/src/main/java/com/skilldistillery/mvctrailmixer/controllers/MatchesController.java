@@ -30,14 +30,15 @@ public class MatchesController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatches(HttpSession session) {
+	public ModelAndView getMatches(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("UserInSession") == null) {
-			return "redirect:login.do";
+			mv.setViewName("redirect:login.do");
+			return mv;
 		}
 		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 		Profile profile = udao.findProfileById(userInSession.getId());
 		List<Preference> preferences = udao.getPreferencesByProfileId(profile.getId());
-		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();
 		
 		if (preferences != null) {
@@ -54,11 +55,12 @@ public class MatchesController {
 					}
 				}
 			} 
-			return "hikes/matches";
+			mv.setViewName("hikes/matches");
+			return mv;
 		}
 		else {
-			mv.addObject("trails", trails); 
-			return "trails/ListOfTrails";
+			mv.setViewName("redirect:ListOfTrails.do");
+			return mv;
 		}
 	}
 	
