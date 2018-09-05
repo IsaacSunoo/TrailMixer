@@ -85,8 +85,21 @@ public class LoginController {
 	mv.addObject("user", new User());
 	mv.setViewName("trails/SignUp");
 	return mv;
-	
 	}
+	
+	@RequestMapping(path="SignUp.do", method = RequestMethod.POST)
+	public ModelAndView newUser(User user) {
+		ModelAndView mv = new ModelAndView();
+		User newUser = dao.addUser(user);
+		
+		Profile profile = dao.findProfileById(newUser.getId());
+		mv.addObject("profile", profile);
+		mv.addObject("user", newUser);
+		mv.setViewName("trails/profile");
+		return mv;
+	}
+	
+	
 }
 //@RequestMapping(path="profile.do", method = RequestMethod.GET)
 //public ModelAndView getUserInfo(int id) {

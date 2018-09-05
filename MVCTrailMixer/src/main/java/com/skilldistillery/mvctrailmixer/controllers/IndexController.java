@@ -25,19 +25,4 @@ public class IndexController {
 		return "index";
 	}
 	
-	@RequestMapping(path="addUser.do", method = RequestMethod.POST)
-	public String addNewUser(User user, Profile profile, Address address, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		
-		profile.setAddress(address);
-		Profile newProfile = dao.addProfile(profile);
-		User newUser = dao.addUser(user);
-		session.setAttribute(LoginController.USER_IN_SESSION_KEY, newUser);
-		mv.addObject("profile", newProfile);
-		
-		return "redirect:profile.do";
-	}
-	
-	
-	
 }
