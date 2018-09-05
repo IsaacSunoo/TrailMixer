@@ -7,19 +7,49 @@
 <head>
 <meta charset="UTF-8">
 <title>Create Account</title>
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<form:form action="addUser.do" method="POST" modelAttribute="user">
-	<form:label path="username">Email:</form:label>
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.do">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="ListOfTrails.do">Trails</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Trail Mixer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+        </ul>
+    </div>
+</nav>
+
+<div class="loginButtons">
+	<img src="image/hanging lake.jpg" alt="Hanging lake">
+	<form:form action="addUser.do" method="POST" modelAttribute="user" class="loginForm">
+	<form:label path="username">Enter Email Address:</form:label>
 	<form:input path="username" />
 	<br />
-	<form:label path="password">Password:</form:label>
+	<form:label path="password">Enter Password:</form:label>
 	<form:input path="password" />
 	<br />
 
 	<button type="submit" class="btn btn-dark">Create Account</button>
 	</form:form>
+	
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
