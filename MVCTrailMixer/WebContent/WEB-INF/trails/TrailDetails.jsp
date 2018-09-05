@@ -22,7 +22,7 @@
 				</li>
 				<li class="nav-item active"><a class="nav-link"
 					href="ListOfTrails.do">Trails</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link" href="addHike.do?trailId=${trail.id }">Add This Hike</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
 			</ul>
 		</div>
@@ -47,6 +47,7 @@
 		<h2>${trail.name}</h2>
 	</div>
 
+${trail.image}
 
 	<table>
 		<tr>

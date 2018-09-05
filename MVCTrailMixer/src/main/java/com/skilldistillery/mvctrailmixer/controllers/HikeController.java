@@ -51,6 +51,13 @@ public class HikeController {
 		return mv;
 	}
 	
-	
+	@RequestMapping(path="addHike.do", method=RequestMethod.POST)
+	public ModelAndView addHike(@RequestParam(value="proileId", defaultValue="0") int profileId, @RequestParam(value="trailId", defaultValue="0") int trailId) {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		
+		return mv;
+	}
 	
 }
