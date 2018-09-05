@@ -23,7 +23,7 @@
                 <a class="nav-link" href="HikeHomepage.do">Find Hike</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="matches.do">Matches</a>
+                <a class="nav-link" href="TrailMatches.do">Matches</a>
             </li>
         </ul>
     </div>

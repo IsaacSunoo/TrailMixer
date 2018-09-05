@@ -2,17 +2,21 @@ package com.skilldistillery.mvctrailmixer.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Address;
+import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.Trail;
+import com.skilldistillery.trailmixer.entities.User;
 
 @Controller
 public class MatchesController {
@@ -26,17 +30,19 @@ public class MatchesController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatches(@RequestParam(value="profileId", defaultValue= "0") int profileId) {
-		if (profileId == 0) {
+	public String getMatches(HttpSession session) {
+		if (session.getAttribute("UserInSession") == null) {
 			return "redirect:login.do";
 		}
-		
-		Profile profile = udao.findProfileById(profileId);
+		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
+		Profile profile = udao.findProfileById(userInSession.getId());
+		List<Preference> preferences = udao.getPreferencesByProfileId(profile.getId());
 		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();
 		
-		if (profile.getPreferences().get(0) != null) {
+		if (preferences != null) {
 			for (Trail trail : trails) {
+				Address addr = tdao.getTrailDetails(trail.getId()).getAddress();
 				if (trail.getAddress().getCity()
 						.equalsIgnoreCase(profile.getPreferences().get(0).getArea().getCity())) {
 					if (trail.getDifficulty().getId() <= profile.getPreferences().get(0).getDifficulty().getId()) {

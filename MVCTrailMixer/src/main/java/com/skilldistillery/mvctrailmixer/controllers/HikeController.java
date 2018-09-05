@@ -2,6 +2,8 @@ package com.skilldistillery.mvctrailmixer.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,9 +16,10 @@ public class HikeController {
 	
 
 	@RequestMapping(path="HikeHomepage.do", method = RequestMethod.GET)
-	public ModelAndView showHomepage(@RequestParam(value="profileId", defaultValue= "0") int profileId) {
+	public ModelAndView showHomepage(HttpSession session) {
+		
 		ModelAndView mv = new ModelAndView(); 
-		if (profileId == 0) {
+		if (session.getAttribute("UserInSession") == null) {
 			mv.setViewName("redirect:login.do");
 			return mv;
 		}
