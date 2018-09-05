@@ -85,10 +85,11 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="EditPreferences.do", method = RequestMethod.POST)
-	public ModelAndView editPreferences(@RequestParam int profileId) {
+	public ModelAndView editPreferences(int id, String difficulty, String area, double distance, int altitude) {
 		ModelAndView mv = new ModelAndView();
-		List<Preference> preferences = dao.getPreferencesByProfileId(profileId);
-		mv.addObject("preferences", preferences); 
+		Preference pref = dao.updatePreference(id, difficulty, area, distance, altitude); 
+		mv.addObject("profile", pref.getProfile()); 
+//		mv.addObject("preferences", pref); 
 		mv.setViewName("trails/profile");
 		return mv;
 	}

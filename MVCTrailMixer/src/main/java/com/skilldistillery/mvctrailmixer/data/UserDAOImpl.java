@@ -3,6 +3,7 @@ package com.skilldistillery.mvctrailmixer.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.prefs.Preferences;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.trailmixer.entities.Difficulty;
 import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
@@ -18,9 +20,9 @@ import com.skilldistillery.trailmixer.entities.User;
 @Transactional
 @Component
 public class UserDAOImpl implements UserDAO {
-	
+
 	public static final String userQuery = "Select u from User u";
-	
+
 	private Map<String, User> users;
 
 	@PersistenceContext
@@ -33,25 +35,23 @@ public class UserDAOImpl implements UserDAO {
 		users = new HashMap<>();
 		for (User user : userList) {
 			users.put(user.getUsername(), user);
-		}  	
+		}
 		return users;
 	}
-	
+
 	@Override
 	public User getUserByUserName(String userName) {
 		String query = "Select u from User u where u.username = :name";
 		User u = null;
 		try {
-			List<User> users = em.createQuery(query, User.class)
-					.setParameter("name", userName)
-					.getResultList();
+			List<User> users = em.createQuery(query, User.class).setParameter("name", userName).getResultList();
 			if (users != null && users.size() > 0) {
-				u=users.get(0);
+				u = users.get(0);
 			}
-			
+
 		} catch (NoResultException e) {
 		}
-		
+
 		return u;
 	}
 
@@ -69,17 +69,18 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setActiveUser(1);
 		return updatedUser;
 	}
-	
-/* instead of deleting the user, i am setting the "active status" to 0. when the 
- * user logs in, we will check to see if it is an active user before we direct 
- * them to the account page
-*/
+
+	/*
+	 * instead of deleting the user, i am setting the "active status" to 0. when the
+	 * user logs in, we will check to see if it is an active user before we direct
+	 * them to the account page
+	 */
 	@Override
 	public boolean deleteUser(int userId) {
 		User u = em.find(User.class, userId);
-		
+
 		u.setActiveUser(0);
-		
+
 		return (u.getActiveUser() == 0);
 	}
 
@@ -87,19 +88,19 @@ public class UserDAOImpl implements UserDAO {
 	public User addUser(User user) {
 		em.persist(user);
 		em.flush();
-		
+
 		return user;
-		
+
 	}
 
 	@Override
 	public Profile addProfile(Profile profile) {
-		
+
 		em.persist(profile);
 		em.flush();
-		
+
 		return profile;
-		
+
 	}
 
 	@Override
@@ -107,29 +108,28 @@ public class UserDAOImpl implements UserDAO {
 		boolean duplicate = true;
 		List<User> allUsers = em.createQuery(userQuery, User.class).getResultList();
 		for (User user : allUsers) {
-			if (user.getUsername().equalsIgnoreCase(username)) { 
+			if (user.getUsername().equalsIgnoreCase(username)) {
 				duplicate = false;
 			}
 		}
 		return duplicate;
 	}
-	
+
 	@Override
 	public Profile findProfileById(int profileId) {
-		
+
 		Profile prof;
 		try {
-			String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.user.id = :id"; 
+			String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.user.id = :id";
 
 			prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0);
 		} catch (Exception e) {
 			prof = em.createQuery("SELECT p FROM Profile p WHERE p.user.id = :id", Profile.class)
-					.setParameter("id", profileId)
-					.getResultList().get(0);
-		} 
+					.setParameter("id", profileId).getResultList().get(0);
+		}
 		return prof;
 	}
-	
+
 	@Override
 	public Profile updateProfile(Profile prof) {
 		Profile updatedProf = em.find(Profile.class, prof.getId());
@@ -143,21 +143,51 @@ public class UserDAOImpl implements UserDAO {
 		updatedProf.setPreferences(prof.getPreferences());
 		return updatedProf;
 	}
+
+	@Override
+	public Preference updatePreference(Preference pref) {
+		Preference updatedPref = em.find(Preference.class, pref.getId());
+		updatedPref.setDifficulty(pref.getDifficulty());
+		updatedPref.setDistance(pref.getDistance());
+		updatedPref.setArea(pref.getArea());
+		updatedPref.setAltitude(pref.getAltitude());
+		return updatedPref;
+	}
+
+	@Override
+	public Preference updatePreference(int id, String difficulty, String area, double distance, int altitude) {
+		Preference updatedPref = em.find(Preference.class, id);
+		updatedPref.setDifficulty(findDifficulty(difficulty));
+		updatedPref.setDistance(distance);
+//		updatedPref.setArea(pref.getArea());
+		updatedPref.setAltitude(altitude);
+		return updatedPref;
+	}
 	
 	@Override
+	public Difficulty findDifficulty(String name) {
+		String query = "SELECT d FROM Difficulty d WHERE d.name = :name";
+		List<Difficulty> diffs = em.createQuery(query, Difficulty.class).setParameter("name", name).getResultList(); 
+		return diffs.get(0); 
+	}
+
+	@Override
 	public List<Preference> getPreferencesByProfileId(int id) {
-		String query = "SELECT pref FROM Preference pref WHERE pref.profile.id = :id"; 
-		List<Preference> prefs = em.createQuery(query, Preference.class).setParameter("id", id).getResultList(); 
+		String query = "SELECT pref FROM Preference pref WHERE pref.profile.id = :id";
+		List<Preference> prefs = em.createQuery(query, Preference.class).setParameter("id", id).getResultList();
 		return prefs;
 	}
-	
+
 	public User getUserInformation(int id) {
 		String query = "SELECT u FROM User u WHERE u.id = :id";
-		User user = em.createQuery(query, User.class)
-				.setParameter("id", id)
-				.getSingleResult();
+		User user = em.createQuery(query, User.class).setParameter("id", id).getSingleResult();
 		return user;
 	}
-	
+
+	public Profile getProfileById(int id) {
+		String query = "SELECT p FROM Profile p WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getSingleResult();
+		return prof;
+	}
 
 }
