@@ -43,7 +43,7 @@
           <a class="dropdown-item" href="EditProfile.do">Edit Profile</a>
           <a class="dropdown-item" href="DeleteProfile.do">Delete Profile</a>
         </div>
-      </li>
+      </li>	
             <li class="nav-item">
                 <a class="nav-link" href="logout.do">Logout</a>
             </li>
@@ -53,7 +53,7 @@
 </nav>
 
 
-<img class="profile-pic" width = "150px" height ="150px" alt="profile picture" src="${profile.image }"/>
+<img class="profile-pic" width = "175px" height ="225px" alt="profile picture" src="${profile.image }"/>
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
