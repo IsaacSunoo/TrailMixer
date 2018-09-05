@@ -45,13 +45,16 @@
     </div>
 </nav>
 
-<img class="profile-pic" width = "150px" height ="150px" alt="profile picture" src="image/empty_profile_pic.jpg"/>
+<img class="profile-pic" width = "150px" height ="150px" alt="profile picture" src="${profile.image }"/>
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
 		
-		<p>${profile.firstName}</p>
-		<p>${profile.lastName}</p> 
+		<p>Name: ${profile.firstName} ${profile.lastName}</p> 
+		<p>Age: ${profile.age}</p> 
+		<p>Gender: ${profile.gender}</p> 
+		<p>About Me: ${profile.bio}</p> 
+		
 	
 	
 
