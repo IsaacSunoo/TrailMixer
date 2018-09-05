@@ -20,10 +20,12 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="index.do">Home</a>
 				</li>
+				<li class="nav-item">
+                	<a class="nav-link" href="profile.do">Profile</a>
+            	</li>
 				<li class="nav-item active"><a class="nav-link"
 					href="ListOfTrails.do">Trails</a></li>
-				<li class="nav-item"><a class="nav-link" href="addHike.do?trailId=${trail.id }">Add This Hike</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item"><a class="matches.do" href="#">Matches</a></li>
 			</ul>
 		</div>
 		<div class="mx-auto order-0">
@@ -35,6 +37,7 @@
 		</div>
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 			<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="nav-link" href="addHike.do?trailId=${trail.id }">Completed Hike</a></li>
 				<li class="nav-item"><a class="nav-link" id="prev" href="navPrevTrail.do?trailId=${trail.id }">Previous</a></li>
 				<li class="nav-item"><a class="nav-link" id="next" href="navNextTrail.do?trailId=${trail.id }">Next</a></li>
 				<li class="nav-item"><a class="nav-link" href="login.do">Login</a>
