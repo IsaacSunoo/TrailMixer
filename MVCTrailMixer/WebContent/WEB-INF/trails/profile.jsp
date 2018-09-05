@@ -40,8 +40,8 @@
           Profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="EditProfile.do">Edit Profile</a>
-          <a class="dropdown-item" href="DeleteProfile.do">Delete Profile</a>
+          <a class="dropdown-item" href="EditProfile.do?profileId=${profile.id }">Edit Profile</a>
+          <a class="dropdown-item" href="DeleteProfile.do?profileId=${profile.id }">Delete Profile</a>
         </div>
       </li>	
             <li class="nav-item">
