@@ -48,6 +48,7 @@
 	
 	<h2>Preferences</h2>
 	<form action="EditPreferences.do" method="GET"> 
+		<input type="hidden" name="profileId" value="${profile.id}" />
 		<table>
 		<c:forEach var="preference" items="${preferences}">	
 			<tr>
