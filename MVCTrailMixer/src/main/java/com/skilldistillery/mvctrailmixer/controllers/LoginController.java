@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
 @Controller
@@ -26,12 +27,11 @@ public class LoginController {
 
 		User userInSession = (User) session.getAttribute(USER_IN_SESSION_KEY);
 		
-		// If a user is logged in and requests login.do they will be redirected to index.do
+		// If a user is logged in and requests login.do they will be redirected to their profile page
 		if(userInSession != null) {
-			return "index";
+			return "trails/profile";
 		}
-		
-		model.addAttribute("user", new User());
+		model.addAttribute("user", userInSession);
 		return "trails/login";
 	}
 	
@@ -39,7 +39,6 @@ public class LoginController {
 	public ModelAndView loginUser(User inputUser, Errors errors, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(inputUser.getUsername()+ "****************************");
 		User daoUser = dao.getUserByUserName(inputUser.getUsername());
 		if(daoUser == null) {
 			// show them the login page
@@ -55,9 +54,10 @@ public class LoginController {
 		else {
 			// load the User object into session, and redirect to the account page, account.do
 			session.setAttribute(USER_IN_SESSION_KEY, daoUser);
+			Profile profile = dao.findProfileById(daoUser.getId());
+			mv.addObject("profile", profile);
 			mv.setViewName("trails/profile");
 		}
-		
 		return mv;
 	}
 	
@@ -79,4 +79,10 @@ public class LoginController {
 	
 	}
 }
-	
+//@RequestMapping(path="profile.do", method = RequestMethod.GET)
+//public ModelAndView getUserInfo(int id) {
+//	ModelAndView mv = new ModelAndView();
+//	User user = dao.getUserInformation(id);
+//	mv.addObject("user", user);
+//	return mv;
+//}

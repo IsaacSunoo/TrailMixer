@@ -3,8 +3,10 @@ package com.skilldistillery.mvctrailmixer.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
@@ -12,6 +14,7 @@ import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.Trail;
 
+@Controller
 public class MatchesController {
 	
 	@Autowired
@@ -23,7 +26,7 @@ public class MatchesController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
-	public String getMatchesByDistance(int id) {
+	public String getMatchesByDistance(@RequestParam int id) {
 		Profile profile = udao.findProfileById(id);
 		ModelAndView mv = new ModelAndView();
 		List<Trail> trails = tdao.getListOfTrails();

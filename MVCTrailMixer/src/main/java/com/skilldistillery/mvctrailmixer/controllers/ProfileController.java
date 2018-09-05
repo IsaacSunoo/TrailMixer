@@ -40,20 +40,20 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="DeleteProfile.do", method=RequestMethod.POST)
-	public String deleteProfile(Model model, int id, HttpSession session) {
+	public String deleteProfile(@RequestParam int id, Model model, HttpSession session) {
 		if (dao.deleteUser(id)) {
 			session.removeAttribute(LoginController.USER_IN_SESSION_KEY);
 			
 			return "redirect:index.do";
 		}
 		else {
-			model.addAttribute("profile", dao.findUserById(id));
+			model.addAttribute("profile", dao.findProfileById(id));
 			return "trails/profile";
 		}
 	}
 	
 	@RequestMapping(path="EditProfile.do", method = RequestMethod.GET)
-	public ModelAndView editProfile(int id) {
+	public ModelAndView editProfile(@RequestParam int id) {
 		ModelAndView mv = new ModelAndView();
 		Profile prof = dao.findProfileById(id); 
 		mv.addObject("profile", prof); 
@@ -66,33 +66,20 @@ public class ProfileController {
 	@RequestMapping(path="EditProfile.do", method = RequestMethod.POST)
 	public ModelAndView editProfile(Profile prof) {
 		ModelAndView mv = new ModelAndView();
-		dao.updateProfile(prof); 
+		Profile updatedProfile = dao.updateProfile(prof); 
 		// update preferences by profile 
+		
+		mv.addObject("profile", updatedProfile);
+		mv.setViewName("trails/profile");
 		return mv;
 	}
 	
-	@RequestMapping(path="profile.do", method = RequestMethod.GET)
-	public ModelAndView getUserInfo(int id) {
-		ModelAndView mv = new ModelAndView();
-		User user = dao.getUserInformation(id);
-		mv.addObject("user", user);
-		return mv;
-	}
+//	@RequestMapping(path="profile.do", method = RequestMethod.GET)
+//	public ModelAndView getUserInfo(int id) {
+//		ModelAndView mv = new ModelAndView();
+//		User user = dao.getUserInformation(id);
+//		mv.addObject("user", user);
+//		return mv;
+//	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
