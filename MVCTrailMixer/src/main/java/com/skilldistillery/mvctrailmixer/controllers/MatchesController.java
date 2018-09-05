@@ -28,7 +28,7 @@ public class MatchesController {
 	@RequestMapping(path="TrailMatches.do", method=RequestMethod.GET)
 	public String getMatches(@RequestParam(value="profileId", defaultValue= "0") int profileId) {
 		if (profileId == 0) {
-			return "trails/login";
+			return "redirect:login.do";
 		}
 		
 		Profile profile = udao.findProfileById(profileId);
