@@ -27,7 +27,7 @@
 			</ul>
 		</div>
 		<div class="mx-auto order-0">
-			<a class="navbar-brand mx-auto" href="#">Trail Mixer</a>
+			<a class="navbar-brand mx-auto" href="#">Trail Details</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target=".dual-collapse2">
 				<span class="navbar-toggler-icon"></span>
@@ -44,20 +44,18 @@
 	</nav>
 	<br>
 	<div class="text-center">
-		<h2>Trail Details</h2>
+		<h2>${trail.name}</h2>
 	</div>
 
 
 	<table>
 		<tr>
-			<th>Trail</th>
 			<th>Difficulty</th>
 			<th>Distance</th>
 			<th>Altitude</th>
 			<th>Rating</th>
 		</tr>
 		<tr>
-			<td>${trail.name}</td>
 			<td>${trail.difficulty.name}</td>
 			<td>${trail.distance}mi</td>
 			<td>${trail.altitude}ft</td>
