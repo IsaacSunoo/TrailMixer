@@ -42,11 +42,14 @@ public class UserDAOImpl implements UserDAO {
 		String query = "Select u from User u where u.username = :name";
 		User u = null;
 		try {
-			u = em.createQuery(query, User.class)
+			List<User> users = em.createQuery(query, User.class)
 					.setParameter("name", userName)
-					.getSingleResult();
+					.getResultList();
+			if (users != null && users.size() > 0) {
+				u=users.get(0);
+			}
+			
 		} catch (NoResultException e) {
-			System.err.println("You are hosed*************");
 		}
 		
 		return u;
@@ -114,12 +117,17 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public Profile findProfileById(int profileId) {
-//		return em.createQuery("SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.id = :id", Profile.class).setParameter("id", profileId).getSingleResult();
-		String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.id = :id"; 
-//	    String queryString = "SELECT f FROM Film f JOIN FETCH f.actors WHERE f.title = :title";
+		
+		Profile prof;
+		try {
+			String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.user.id = :id"; 
 
-		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0); 
-//		Profile p = em.find(Profile.class, profileId);
+			prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0);
+		} catch (Exception e) {
+			prof = em.createQuery("SELECT p FROM Profile p WHERE p.user.id = :id", Profile.class)
+					.setParameter("id", profileId)
+					.getResultList().get(0);
+		} 
 		return prof;
 	}
 	

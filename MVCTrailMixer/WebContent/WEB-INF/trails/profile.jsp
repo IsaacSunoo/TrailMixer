@@ -57,7 +57,6 @@
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
-		<p>${UserInSession }</p>
 		<p>Name: ${profile.firstName} ${profile.lastName}</p> 
 		<p>Age: ${profile.age}</p> 
 		<p>Gender: ${profile.gender}</p> 
