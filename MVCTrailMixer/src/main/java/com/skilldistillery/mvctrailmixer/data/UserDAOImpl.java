@@ -107,7 +107,7 @@ public class UserDAOImpl implements UserDAO {
 		boolean duplicate = true;
 		List<User> allUsers = em.createQuery(userQuery, User.class).getResultList();
 		for (User user : allUsers) {
-			if (user.getUsername().equalsIgnoreCase(username)) {
+			if (user.getUsername().equalsIgnoreCase(username)) { 
 				duplicate = false;
 			}
 		}
