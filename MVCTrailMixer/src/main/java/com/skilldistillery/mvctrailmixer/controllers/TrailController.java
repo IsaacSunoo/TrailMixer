@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
@@ -116,20 +117,20 @@ public class TrailController {
 		return mv;
 	}
 	
-	@RequestMapping(path="navTrail.do", params="next")
-	public ModelAndView navTrailNext(HttpSession session) {
+	@RequestMapping(path="navNextTrail.do")
+	public ModelAndView navTrailNext(HttpSession session, @RequestParam int trailId) {
 		ModelAndView mv = new ModelAndView();
-		Trail currentTrail = getCurrentTrailFromSession(session);
+		Trail currentTrail = dao.getTrailDetails(trailId);
 		Trail t = dao.getNextTrail(currentTrail);
 		session.setAttribute("trail", t);
 		mv.setViewName("trails/TrailDetails");
 		return mv;
 	}
 	
-	@RequestMapping(path="navTrail.do", params="prev")
-	public ModelAndView navTrailPrev(HttpSession session) {
+	@RequestMapping(path="navPrevTrail.do")
+	public ModelAndView navTrailPrev(HttpSession session, @RequestParam int trailId) {
 		ModelAndView mv = new ModelAndView();
-		Trail currentTrail = getCurrentTrailFromSession(session);
+		Trail currentTrail = dao.getTrailDetails(trailId);
 		Trail t = dao.getPrevTrail(currentTrail);
 		session.setAttribute("trail", t);
 		mv.setViewName("trails/TrailDetails");
