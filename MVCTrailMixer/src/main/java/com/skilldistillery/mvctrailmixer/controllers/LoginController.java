@@ -31,7 +31,7 @@ public class LoginController {
 		if(userInSession != null) {
 			return "trails/profile";
 		}
-		model.addAttribute("user", userInSession);
+		model.addAttribute("user", new User());
 		return "trails/login";
 	}
 	
