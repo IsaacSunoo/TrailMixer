@@ -20,7 +20,7 @@
                 <a class="nav-link" href="ListOfTrails.do">Trails</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="matches.do">Find Hike</a>
+                <a class="nav-link" href="HikeHomepage.do">Find Hike</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="matches.do">Matches</a>
@@ -45,9 +45,6 @@
         </div>
       </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.do">Login</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="logout.do">Logout</a>
             </li>
             
@@ -60,7 +57,7 @@
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
-		
+		<p>${UserInSession }</p>
 		<p>Name: ${profile.firstName} ${profile.lastName}</p> 
 		<p>Age: ${profile.age}</p> 
 		<p>Gender: ${profile.gender}</p> 

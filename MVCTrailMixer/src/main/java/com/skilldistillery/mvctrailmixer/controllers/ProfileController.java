@@ -24,16 +24,17 @@ public class ProfileController {
 	private UserDAO dao;
 	
 	@RequestMapping("profile.do")
-	public ModelAndView account(Profile profile, HttpSession session) {
+	public ModelAndView account(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
 		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 		
 		if(userInSession == null) {
-			mv.setViewName("redirect:index.do");
+			mv.setViewName("redirect:login.do");
 			return mv;
 		}
 		
+		Profile profile = dao.findProfileById(userInSession.getId());
 		mv.addObject("profile", profile);
 		mv.setViewName("trails/profile");
 		return mv; 
