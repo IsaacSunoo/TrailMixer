@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 		users = new HashMap<>();
 		for (User user : userList) {
 			users.put(user.getUsername(), user);
-		}
+		}  	
 		return users;
 	}
 	
@@ -67,7 +67,6 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setUsername(user.getUsername());
 		updatedUser.setActiveUser(1);
-		
 		return updatedUser;
 	}
 	

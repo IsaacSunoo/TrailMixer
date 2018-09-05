@@ -13,10 +13,10 @@
 <body>
 	<h2>Profile</h2>
 	
-	<form action="editProfile.do" method="POST" >
+	<form action="EditProfile.do" method="POST">
 		<table>
 			<tr>
-				<td><input type="hidden" name="id" value="${profile.id}" /></td>
+				<td><input type="hidden" name="profileId" value="${profile.id}" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="profile.firstName" for="firstName">First Name: </form:label></td>
@@ -43,49 +43,33 @@
 				<td><form:input path="profile.bio" type="text" name="bio" value="${profile.bio}" /></td>
 			</tr>
 		</table>
+		<button type="submit" class="btn btn-dark">Done</button>
 	</form>
 	
-	
 	<h2>Preferences</h2>
-  	<form action="editPreferences" method="POST">
+	<form action="EditPreferences.do" method="GET"> 
 		<table>
-		<c:forEach var="preference" items="${preferences}">		
+		<c:forEach var="preference" items="${preferences}">	
 			<tr>
-				<td><input type="hidden" name="id" value="${preference.id}" /></td>
+				<td>Difficulty: </td>
+				<td>${preference.difficulty.name}</td>
+			</tr> 
+			<tr>
+				<td>Area: </td>
+				<td>${preference.area.city}</td>
 			</tr>
 			<tr>
-				<td>Difficulty: <select name="difficulty">
-					<option value="none">${preference.difficulty.name}</option>
-					<option value="expert">Expert</option>
-					<option value="hard">Hard</option>
-					<option value="moderate">Moderate</option>
-					<option value="easy">Easy</option>
-					<option value="beginner">Beginner</option>
-					</select>
-				</td>
+				<td>Distance: </td>
+				<td>${preference.distance}</td>
 			</tr>
 			<tr>
-				<td>Area: <select name="area">
-					<option value="none">${preference.area.city}</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td><div class="slidecontainer">
-					<p>Distance: </p>
-					0 <input type="range" min="1" max="20" value="${preference.distance}">20+
-				</td>
-			</tr>
-			<tr>
-				<td><div class="slidecontainer">
-					<p>Altitude: </p>
-					0 <input type="range" min="0" max="20,000" value="${preference.altitude}"> 20,000+
-				</td>
-			</tr>
+				<td>Altitude: </td>
+				<td>${preference.altitude}</td>
+			</tr>	
 		</c:forEach>
-		</table>
-		<button type="submit" class="btn btn-dark">Done</button>
-	</form>  
+		</table> 
+		<button type="submit" class="btn btn-dark">Edit</button>
+		</form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
