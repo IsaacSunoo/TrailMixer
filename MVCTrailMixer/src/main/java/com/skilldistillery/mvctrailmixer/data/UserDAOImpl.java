@@ -67,7 +67,6 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setUsername(user.getUsername());
 		updatedUser.setActiveUser(1);
-		
 		return updatedUser;
 	}
 	
