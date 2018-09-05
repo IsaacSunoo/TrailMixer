@@ -58,7 +58,7 @@ public class ProfileController {
 		Profile prof = dao.findProfileById(id); 
 		mv.addObject("profile", prof); 
 		List<Preference> preferences = dao.getPreferencesByProfileId(id);
-		mv.addObject("myPreferences", preferences); 
+		mv.addObject("preferences", preferences); 
 		mv.setViewName("trails/editProfile");
 		return mv;
 	}

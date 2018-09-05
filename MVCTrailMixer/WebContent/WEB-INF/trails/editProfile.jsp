@@ -73,15 +73,13 @@
 	</form>
  --%>
  ${myPreferences}
-<%-- <ul>
- 		<c:forEach var="myPreference" items="${myPreferences}">
-		<li>${buzzOff.id}</li>
- 		<li>${preference.difficulty.name}"</li>
-		<li>${preference.distance}"</li>
-		<li>${preference.area}"</li>
-		<li>${preference.altitude}"</li>
+ <ul>
+ 		<c:forEach var="p" items="${preferences}">
+ 		<li>${p.difficulty.name}"</li>
+		<li>${p.distance}"</li>
+		<li>${p.area}"</li>
+		<li>${p.altitude}"</li>
 		</c:forEach>
---%>
 </ul> 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

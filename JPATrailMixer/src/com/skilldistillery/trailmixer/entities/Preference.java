@@ -92,8 +92,7 @@ public class Preference {
 
 	@Override
 	public String toString() {
-		return "Preference [id=" + id + ", difficulty=" + difficulty + ", distance=" + distance + ", area=" + area
-				+ ", altitude=" + altitude + ", profile=" + profile + "]";
+		return "Preference [distance=" + distance + ", altitude=" + altitude + "]";
 	}
 
 }
