@@ -118,7 +118,7 @@ public class UserDAOImpl implements UserDAO {
 		String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.id = :id"; 
 //	    String queryString = "SELECT f FROM Film f JOIN FETCH f.actors WHERE f.title = :title";
 
-		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getSingleResult(); 
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0); 
 //		Profile p = em.find(Profile.class, profileId);
 		return prof;
 	}

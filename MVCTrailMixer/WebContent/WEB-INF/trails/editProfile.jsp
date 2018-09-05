@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+	<h2>Profile</h2>
 	
 	<form action="editProfile.do" method="POST">
 		<table>
@@ -44,35 +46,60 @@
 		<button type="submit" class="btn btn-dark">Done</button>
 	</form>
 	
-	${prof.preferences}
-	${prof.preferences.altitude}
-		
-<%-- 	<form action="editPreferences" method="POST">
+	
+	<h2>Preferences</h2>
+  	<form action="editPreferences" method="POST">
 		<table>
-		<c:forEach var="preference" items="${preferences}">
+		<c:forEach var="preference" items="${preferenceList}">		
 			<tr>
 				<td><input type="hidden" name="id" value="${preference.id}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="preference.difficulty" for="difficulty">Difficulty: </form:label></td>
-				<td><form:input path="preference.difficulty" type="text" name="difficulty" value="${preference.difficulty.name}" /></td>
-			</tr> 
-			<tr>
-				<td><form:label path="preference.distance" for="distance">Distance: </form:label></td>
-				<td><form:input path="preference.distance" type="text" name="distance" value="${preference.distance}" /></td>
+				<td>Diffiuclty: <select name="difficulty">
+					<option value="none">${preference.difficulty.name}</option>
+					<option value="expert">Expert</option>
+					<option value="hard">Hard</option>
+					<option value="moderate">Moderate</option>
+					<option value="easy">Easy</option>
+					<option value="beginner">Beginner</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
-				<td><form:label path="preference.area" for="area">Area: </form:label></td>
-				<td><form:input path="preference.area" type="text" name="area" value="${preference.area}" /></td>
+				<td>Distance: <select name="distance">
+					<option value="none">${preference.distance}</option>
+					<option value="twenty">Greater than 20 mi</option>
+					<option value="ten">Between 10 and 20 mi</option>
+					<option value="five">Between 5 and 10 mi</option>
+					<option value="less">Less than 5 mi</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
-				<td><form:label path="preference.altitude" for="altitude">Altitude: </form:label></td>
-				<td><form:input path="preference.altitude" type="text" name="altitude" value="${preference.altitude}" /></td>
+				<td><label for="area">Area: </label></td>
+				<td><input type="text" name="area" value="${preference.area}" /></td>
+			</tr>
+			<tr>
+				<td>Area: <select name="area">
+					<option value="none">${preference.area}</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Altitude: <select name="altitude">
+					<option value="none">${preference.altitude}</option>
+					<option value="fifteen">Greater than 15,000 ft</option>
+					<option value="fourteen">Between 14,000 and 15,000 ft</option>
+					<option value="ten">Between 10,000 and 14,000 ft</option>
+					<option value="five">Between 5,000 and 10,000 ft</option>
+					<option value="less">Less than 5,000 ft</option>
+					</select>
+				</td>
 			</tr>
 		</c:forEach>
 		</table>
 		<button type="submit" class="btn btn-dark">Done</button>
-	</form> --%>
+	</form>  
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
