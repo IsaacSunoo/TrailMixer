@@ -26,7 +26,7 @@ public class TrailsDAOImpl implements TrailsDAO{
 	
 	@Override
 	public Trail getTrailDetails(int id) {
-		String query = "SELECT t FROM Trail t WHERE t.id = :id"; 
+		String query = "SELECT t FROM Trail t JOIN FETCH t.address WHERE t.id = :id"; 
 		Trail tr = em.createQuery(query, Trail.class).setParameter("id", id).getSingleResult(); 
 		return tr; 
 	}

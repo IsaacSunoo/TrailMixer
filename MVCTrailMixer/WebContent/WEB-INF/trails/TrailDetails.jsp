@@ -25,7 +25,9 @@
             	</li>
 				<li class="nav-item active"><a class="nav-link"
 					href="ListOfTrails.do">Trails</a></li>
-				<li class="nav-item"><a class="matches.do" href="#">Matches</a></li>
+				<li class="nav-item">
+        		<a class="nav-link" href="TrailMatches.do?profileId=${profile.id }">Matches</a>
+      		</li>
 			</ul>
 		</div>
 		<div class="mx-auto order-0">
@@ -49,10 +51,14 @@
 	<div class="text-center">
 		<h2>${trail.name}</h2>
 	</div>
+	
+<div class="trailImage" >
+<img src="${trail.image}" style="width:500px;height500px;"></img>
+</div>
 
-${trail.image}
+<br>
 
-	<table>
+	<table class="trailsTable2">
 		<tr>
 			<th>Difficulty</th>
 			<th>Distance</th>
@@ -67,6 +73,8 @@ ${trail.image}
 		</tr>
 	</table>
 
+<br>
+
 	<table>
 		<tr>
 			<th>Description</th>
@@ -76,30 +84,33 @@ ${trail.image}
 		</tr>
 	</table>
 
-	<table>
-		<tr>
-			<th>Location</th>
-		</tr>
-		<tr>
-			<td>${trail.address.street}</td>
-		</tr>
-		<tr>
-			<td>${trail.address.city}</td>
-		</tr>
-		<tr>
-			<td>${trail.address.state}</td>
-		</tr>
+	
+<%-- 			<table>
+				<tr>
+					<th>Location</th>
+				</tr>
+				<tr>
+					<td>${trail.address.street}</td>
+				</tr>
+				<tr>
+					<td>${trail.address.city}</td>
+				</tr>
+				<tr>
+					<td>${trail.address.state}</td>
+				</tr>
+			
 		<c:choose>
 			<c:when test="${not empty trail.address.latitude}">
-				<tr>
-					<td>Latitude: ${trail.address.latitude}</td>
-				</tr>
-				<tr>
-					<td>Longitude: ${trail.address.longitude}</td>
-				</tr>
+					<tr>
+						<td>Latitude: ${trail.address.latitude}</td>
+					</tr>
+					<tr>
+						<td>Longitude: ${trail.address.longitude}</td>
+					</tr>
 			</c:when>
 		</c:choose>
-	</table>
+				</table>	 --%>
+	
 
 
 

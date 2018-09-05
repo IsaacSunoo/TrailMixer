@@ -3,7 +3,6 @@ package com.skilldistillery.mvctrailmixer.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.prefs.Preferences;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -12,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.trailmixer.entities.Area;
 import com.skilldistillery.trailmixer.entities.Difficulty;
 import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
@@ -169,6 +169,13 @@ public class UserDAOImpl implements UserDAO {
 		String query = "SELECT d FROM Difficulty d WHERE d.name = :name";
 		List<Difficulty> diffs = em.createQuery(query, Difficulty.class).setParameter("name", name).getResultList(); 
 		return diffs.get(0); 
+	}
+	
+	@Override
+	public Area findArea(String city) {
+		String query = "SELECT a FROM Area a WHERE a.city = :city";
+		List<Area> area = em.createQuery(query, Area.class).setParameter("city", city).getResultList(); 
+		return area.get(0); 
 	}
 
 	@Override
