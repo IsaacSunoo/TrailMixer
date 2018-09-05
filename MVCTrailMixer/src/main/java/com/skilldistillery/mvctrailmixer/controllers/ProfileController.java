@@ -68,19 +68,30 @@ public class ProfileController {
 	public ModelAndView editProfile(Profile prof) {
 		ModelAndView mv = new ModelAndView();
 		Profile updatedProfile = dao.updateProfile(prof); 
-		// update preferences by profile 
-		
 		mv.addObject("profile", updatedProfile);
 		mv.setViewName("trails/profile");
 		return mv;
 	}
 	
-//	@RequestMapping(path="profile.do", method = RequestMethod.GET)
-//	public ModelAndView getUserInfo(int id) {
-//		ModelAndView mv = new ModelAndView();
-//		User user = dao.getUserInformation(id);
-//		mv.addObject("user", user);
-//		return mv;
-//	}
+	@RequestMapping(path="EditPreferences.do", method = RequestMethod.GET)
+	public ModelAndView editPreferencesGet(@RequestParam int profileId) {
+		ModelAndView mv = new ModelAndView();
+		Profile prof = dao.findProfileById(profileId); 
+		mv.addObject("profile", prof);
+		List<Preference> preferences = dao.getPreferencesByProfileId(profileId);
+		mv.addObject("preferences", preferences); 
+		mv.setViewName("trails/editPreference");
+		return mv;
+	}
+	
+	@RequestMapping(path="EditPreferences.do", method = RequestMethod.POST)
+	public ModelAndView editPreferences(@RequestParam int profileId) {
+		ModelAndView mv = new ModelAndView();
+		List<Preference> preferences = dao.getPreferencesByProfileId(profileId);
+		mv.addObject("preferences", preferences); 
+		mv.setViewName("trails/profile");
+		return mv;
+	}
+
 	
 }

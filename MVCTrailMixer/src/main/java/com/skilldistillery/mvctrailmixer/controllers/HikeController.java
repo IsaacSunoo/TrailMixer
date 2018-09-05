@@ -5,14 +5,20 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HikeController {
 
 	@RequestMapping(path="HikeHomepage.do", method = RequestMethod.GET)
-	public ModelAndView showHomepage() {
+	public ModelAndView showHomepage(@RequestParam(value="profileId", defaultValue= "0") int profileId) {
 		ModelAndView mv = new ModelAndView(); 
+		if (profileId == 0) {
+			mv.setViewName("redirect:login.do");
+			return mv;
+		}
+		
 		mv.setViewName("hikes/HikeHomepage");
 		return mv;
 	}
