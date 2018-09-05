@@ -58,7 +58,7 @@
 
 <br>
 
-	<table class="trailsTable">
+	<table class="trailsTable2">
 		<tr>
 			<th>Difficulty</th>
 			<th>Distance</th>
