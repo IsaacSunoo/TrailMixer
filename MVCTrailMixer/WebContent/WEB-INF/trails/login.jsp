@@ -36,10 +36,10 @@
 
 	<form:form action="login.do" method="POST" modelAttribute="user">
 	<form:label path="username">Email:</form:label>
-	<form:input path="username" />
+	<form:input path="username" value="johnWick@gmail.com"/>
 	<br />
 	<form:label path="password">Password:</form:label>
-	<form:input path="password" />
+	<form:input path="password" value="myDoggo"/>
 	<br />
 	<button type="submit" class="btn btn-dark">Login</button>
 	</form:form>

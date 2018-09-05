@@ -114,8 +114,13 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public Profile findProfileById(int profileId) {
-		Profile p = em.find(Profile.class, profileId);
-		return p;
+//		return em.createQuery("SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.id = :id", Profile.class).setParameter("id", profileId).getSingleResult();
+		String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.id = :id"; 
+//	    String queryString = "SELECT f FROM Film f JOIN FETCH f.actors WHERE f.title = :title";
+
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getSingleResult(); 
+//		Profile p = em.find(Profile.class, profileId);
+		return prof;
 	}
 	
 	@Override
@@ -133,10 +138,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public Preference getPreferenceByProfileId(int id) {
-		String query = "SELECT pref FROM Preference pref JOIN FETCH Profile prof ON prof.id = pref.profile.id WHERE prof.id = :id"; 
-		Preference pref = em.createQuery(query, Preference.class).setParameter("id", id).getSingleResult(); 
-		return pref;
+	public List<Preference> getPreferencesByProfileId(int id) {
+		String query = "SELECT pref FROM Preference pref WHERE pref.profile.id = :id"; 
+		List<Preference> prefs = em.createQuery(query, Preference.class).setParameter("id", id).getResultList(); 
+		return prefs;
 	}
 	
 	public User getUserInformation(int id) {

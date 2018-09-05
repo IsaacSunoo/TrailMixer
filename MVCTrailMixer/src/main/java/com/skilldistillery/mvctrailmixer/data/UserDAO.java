@@ -1,5 +1,6 @@
 package com.skilldistillery.mvctrailmixer.data;
 
+import java.util.List;
 import java.util.Map;
 
 import com.skilldistillery.trailmixer.entities.Preference;
@@ -17,6 +18,6 @@ public interface UserDAO {
 	  Map<String, User> getUsers();
 	  public Profile findProfileById(int profileId);
 	  public Profile updateProfile(Profile prof);
-	  public Preference getPreferenceByProfileId(int profileId); 
+	  public List<Preference> getPreferencesByProfileId(int profileId); 
 	  public User getUserInformation(int id);
 }

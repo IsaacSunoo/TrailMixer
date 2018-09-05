@@ -1,5 +1,7 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +56,9 @@ public class ProfileController {
 	public ModelAndView editProfile(int id) {
 		ModelAndView mv = new ModelAndView();
 		Profile prof = dao.findProfileById(id); 
-		Preference pref = dao.getPreferenceByProfileId(id); 
 		mv.addObject("profile", prof); 
-		mv.addObject("preference", pref); 
+		List<Preference> preferences = dao.getPreferencesByProfileId(id);
+		mv.addObject("myPreferences", preferences); 
 		mv.setViewName("trails/editProfile");
 		return mv;
 	}

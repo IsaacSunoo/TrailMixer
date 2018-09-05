@@ -44,9 +44,10 @@
 		<button type="submit" class="btn btn-dark">Done</button>
 	</form>
 	
-	
+<%-- 	
 	<form action="editPreferences" method="POST">
 		<table>
+		<c:forEach var="preference" items="${preferences}">
 			<tr>
 				<td><input type="hidden" name="id" value="${preference.id}" /></td>
 			</tr>
@@ -66,10 +67,22 @@
 				<td><form:label path="preference.altitude" for="altitude">Altitude: </form:label></td>
 				<td><form:input path="preference.altitude" type="text" name="altitude" value="${preference.altitude}" /></td>
 			</tr>
+		</c:forEach>
 		</table>
 		<button type="submit" class="btn btn-dark">Done</button>
-	</form> 
-	
+	</form>
+ --%>
+ ${myPreferences}
+<%-- <ul>
+ 		<c:forEach var="myPreference" items="${myPreferences}">
+		<li>${buzzOff.id}</li>
+ 		<li>${preference.difficulty.name}"</li>
+		<li>${preference.distance}"</li>
+		<li>${preference.area}"</li>
+		<li>${preference.altitude}"</li>
+		</c:forEach>
+--%>
+</ul> 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -1,6 +1,7 @@
 package com.skilldistillery.trailmixer.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -53,6 +54,14 @@ class ProfileTest {
 	@Test
 	public void test_one_profile_to_many_reasons() {
 		assertEquals("Fun", prof.getReasons().get(0).getName()); 
+	}
+	
+	@Test
+	public void test_profile_with_preferences_list() {
+		Profile p = em.find(Profile.class, 1);
+		String query = "SELECT p FROM Profile p JOIN FETCH p.preferences WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", 1).getSingleResult(); 
+		assertNotEquals(0, prof.getPreferences().size());
 	}
 
 }
