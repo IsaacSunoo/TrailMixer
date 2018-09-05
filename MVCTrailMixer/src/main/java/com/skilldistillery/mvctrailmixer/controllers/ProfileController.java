@@ -41,24 +41,24 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="DeleteProfile.do", method=RequestMethod.POST)
-	public String deleteProfile(@RequestParam int id, Model model, HttpSession session) {
-		if (dao.deleteUser(id)) {
+	public String deleteProfile(@RequestParam int profileId, Model model, HttpSession session) {
+		if (dao.deleteUser(profileId)) {
 			session.removeAttribute(LoginController.USER_IN_SESSION_KEY);
 			
 			return "redirect:index.do";
 		}
 		else {
-			model.addAttribute("profile", dao.findProfileById(id));
+			model.addAttribute("profile", dao.findProfileById(profileId));
 			return "trails/profile";
 		}
 	}
 	
 	@RequestMapping(path="EditProfile.do", method = RequestMethod.GET)
-	public ModelAndView editProfile(@RequestParam int id) {
+	public ModelAndView editProfile(@RequestParam int profileId) {
 		ModelAndView mv = new ModelAndView();
-		Profile prof = dao.findProfileById(id); 
+		Profile prof = dao.findProfileById(profileId); 
 		mv.addObject("profile", prof);
-		List<Preference> preferences = dao.getPreferencesByProfileId(id);
+		List<Preference> preferences = dao.getPreferencesByProfileId(profileId);
 		mv.addObject("preferences", preferences); 
 		mv.setViewName("trails/editProfile");
 		return mv;
