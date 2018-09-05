@@ -47,6 +47,24 @@
 
 <h2>Matches</h2>
 
+<c:choose>
+	<c:when test="${! empty trails }">
+		<table>
+			<tr><h3>Your Trails</h3></tr>
+			<c:forEach var="t" items="${trails }">
+				<tr>
+					<td>Name: <a href="getTrail.do?trailId=${trail.id }">${trail.name}</a>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:when>
+	
+	<c:otherwise>
+		No Trails Found<br>
+	</c:otherwise>
+
+</c:choose>
+
 <!--  display a list of trails that are the user's matches -->
 	<!--  sort and search bars for trail list -->
 	<!--  view trail details -->
