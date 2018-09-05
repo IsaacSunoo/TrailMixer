@@ -29,6 +29,7 @@ public class LoginController {
 		
 		// If a user is logged in and requests login.do they will be redirected to their profile page
 		if(userInSession != null) {
+			
 			return "trails/profile";
 		}
 		model.addAttribute("user", new User());
