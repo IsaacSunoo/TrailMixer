@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HikeController {
+	
+	
 
 	@RequestMapping(path="HikeHomepage.do", method = RequestMethod.GET)
 	public ModelAndView showHomepage(@RequestParam(value="profileId", defaultValue= "0") int profileId) {
@@ -54,8 +56,11 @@ public class HikeController {
 	@RequestMapping(path="addHike.do", method=RequestMethod.POST)
 	public ModelAndView addHike(@RequestParam(value="proileId", defaultValue="0") int profileId, @RequestParam(value="trailId", defaultValue="0") int trailId) {
 		ModelAndView mv = new ModelAndView();
-		
-		
+		if (profileId == 0) {
+			mv.setViewName("redirect:login.do");
+			return mv;
+		}
+//		not finished
 		
 		return mv;
 	}
