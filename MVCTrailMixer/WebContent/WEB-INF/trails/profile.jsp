@@ -16,14 +16,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.do">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile.do">Profile</a>
-            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="ListOfTrails.do">Trails</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="matches.do">Find Hike</a>
+                <a class="nav-link" href="HikeHomepage.do">Find Hike</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="matches.do">Matches</a>
             </li>
         </ul>
     </div>
@@ -35,21 +35,29 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="login.do">Login</a>
-            </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="EditProfile.do">Edit Profile</a>
+          <a class="dropdown-item" href="DeleteProfile.do">Delete Profile</a>
+        </div>
+      </li>
             <li class="nav-item">
                 <a class="nav-link" href="logout.do">Logout</a>
             </li>
+            
         </ul>
     </div>
 </nav>
+
 
 <img class="profile-pic" width = "150px" height ="150px" alt="profile picture" src="${profile.image }"/>
 	<!--  model object = profile -->
 	<!--  view object = Profile-->
 
-		
+		<p>${UserInSession }</p>
 		<p>Name: ${profile.firstName} ${profile.lastName}</p> 
 		<p>Age: ${profile.age}</p> 
 		<p>Gender: ${profile.gender}</p> 
@@ -60,19 +68,18 @@
 
 	<form action="TrailMatches.do" method="GET">
 		<input type="hidden" name="id" value="${profile.id}"> 
-		<input type="submit" value="Trail Matches">
+		<button type="submit" class="btn btn-dark">Trail Matches</button>
 	</form>
 	
-	<form action="EditProfile.do" method="GET">
+ 	<form action="EditProfile.do" method="GET">
 		<input type="hidden" name="id" value="${profile.id}"> 
-		<input type="submit" value="Edit Profile">
+		<button type="submit" class="btn btn-dark">Edit Profile</button>
 	</form>
 
 	<form action="DeleteProfile.do" method="GET">
 		<input type="hidden" name="id" value="${profile.id}"> 
-		<input type="submit" value="Delete Profile">
+		<button type="submit" class="btn btn-dark">Delete Profile</button>
 	</form>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

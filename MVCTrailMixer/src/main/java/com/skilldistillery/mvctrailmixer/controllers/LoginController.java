@@ -23,16 +23,25 @@ public class LoginController {
 	public static final String USER_IN_SESSION_KEY = "UserInSession";
 
 	@RequestMapping(path="login.do", method = RequestMethod.GET)
-	public String login(Model model, HttpSession session) {
-
+	public ModelAndView login(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
 		User userInSession = (User) session.getAttribute(USER_IN_SESSION_KEY);
+		System.out.println(userInSession);
 		
 		// If a user is logged in and requests login.do they will be redirected to their profile page
 		if(userInSession != null) {
-			return "trails/profile";
+			
+			Profile profile = dao.findProfileById(userInSession.getId());
+			mv.addObject("profile", profile);
+			mv.setViewName("trails/profile");
+			
+			return mv;
 		}
-		model.addAttribute("user", new User());
-		return "trails/login";
+		
+		mv.addObject("user", new User());
+		mv.setViewName("trails/login");
+		return mv;
 	}
 	
 	@RequestMapping(path="login.do", method = RequestMethod.POST)

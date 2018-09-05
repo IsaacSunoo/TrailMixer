@@ -1,6 +1,5 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
 
@@ -24,16 +24,17 @@ public class ProfileController {
 	private UserDAO dao;
 	
 	@RequestMapping("profile.do")
-	public ModelAndView account(Profile profile, HttpSession session) {
+	public ModelAndView account(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
 		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 		
 		if(userInSession == null) {
-			mv.setViewName("redirect:index.do");
+			mv.setViewName("redirect:login.do");
 			return mv;
 		}
 		
+		Profile profile = dao.findProfileById(userInSession.getId());
 		mv.addObject("profile", profile);
 		mv.setViewName("trails/profile");
 		return mv; 
@@ -57,7 +58,8 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 		Profile prof = dao.findProfileById(id); 
 		mv.addObject("profile", prof);
-		mv.addObject("preferenceList", prof.getPreferences()); 
+		List<Preference> preferences = dao.getPreferencesByProfileId(id);
+		mv.addObject("preferences", preferences); 
 		mv.setViewName("trails/editProfile");
 		return mv;
 	}
