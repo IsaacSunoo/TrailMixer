@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 		users = new HashMap<>();
 		for (User user : userList) {
 			users.put(user.getUsername(), user);
-		}
+		}  	
 		return users;
 	}
 	
