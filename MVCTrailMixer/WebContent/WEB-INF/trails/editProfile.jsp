@@ -13,7 +13,7 @@
 <body>
 	<h2>Profile</h2>
 	
-	<form action="editProfile.do" method="POST">
+	<form action="editProfile.do" method="POST" >
 		<table>
 			<tr>
 				<td><input type="hidden" name="id" value="${profile.id}" /></td>
@@ -43,19 +43,18 @@
 				<td><form:input path="profile.bio" type="text" name="bio" value="${profile.bio}" /></td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-dark">Done</button>
 	</form>
 	
 	
 	<h2>Preferences</h2>
   	<form action="editPreferences" method="POST">
 		<table>
-		<c:forEach var="preference" items="${preferenceList}">		
+		<c:forEach var="preference" items="${preferences}">		
 			<tr>
 				<td><input type="hidden" name="id" value="${preference.id}" /></td>
 			</tr>
 			<tr>
-				<td>Diffiuclty: <select name="difficulty">
+				<td>Difficulty: <select name="difficulty">
 					<option value="none">${preference.difficulty.name}</option>
 					<option value="expert">Expert</option>
 					<option value="hard">Hard</option>
@@ -66,34 +65,21 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Distance: <select name="distance">
-					<option value="none">${preference.distance}</option>
-					<option value="twenty">Greater than 20 mi</option>
-					<option value="ten">Between 10 and 20 mi</option>
-					<option value="five">Between 5 and 10 mi</option>
-					<option value="less">Less than 5 mi</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td><label for="area">Area: </label></td>
-				<td><input type="text" name="area" value="${preference.area}" /></td>
-			</tr>
-			<tr>
 				<td>Area: <select name="area">
-					<option value="none">${preference.area}</option>
+					<option value="none">${preference.area.city}</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>Altitude: <select name="altitude">
-					<option value="none">${preference.altitude}</option>
-					<option value="fifteen">Greater than 15,000 ft</option>
-					<option value="fourteen">Between 14,000 and 15,000 ft</option>
-					<option value="ten">Between 10,000 and 14,000 ft</option>
-					<option value="five">Between 5,000 and 10,000 ft</option>
-					<option value="less">Less than 5,000 ft</option>
-					</select>
+				<td><div class="slidecontainer">
+					<p>Distance: </p>
+					0 <input type="range" min="1" max="20" value="${preference.distance}">20+
+				</td>
+			</tr>
+			<tr>
+				<td><div class="slidecontainer">
+					<p>Altitude: </p>
+					0 <input type="range" min="0" max="20,000" value="${preference.altitude}"> 20,000+
 				</td>
 			</tr>
 		</c:forEach>
