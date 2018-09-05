@@ -2,6 +2,8 @@ package com.skilldistillery.mvctrailmixer.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -113,5 +115,31 @@ public class TrailController {
 		mv.setViewName("trails/ListOfTrails");
 		return mv;
 	}
+	
+	@RequestMapping(path="navTrail.do", params="next")
+	public ModelAndView navTrailNext(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Trail currentTrail = getCurrentTrailFromSession(session);
+		Trail t = dao.getNextTrail(currentTrail);
+		session.setAttribute("trail", t);
+		mv.setViewName("trails/TrailDetails");
+		return mv;
+	}
+	
+	@RequestMapping(path="navTrail.do", params="prev")
+	public ModelAndView navTrailPrev(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Trail currentTrail = getCurrentTrailFromSession(session);
+		Trail t = dao.getPrevTrail(currentTrail);
+		session.setAttribute("trail", t);
+		mv.setViewName("trails/TrailDetails");
+		return mv;
+	}
+	
+	private Trail getCurrentTrailFromSession(HttpSession session) {
+	    Trail current = (Trail) session.getAttribute("trail");
+	    
+	    return current;
+	  }
 
 }

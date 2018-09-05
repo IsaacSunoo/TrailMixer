@@ -34,7 +34,8 @@
 		</div>
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item"><a class="nav-link" href="#">Next</a></li>
+				<li class="nav-item"><a class="nav-link" name="prev" href="navTrail.do">Previous</a></li>
+				<li class="nav-item"><a class="nav-link" name="next" href="navTrail.do">Next</a></li>
 				<li class="nav-item"><a class="nav-link" href="login.do">Login</a>
 				</li>
 			</ul>

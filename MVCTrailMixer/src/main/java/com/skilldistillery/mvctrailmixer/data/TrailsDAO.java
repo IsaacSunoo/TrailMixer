@@ -21,4 +21,6 @@ public interface TrailsDAO {
 	public List<Trail> sortByAltitudeLow(); 
 	public List<Double> sortByRating();
 	public Double getTrailRating(int id); 
+	public Trail getNextTrail(Trail trail);
+	public Trail getPrevTrail(Trail trail);
 }

@@ -126,4 +126,48 @@ public class TrailsDAOImpl implements TrailsDAO{
 		return trailRatings;
 	}
 
+	@Override
+	public Trail getNextTrail(Trail current) {
+		int index = -1;
+	    Trail t = null;
+	    List<Trail> trails = getListOfTrails();
+	    for (int i = 0; i < trails.size(); i++) {
+	      Trail trail = trails.get(i);
+	      if (trail.getName().equalsIgnoreCase(current.getName())) {
+	        index = i;
+	        break;
+	      }
+	    }
+	    index++;
+	    if (index == trails.size()) {
+	      index = 0;
+	    }
+
+	    t = trails.get(index);
+	    return t;
+		
+	}
+
+	@Override
+	public Trail getPrevTrail(Trail current) {
+		int index = -1;
+	    Trail t = null;
+	    List<Trail> trails = getListOfTrails();
+	    for (int i = 0; i < trails.size(); i++) {
+	      Trail trail = trails.get(i);
+	      if (trail.getName().equalsIgnoreCase(current.getName())) {
+	        index = i;
+	        break;
+	      }
+	    }
+	    index--;
+	    if (index == -1) {
+	      index = trails.size() - 1;
+	    }
+
+	    t = trails.get(index);
+	    return t;
+				
+	}
+
 }
