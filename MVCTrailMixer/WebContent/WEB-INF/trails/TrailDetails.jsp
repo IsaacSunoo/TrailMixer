@@ -58,21 +58,21 @@
 
 <br>
 
-	<table class="trailsTable2">
+	<table class="trailsTable2" bgcolor="LightGray">
 		<tr>
-			<td>Difficulty</td>
+			<td>Difficulty: </td>
 			<td>${trail.difficulty.name}</td>
 		</tr> 
 		<tr>
-			<td>Distance</td>
+			<td>Distance: </td>
 			<td>${trail.distance}mi</td>
 		</tr> 
 		<tr>
-			<td>Altitude</td>
+			<td>Altitude: </td>
 			<td>${trail.altitude}ft</td>
 		</tr> 
 		<tr>
-			<td>Rating</td>
+			<td>Rating: </td>
 			<td>${rating}</td>
 		</tr>
 	</table>
@@ -95,7 +95,7 @@
 <br> 
 <form action="addHike.do" method="POST">
 	<input type="hidden" value="${trail.id }" name="trailId">
-	 <input type="submit" value="Add This Hike">
+	 <input type="submit" class="btn btn-dark" value="Add This Hike">
 </form>
 </div>
 	
