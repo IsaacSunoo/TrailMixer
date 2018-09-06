@@ -5,10 +5,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.Profile;
@@ -95,16 +99,24 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path="SignUp.do", method = RequestMethod.POST)
-	public ModelAndView newUser(User user) {
-		ModelAndView mv = new ModelAndView();
-		User newUser = dao.addUser(user);
+	public String newUser(@ModelAttribute("user") /*@Valid*/ User newUser, BindingResult result, Model model, RedirectAttributes redir,
+			@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName,
+			@RequestParam("age") int age)
+			{
+		
+			if(result.hasErrors()) {
+				model.addAttribute("user", new User());
+				return "login";
+			}
+				
+		User inputedUser = dao.addUser(newUser, firstName, lastName, age);
 		
 		Profile profile = dao.findProfileById(newUser.getId());
-		mv.addObject("profile", profile);
-		mv.addObject("user", newUser);
-		mv.setViewName("trails/profile");
-		return mv;
+		
+		return "redirect: profile.do";
 	}
+	
 	
 	
 }

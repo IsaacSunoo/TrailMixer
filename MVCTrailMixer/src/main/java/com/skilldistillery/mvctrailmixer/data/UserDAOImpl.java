@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import com.skilldistillery.trailmixer.entities.Address;
 import com.skilldistillery.trailmixer.entities.Area;
 import com.skilldistillery.trailmixer.entities.Difficulty;
 import com.skilldistillery.trailmixer.entities.Preference;
@@ -85,8 +86,16 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User addUser(User user) {
-		em.persist(user);
+	public User addUser(User user, String firstName, String lastName, int age) {
+		Profile profile = new Profile();
+		Address addr = em.find(Address.class, 1);
+		profile.setFirstName(firstName);
+		profile.setLastName(lastName);
+		profile.setAge(age);
+		profile.setUser(user);
+		profile.setAddress(addr);
+		
+		em.persist(profile);
 		em.flush();
 
 		return user;

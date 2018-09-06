@@ -14,7 +14,6 @@ public interface UserDAO {
 	  User findUserById(int userId);
 	  User updateUser(User user);
 	  boolean deleteUser(int userId);
-	  User addUser(User user);
 	  Profile addProfile(Profile profile);
 	  boolean duplicateUsername(String username);
 	  Map<String, User> getUsers();
@@ -26,5 +25,6 @@ public interface UserDAO {
 	  public Area findArea(String city); 
 	  public List<Preference> getPreferencesByProfileId(int profileId); 
 	  public User getUserInformation(int id);
-	  public Profile getProfileById(int id); 
+	  public Profile getProfileById(int id);
+	  User addUser(User user, String firstName, String lastName, int age); 
 }
