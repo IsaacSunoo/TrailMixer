@@ -15,8 +15,9 @@
 <body>
 
 	<h2>Preferences</h2>
-	${profile.id}
 	<table>
+	<c:choose>
+		<c:when test="${! empty preferences }">
 		<c:forEach var="preference" items="${preferences}">
 			<form action="EditPreferences.do" method="POST">
 			<input type="hidden" name="id" value="${preference.id}">
@@ -103,6 +104,92 @@
 			</tr>
 			</form>
 		</c:forEach>
+		</c:when>
+		<c:when test="${empty preferences }">
+				<form action="EditPreferences.do" method="POST">
+				<input type="hidden" name="id" value="${preference.id}">
+				<tr>
+				<td>Difficulty:
+						<select name="difficulty">
+							<c:if test="${preference.difficulty.name == 'Expert'}">
+								<option value="expert" selected>Expert</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Expert'}">
+								<option value="expert">Expert</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name == 'Hard'}">
+								<option value="hard" selected>Hard</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Hard'}">
+								<option value="hard">Hard</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name == 'Moderate'}">
+								<option value="moderate" selected>Moderate</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Moderate'}">
+								<option value="moderate">Moderate</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name == 'Easy'}">
+								<option value="easy" selected>Easy</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Easy'}">
+								<option value="easy">Easy</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name == 'Beginner'}">
+								<option value="beginner" selected>Beginner</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Beginner'}">
+								<option value="beginner">Beginner</option>
+							</c:if>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Area:
+						<select name="area">
+							<c:if test="${preference.difficulty.name == 'Denver'}">
+								<option value="Denver" selected>Denver</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Denver'}">
+								<option value="Denver">Denver</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name == 'Boulder'}">
+								<option value="Boulder" selected>Boulder</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name != 'Boulder'}">
+								<option value="Boulder">Boulder</option>
+							</c:if>
+							
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><div class="slidecontainer">
+							<input type="hidden" value="${preference.distance}">
+							<p>Distance:</p>
+							0 <input type="range" min="1" max="20"
+								name="distance" value="${preference.distance}">20 miles
+						</td>
+			</tr>
+			<tr>
+				<td><div class="slidecontainer">
+							<input type="hidden" value="${preference.altitude}">
+							<p>Altitude:</p>
+							0 <input type="range" min="0" max="20000"
+								name="altitude" value="${preference.altitude}"> 20,000 feet
+						</td>
+			</tr>
+			<tr>
+				<td><button type="submit" class="btn btn-dark">Done</button></td>
+			</tr>
+		</c:when>
+	</c:choose>
 	</table>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
