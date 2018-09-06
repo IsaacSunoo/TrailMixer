@@ -1,5 +1,6 @@
 package com.skilldistillery.trailmixer.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,14 +16,14 @@ public class Preference {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "difficulty_id")
 	private Difficulty difficulty;
 	
 	@Column(name = "trail_distance")
 	private double distance;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "area_id")
 	private Area area;
 

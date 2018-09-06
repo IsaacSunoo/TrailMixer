@@ -28,36 +28,11 @@ public class HikeController {
 	@Autowired
 	private TrailsDAO tdao;
 
-	@RequestMapping(path="HikeHomepage.do", method = RequestMethod.GET)
-	public ModelAndView showHomepage(HttpSession session) {
-		
-		ModelAndView mv = new ModelAndView(); 
-		if (session.getAttribute("UserInSession") == null) {
-			mv.setViewName("redirect:login.do");
-			return mv;
-		}
-		
-		mv.setViewName("hikes/HikeHomepage");
-		return mv;
-	}
-	
-	@RequestMapping(path="FindHike.do", method = RequestMethod.GET)
-	public ModelAndView showHikes() {
-		ModelAndView mv = new ModelAndView(); 
-		mv.setViewName("hikes/FindAHike");
-		return mv;
-	}
-	
-	@RequestMapping(path="CreateHike.do", method = RequestMethod.GET)
-	public ModelAndView createHike() {
-		ModelAndView mv = new ModelAndView(); 
-		mv.setViewName("hikes/CreateAHike");
-		return mv;
-	}
-	
 	@RequestMapping(path="ViewHikes.do", method = RequestMethod.GET)
 	public ModelAndView viewHikes() {
 		ModelAndView mv = new ModelAndView(); 
+		// get list of trails for profile Id 
+		// add list to object 
 		mv.setViewName("hikes/YourHikes");
 		return mv;
 	}
