@@ -139,6 +139,7 @@ public class TrailController {
 	
 	private Trail getCurrentTrailFromSession(HttpSession session) {
 	    Trail current = (Trail) session.getAttribute("trail");
+	    
 	    return current;
 	  }
 
