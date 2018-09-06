@@ -95,7 +95,7 @@
 					<td>${t.altitude} ft</td>
 					<td>
 						<form action="TrailDetails.do" method="GET">
-							<input type="hidden" name="id" value="${t.id}"> <button
+							<input type="hidden" name="tId" value="${t.id}"> <button
 								type="submit" class="btn btn-dark">Trail Details</button>
 						</form>
 					</td>

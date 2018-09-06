@@ -24,5 +24,4 @@ public class IndexController {
 	public String homePage(Model model) {
 		return "index";
 	}
-	
 }

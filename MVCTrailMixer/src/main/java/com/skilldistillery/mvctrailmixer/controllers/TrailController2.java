@@ -15,7 +15,7 @@ import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
 import com.skilldistillery.trailmixer.entities.Trail;
 
 @Controller 
-public class TrailController {
+public class TrailController2 {
 	 @Autowired
 	private TrailsDAO dao;
 	

@@ -31,7 +31,6 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		
 		User userInSession = (User) session.getAttribute(USER_IN_SESSION_KEY);
-		System.out.println(userInSession);
 		
 		// If a user is logged in and requests login.do they will be redirected to their profile page
 		if(userInSession != null) {
