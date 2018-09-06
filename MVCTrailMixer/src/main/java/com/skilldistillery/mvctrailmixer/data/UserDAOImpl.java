@@ -218,10 +218,19 @@ public class UserDAOImpl implements UserDAO {
 	
 	public List<Trail> addTrailToUser(int profileId, int trailId) {
 		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
-		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0);
+		List<Profile> profiles = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList();
 		Trail t = em.find(Trail.class, trailId); 
-		prof.addTrail(t);
-		return prof.getTrails(); 
+		if (profiles.size() > 0) {
+			Profile profile = profiles.get(0);
+			profile.addTrail(t);
+			return profile.getTrails();
+		}
+		else {
+			Profile p = em.find(Profile.class, profileId);
+			p.setTrails(new ArrayList<>());
+			p.addTrail(t);
+			return p.getTrails(); 
+		}
 	}
 	
 	@Override
@@ -241,6 +250,11 @@ public class UserDAOImpl implements UserDAO {
 		em.persist(preference);
 		em.flush();
 		return profile;
-
+	}
+	
+	public List<Trail> getListOfTrailsByProfileId(int profileId) {
+		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0);
+		return prof.getTrails(); 
 	}
 }

@@ -39,7 +39,7 @@
 		</div>
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 			<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="ViewHikes.do">Completed Hikes</a></li>
+			<li class="nav-item"><a class="nav-link" href="addHike.do">Your Hikes</a></li>
 				<li class="nav-item"><a class="nav-link" id="prev" href="navPrevTrail.do?trailId=${trail.id }">Previous</a></li>
 				<li class="nav-item"><a class="nav-link" id="next" href="navNextTrail.do?trailId=${trail.id }">Next</a></li>
 				<li class="nav-item"><a class="nav-link" href="login.do">Login</a>
