@@ -100,7 +100,7 @@
 						</td>
 			</tr>
 			<tr>
-				<td><button type="submit" class="btn btn-dark">Done</button></td>
+				<td><button type="submit" class="btn btn-dark">Save Preferences</button></td>
 			</tr>
 			</form>
 		</c:forEach>
@@ -186,7 +186,7 @@
 						</td>
 			</tr>
 			<tr>
-				<td><button type="submit" class="btn btn-dark">Done</button></td>
+				<td><button type="submit" class="btn btn-dark">Save Preferences</button></td>
 			</tr>
 		</c:when>
 	</c:choose>
