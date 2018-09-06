@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 
 <!DOCTYPE html>
 <html>
@@ -43,11 +43,14 @@
 	
 		<form:label path="username">Enter Email Address:</form:label>
 		<form:input path="username" />
+		<form:errors path="username"/>
 		<br />
+		
 		<form:label path="password">Enter Password:</form:label>
 		<form:input path="password" />
 		<form:errors path="password" />
 		<br />
+		
 		<label for="firstName">First Name:</label>
 		<input type="text" name="firstName">
 		
@@ -55,22 +58,17 @@
 		<label for="lastName">Last Name:</label>
 		<input type="text" name="lastName">
 		<br>
+		
 		<label for="age">Age:</label>
 		<input type="text" name="age">
 		<br>
-	<%-- 	<form:label path="firstName">First Name:</form:label>
-		<form:input path="firstName"/>
-		<br>
-		<form:label path="lastName">Last Name:</form:label>
-		<form:input path="lastName"/>
-		<br>
-		<form:label path="age">Age</form:label>
-		<form:input path="age"/>
-		<br> --%>
 		
 		<button type="submit" class="btn btn-dark">Create Account</button>
 	</form:form>
 	
+	<div>
+	<c:if test="${accountCreated}"> <p>Account was successfully created!</p></c:if>
+	</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
