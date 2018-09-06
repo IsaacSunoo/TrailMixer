@@ -22,7 +22,7 @@
                 <a class="nav-link" href="profile.do">Profile</a>
             </li>
             <li class="nav-item">
-        		<a class="nav-link" href="TrailMatches.do?profileId=${profile.id }">Matches</a>
+        		<a class="nav-link" href="TrailMatches.do">Matches</a>
       		</li>
             <li class="nav-item">
                 <a class="nav-link" href="HikeHomepage.do">Go Hike</a>

@@ -49,12 +49,12 @@ public class HikeController {
 		return mv;
 	}
 	
-	@RequestMapping(path="matches.do", method = RequestMethod.GET)
-	public ModelAndView displayMatches() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("hikes/matches");
-		return mv;
-	}
+//	@RequestMapping(path="matches.do", method = RequestMethod.GET)
+//	public ModelAndView displayMatches() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("hikes/matches");
+//		return mv;
+//	}
 	
 	@RequestMapping(path="addHike.do", method=RequestMethod.POST)
 	public ModelAndView addHike(@RequestParam(value="proileId", defaultValue="0") int profileId, @RequestParam(value="trailId", defaultValue="0") int trailId) {

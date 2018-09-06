@@ -23,7 +23,7 @@
         <a class="nav-link" href="ListOfTrails.do">Trails</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="TrailMatches.do?profileId=${profile.id }">Matches</a>
+        <a class="nav-link" href="TrailMatches.do">Matches</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="login.do">Login</a>

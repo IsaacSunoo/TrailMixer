@@ -60,7 +60,6 @@
 	</c:when>
 	
 	<c:otherwise>
-	<h4>Here</h4>
 		No Trails Found<br>
 	</c:otherwise>
 
