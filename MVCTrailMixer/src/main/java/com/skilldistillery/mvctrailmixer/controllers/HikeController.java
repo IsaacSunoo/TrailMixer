@@ -1,8 +1,5 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
-import com.skilldistillery.trailmixer.entities.ProfileTrail;
+import com.skilldistillery.trailmixer.entities.Profile;
+import com.skilldistillery.trailmixer.entities.Trail;
 
 @Controller
 public class HikeController {
 	
-	private List<ProfileTrail> pfs = new ArrayList<>();
+//	private Profile profile = new Profile();
 	
 	@Autowired
 	private UserDAO udao;
@@ -69,8 +67,11 @@ public class HikeController {
 			return mv;
 		}
 //		not finished
-		
-		
+		Profile profile = udao.getProfileById(profileId);
+		Trail trail = tdao.getTrailDetails(trailId);
+		profile.addTrail(trail);
+		mv.addObject("trail", profile);
+		mv.setViewName("YourHikes");
 		return mv;
 	}
 	

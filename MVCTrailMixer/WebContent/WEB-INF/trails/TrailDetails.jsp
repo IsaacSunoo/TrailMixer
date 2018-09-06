@@ -39,7 +39,7 @@
 		</div>
 		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 			<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="addHike.do?trailId=${trail.id }">Completed Hike</a></li>
+			<li class="nav-item"><a class="nav-link" href="addHike.do">Completed Hike</a></li>
 				<li class="nav-item"><a class="nav-link" id="prev" href="navPrevTrail.do?trailId=${trail.id }">Previous</a></li>
 				<li class="nav-item"><a class="nav-link" id="next" href="navNextTrail.do?trailId=${trail.id }">Next</a></li>
 				<li class="nav-item"><a class="nav-link" href="login.do">Login</a>
@@ -84,6 +84,10 @@
 		</tr>
 	</table>
 
+<form action="addHike.do" method="post">
+	<input type="hidden" value="${trail.id } name="id">
+	 <input type="submit" value="Add This Hike">
+</form>
 	
 <%-- 			<table>
 				<tr>
