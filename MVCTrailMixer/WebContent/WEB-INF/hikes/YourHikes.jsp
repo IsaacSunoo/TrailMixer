@@ -10,6 +10,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -35,6 +36,7 @@
 		</div>
 	</nav>
 
+<div class="yourHikes">
 	<h2>Your Hikes</h2>
 
 	<c:if test="${trails == null}">
@@ -42,7 +44,7 @@
 	</c:if>
 
 	<c:if test="${trails != null}">
-		<table>
+		<table class="yourHikesTable">
 			<c:forEach var="t" items="${trails}">
 				<tr>
 					<td>Trail Name: <a href="TrailDetails.do?tId=${t.id}">${t.name}</a></td>
@@ -51,6 +53,7 @@
 		</table>
 
 	</c:if>
+</div>
 
 </body>
 </html>
