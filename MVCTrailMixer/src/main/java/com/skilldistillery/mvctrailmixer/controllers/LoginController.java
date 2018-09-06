@@ -108,7 +108,7 @@ public class LoginController {
 		
 			if(result.hasErrors()) {
 				model.addAttribute("user", new User());
-				return "login";	
+				return "redirect:login.do";	
 			}
 				
 		User inputedUser = dao.addUser(newUser, firstName, lastName, age);
