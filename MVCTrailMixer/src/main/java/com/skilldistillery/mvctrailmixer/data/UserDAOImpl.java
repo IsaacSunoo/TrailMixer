@@ -89,6 +89,7 @@ public class UserDAOImpl implements UserDAO {
 	public User addUser(User user, String firstName, String lastName, int age) {
 		Profile profile = new Profile();
 		Address addr = em.find(Address.class, 1);
+		user.setActiveUser(1);
 		profile.setFirstName(firstName);
 		profile.setLastName(lastName);
 		profile.setAge(age);
