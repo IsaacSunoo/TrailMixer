@@ -1,5 +1,6 @@
 package com.skilldistillery.mvctrailmixer.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -204,8 +205,15 @@ public class UserDAOImpl implements UserDAO {
 
 	public Profile getProfileById(int id) {
 		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
-		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getResultList().get(0);
-		return prof;
+		List<Profile> results = em.createQuery(query, Profile.class).setParameter("id", id).getResultList();
+		if (results.size() > 0) {
+			return results.get(0);
+		}
+		else {
+			Profile p = em.find(Profile.class, id);
+			p.setTrails(new ArrayList<>());
+			return p;
+		}
 	}
 	
 	public List<Trail> addTrailToUser(int profileId, int trailId) {
@@ -217,10 +225,22 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public Preference addPreference(Preference preference) {
+	public Profile addPreference(int profileId, String difficulty, String area, double distance, int altitude) {
+		Profile profile = em.find(Profile.class, profileId);
+		Preference preference = new Preference();
+		Area areaA = new Area();
+		Difficulty diff = new Difficulty();
+		diff.setName(difficulty);
+		areaA.setCity(area);
+		areaA.setState("Colorado");
+		preference.setAltitude(altitude);
+		preference.setDistance(distance);
+		preference.setArea(areaA);
+		preference.setProfile(profile);
+		profile.addPreference(preference);
 		em.persist(preference);
 		em.flush();
-		return preference;
+		return profile;
 
 	}
 }

@@ -94,24 +94,12 @@ public class ProfileController {
 		mv.setViewName("trails/profile");
 		return mv;
 	}
-
+						  
 	@RequestMapping(path="addPreferences.do", method = RequestMethod.POST)
 	public ModelAndView addPreferences(@RequestParam int profileId, String difficulty, String area, double distance, int altitude) {
 		ModelAndView mv = new ModelAndView();
-		Profile profile = dao.getProfileById(profileId);
-		Preference preference = new Preference();
-		Area areaA = new Area();
-		Difficulty diff = new Difficulty();
-		diff.setName(difficulty);
-		areaA.setCity(area);
-		areaA.setState("Colorado");
-		preference.setAltitude(altitude);
-		preference.setDistance(distance);
-		preference.setArea(areaA);
-		preference.setProfile(profile);
-		Preference pref = dao.addPreference(preference); 
-		profile.addPreference(pref);
-//		profile = dao.updateProfile
+
+		Profile profile = dao.addPreference(profileId, difficulty, area, distance, altitude);
 		mv.addObject("profile", profile); 
 		mv.setViewName("trails/profile");
 		return mv;

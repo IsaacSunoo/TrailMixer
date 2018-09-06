@@ -29,5 +29,5 @@ public interface UserDAO {
 	  public Profile getProfileById(int id);
 	  public User addUser(User user, String firstName, String lastName, int age); 
 	  public List<Trail> addTrailToUser(int profileId, int trailId);
-	  public Preference addPreference(Preference preference); 
+	  public Profile addPreference(int profileId, String difficulty, String area, double distance, int altitude); 
 }
