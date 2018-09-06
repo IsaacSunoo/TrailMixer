@@ -68,7 +68,7 @@
 
 <br>
 <div class="hikeButton">
-<form action="HikeHomepage.do" method="GET">
+<form action="login.do" method="GET">
 	<button type="submit" class="btn btn-dark">Take A Hike!</button>
 </form>
 </div>
