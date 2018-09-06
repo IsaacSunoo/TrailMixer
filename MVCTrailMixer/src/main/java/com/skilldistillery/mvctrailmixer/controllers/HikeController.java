@@ -27,9 +27,15 @@ public class HikeController {
 	private TrailsDAO tdao;
 
 	@RequestMapping(path="ViewHikes.do", method = RequestMethod.GET)
-	public ModelAndView viewHikes(int profileId) {
+	public ModelAndView viewHikes(HttpSession session) {
 		ModelAndView mv = new ModelAndView(); 
-		List<Trail> trails = udao.getListOfTrailsByProfileId(profileId); 
+		if (session.getAttribute("UserInSession") == null) {
+			mv.setViewName("redirect:login.do");
+			return mv;
+		}
+		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
+		Profile profile = udao.getProfileById(userInSession.getId());
+		List<Trail> trails = udao.getListOfTrailsByProfileId(profile.getId()); 
 		mv.addObject("trails", trails); 
 		mv.setViewName("hikes/YourHikes");
 		return mv;
