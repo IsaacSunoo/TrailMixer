@@ -16,6 +16,7 @@ import com.skilldistillery.trailmixer.entities.Area;
 import com.skilldistillery.trailmixer.entities.Difficulty;
 import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
+import com.skilldistillery.trailmixer.entities.Trail;
 import com.skilldistillery.trailmixer.entities.User;
 
 @Transactional
@@ -206,5 +207,14 @@ public class UserDAOImpl implements UserDAO {
 		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getResultList().get(0);
 		return prof;
 	}
+	
+	public List<Trail> addTrailToUser(int profileId, int trailId) {
+		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0);
+		Trail t = em.find(Trail.class, trailId); 
+		prof.addTrail(t);
+		return prof.getTrails(); 
+	}
+	
 
 }

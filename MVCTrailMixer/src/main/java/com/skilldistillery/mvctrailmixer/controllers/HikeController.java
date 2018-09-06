@@ -69,14 +69,11 @@ public class HikeController {
 			mv.setViewName("redirect:login.do");
 			return mv;
 		}
-//		not finished -- http 500 lazy loading
 		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 		Profile profile = udao.getProfileById(userInSession.getId());
-		List<Trail> trails = profile.getTrails();
-//		Trail trail = tdao.getTrailDetails(trailId);
-		trails.add(tdao.getTrailDetails(trailId));
+		List<Trail> trails = udao.addTrailToUser(profile.getId(), trailId); 
 		mv.addObject("trails", trails);
-		mv.setViewName("YourHikes");
+		mv.setViewName("hikes/YourHikes");
 		return mv;
 	}
 	

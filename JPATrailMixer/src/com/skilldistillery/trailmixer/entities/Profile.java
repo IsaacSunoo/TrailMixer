@@ -236,6 +236,7 @@ public class Profile {
 			trails = new ArrayList<>();
 		}
 		if (!trails.contains(trail)) {
+			trails.add(trail); 
 			trail.addProfile(this);
 		}
 	}
