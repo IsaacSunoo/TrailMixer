@@ -43,12 +43,15 @@
 	
 		<form:label path="username">Enter Email Address:</form:label>
 		<form:input path="username" />
+		<form:errors path="username"/>
 		<br />
 		<form:label path="password">Enter Password:</form:label>
 		<form:input path="password" />
+		<form:errors path="password" />
 		<br />
 		<label for="firstName">First Name:</label>
 		<input type="text" name="firstName">
+		
 		<br>
 		<label for="lastName">Last Name:</label>
 		<input type="text" name="lastName">

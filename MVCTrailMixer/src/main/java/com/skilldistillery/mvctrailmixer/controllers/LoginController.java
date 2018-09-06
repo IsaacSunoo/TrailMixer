@@ -112,9 +112,12 @@ public class LoginController {
 				
 		User inputedUser = dao.addUser(newUser, firstName, lastName, age);
 		
+		
+		
+		
 		Profile profile = dao.findProfileById(newUser.getId());
 		
-		return "redirect: profile.do";
+		return "redirect: login.do";
 	}
 	
 	
