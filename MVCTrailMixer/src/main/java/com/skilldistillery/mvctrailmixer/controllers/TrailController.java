@@ -31,10 +31,10 @@ public class TrailController {
 	}
 	
 	@RequestMapping(path="TrailDetails.do", method = RequestMethod.GET)
-	public ModelAndView getDetails(int id) {
+	public ModelAndView getDetails(@RequestParam Integer trailId) {
 		ModelAndView mv = new ModelAndView(); 
-		Trail trail = dao.getTrailDetails(id); 
-		Double rating = dao.getTrailRating(id);
+		Trail trail = dao.getTrailDetails(trailId); 
+		Double rating = dao.getTrailRating(trailId);
 		mv.addObject("rating", rating); 
 		mv.addObject("trail", trail); 
 		mv.setViewName("trails/TrailDetails");
@@ -139,7 +139,6 @@ public class TrailController {
 	
 	private Trail getCurrentTrailFromSession(HttpSession session) {
 	    Trail current = (Trail) session.getAttribute("trail");
-	    
 	    return current;
 	  }
 
