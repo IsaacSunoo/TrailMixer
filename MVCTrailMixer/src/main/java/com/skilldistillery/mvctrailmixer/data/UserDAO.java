@@ -19,7 +19,7 @@ public interface UserDAO {
 	  boolean duplicateUsername(String username);
 	  Map<String, User> getUsers();
 	  public Profile findProfileById(int profileId);
-	  public Profile updateProfile(Profile prof);
+	  public Profile updateProfile(int id, String firstName, String lastName, int age, String image, String gender, String bio);
 	  public Preference updatePreference(Preference pref); 
 	  public Preference updatePreference(int id, String difficulty, String area, double distance, int altitude);
 	  public Difficulty findDifficulty(String name); 

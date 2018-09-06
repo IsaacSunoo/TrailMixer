@@ -131,16 +131,15 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Profile updateProfile(Profile prof) {
-		Profile updatedProf = em.find(Profile.class, prof.getId());
-		updatedProf.setFirstName(prof.getFirstName());
-		updatedProf.setLastName(prof.getLastName());
-		updatedProf.setAge(prof.getAge());
-		updatedProf.setImage(prof.getImage());
-		updatedProf.setBio(prof.getBio());
-		updatedProf.setGender(prof.getGender());
-		updatedProf.setAddress(prof.getAddress());
-		updatedProf.setPreferences(prof.getPreferences());
+	public Profile updateProfile(int id, String firstName, String lastName, int age, String image, String gender, String bio) {
+		Profile updatedProf = em.find(Profile.class, id);
+		updatedProf.setFirstName(firstName);
+		updatedProf.setLastName(lastName);
+		updatedProf.setAge(age);
+		updatedProf.setImage(image);
+		updatedProf.setGender(gender);
+		updatedProf.setBio(bio);
+//		updatedProf.setAddress(findAddress(address));
 		return updatedProf;
 	}
 
@@ -159,7 +158,7 @@ public class UserDAOImpl implements UserDAO {
 		Preference updatedPref = em.find(Preference.class, id);
 		updatedPref.setDifficulty(findDifficulty(difficulty));
 		updatedPref.setDistance(distance);
-//		updatedPref.setArea(pref.getArea());
+		updatedPref.setArea(findArea(area));
 		updatedPref.setAltitude(altitude);
 		return updatedPref;
 	}
@@ -174,8 +173,8 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Area findArea(String city) {
 		String query = "SELECT a FROM Area a WHERE a.city = :city";
-		List<Area> area = em.createQuery(query, Area.class).setParameter("city", city).getResultList(); 
-		return area.get(0); 
+		Area area = em.createQuery(query, Area.class).setParameter("city", city).getSingleResult(); 
+		return area; 
 	}
 
 	@Override
