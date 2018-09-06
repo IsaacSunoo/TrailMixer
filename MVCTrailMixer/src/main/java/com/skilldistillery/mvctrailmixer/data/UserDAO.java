@@ -7,6 +7,7 @@ import com.skilldistillery.trailmixer.entities.Area;
 import com.skilldistillery.trailmixer.entities.Difficulty;
 import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
+import com.skilldistillery.trailmixer.entities.Trail;
 import com.skilldistillery.trailmixer.entities.User;
 
 public interface UserDAO {
@@ -27,4 +28,5 @@ public interface UserDAO {
 	  public User getUserInformation(int id);
 	  public Profile getProfileById(int id);
 	  User addUser(User user, String firstName, String lastName, int age); 
+	  public List<Trail> addTrailToUser(int profileId, int trailId); 
 }
