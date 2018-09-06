@@ -106,8 +106,8 @@
 		</c:forEach>
 		</c:when>
 		<c:when test="${empty preferences }">
-				<form action="EditPreferences.do" method="POST">
-				<input type="hidden" name="id" value="${preference.id}">
+				<form action="addPreferences.do" method="POST">
+				<input type="hidden" name="profileId" value="${profile.id}">
 				<tr>
 				<td>Difficulty:
 						<select name="difficulty">
@@ -188,6 +188,7 @@
 			<tr>
 				<td><button type="submit" class="btn btn-dark">Save Preferences</button></td>
 			</tr>
+			</form>
 		</c:when>
 	</c:choose>
 	</table>

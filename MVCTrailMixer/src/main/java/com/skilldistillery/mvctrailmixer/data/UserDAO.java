@@ -11,13 +11,13 @@ import com.skilldistillery.trailmixer.entities.Trail;
 import com.skilldistillery.trailmixer.entities.User;
 
 public interface UserDAO {
-	  User getUserByUserName(String userName);
-	  User findUserById(int userId);
-	  User updateUser(User user);
-	  boolean deleteUser(int userId);
-	  Profile addProfile(Profile profile);
-	  boolean duplicateUsername(String username);
-	  Map<String, User> getUsers();
+	  public User getUserByUserName(String userName);
+	  public User findUserById(int userId);
+	  public User updateUser(User user);
+	  public boolean deleteUser(int userId);
+	  public Profile addProfile(Profile profile);
+	  public boolean duplicateUsername(String username);
+	  public Map<String, User> getUsers();
 	  public Profile findProfileById(int profileId);
 	  public Profile updateProfile(int id, String firstName, String lastName, int age, String image, String gender, String bio);
 	  public Preference updatePreference(Preference pref); 
@@ -27,6 +27,7 @@ public interface UserDAO {
 	  public List<Preference> getPreferencesByProfileId(int profileId); 
 	  public User getUserInformation(int id);
 	  public Profile getProfileById(int id);
-	  User addUser(User user, String firstName, String lastName, int age); 
-	  public List<Trail> addTrailToUser(int profileId, int trailId); 
+	  public User addUser(User user, String firstName, String lastName, int age); 
+	  public List<Trail> addTrailToUser(int profileId, int trailId);
+	  public Preference addPreference(Preference preference); 
 }

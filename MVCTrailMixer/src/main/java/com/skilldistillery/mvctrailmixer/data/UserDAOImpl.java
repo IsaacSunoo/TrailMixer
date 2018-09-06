@@ -216,5 +216,11 @@ public class UserDAOImpl implements UserDAO {
 		return prof.getTrails(); 
 	}
 	
+	@Override
+	public Preference addPreference(Preference preference) {
+		em.persist(preference);
+		em.flush();
+		return preference;
 
+	}
 }

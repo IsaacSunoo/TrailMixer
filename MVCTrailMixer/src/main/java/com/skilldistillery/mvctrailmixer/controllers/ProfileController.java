@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.Area;
+import com.skilldistillery.trailmixer.entities.Difficulty;
 import com.skilldistillery.trailmixer.entities.Preference;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.User;
@@ -94,11 +96,22 @@ public class ProfileController {
 	}
 
 	@RequestMapping(path="addPreferences.do", method = RequestMethod.POST)
-	public ModelAndView addPreferences(@RequestParam int id, String difficulty, String area, double distance, int altitude) {
+	public ModelAndView addPreferences(@RequestParam int profileId, String difficulty, String area, double distance, int altitude) {
 		ModelAndView mv = new ModelAndView();
-		Profile profile = dao.getProfileById(id);
-		List<Preference> pref = dao.addPreference(difficulty, area, distance, altitude); 
-		profile.setPreferences(pref);
+		Profile profile = dao.getProfileById(profileId);
+		Preference preference = new Preference();
+		Area areaA = new Area();
+		Difficulty diff = new Difficulty();
+		diff.setName(difficulty);
+		areaA.setCity(area);
+		areaA.setState("Colorado");
+		preference.setAltitude(altitude);
+		preference.setDistance(distance);
+		preference.setArea(areaA);
+		preference.setProfile(profile);
+		Preference pref = dao.addPreference(preference); 
+		profile.addPreference(pref);
+//		profile = dao.updateProfile
 		mv.addObject("profile", profile); 
 		mv.setViewName("trails/profile");
 		return mv;
