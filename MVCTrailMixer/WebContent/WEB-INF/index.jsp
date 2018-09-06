@@ -141,7 +141,7 @@
           <div class="member">
             <div class="pic"><img src="image/OwenHarris.jpg" alt="Owen Harris"></div>
             <h4>Owen Harris</h4>
-            <span>Devloper II</span>
+            <span>Chief Technical Officer</span>
             <div class="social">
               <a href=""><i class="fa fa-twitter"></i></a>
               <a href=""><i class="fa fa-facebook"></i></a>
@@ -155,7 +155,7 @@
           <div class="member">
             <div class="pic"><img src="image/LiamKimbley.jpg" alt="Liam Kimbley"></div>
             <h4>Liam Kimbley</h4>
-            <span>Developer II</span>
+            <span>Chief Financial Officer</span>
             <div class="social">
               <a href=""><i class="fa fa-twitter"></i></a>
               <a href=""><i class="fa fa-facebook"></i></a>
@@ -205,12 +205,12 @@
 
             <div>
               <i class="fa fa-envelope"></i>
-              <p>Liam.Kimbley@gmail.com</p>
+              <p>trailmixer@gmail.com</p>
             </div>
 
             <div>
               <i class="fa fa-phone"></i>
-              <p>559-824-1720</p>
+              <p>555.555.5555</p>
             </div>
 
           </div>
