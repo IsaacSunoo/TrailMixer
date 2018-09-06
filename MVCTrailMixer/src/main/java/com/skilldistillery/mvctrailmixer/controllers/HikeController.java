@@ -26,7 +26,7 @@ public class HikeController {
 	@Autowired
 	private TrailsDAO tdao;
 
-	@RequestMapping(path="ViewHikes.do", method = RequestMethod.GET)
+	@RequestMapping(path="addHike.do", method = RequestMethod.GET)
 	public ModelAndView viewHikes(HttpSession session) {
 		ModelAndView mv = new ModelAndView(); 
 		if (session.getAttribute("UserInSession") == null) {
