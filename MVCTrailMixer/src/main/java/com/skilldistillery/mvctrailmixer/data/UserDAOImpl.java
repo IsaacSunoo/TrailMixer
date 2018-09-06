@@ -201,8 +201,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public Profile getProfileById(int id) {
-		String query = "SELECT p FROM Profile p WHERE p.id = :id";
-		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getSingleResult();
+		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getResultList().get(0);
 		return prof;
 	}
 

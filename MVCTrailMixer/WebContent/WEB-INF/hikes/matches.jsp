@@ -53,14 +53,14 @@
 			<tr><h3>Your Trails</h3></tr>
 			<c:forEach var="trail" items="${trails }">
 				<tr>
-					<td>Name: <a href="getTrail.do?trailId=${trail.id }">${trail.name}</a></td>
+					<td>Trail Name: <a href="TrailDetails.do?trailId=${trail.id }">${trail.name}</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:when>
 	
 	<c:otherwise>
-		No Trails Found<br>
+		No Trail Matches Found<br>
 	</c:otherwise>
 
 </c:choose>
