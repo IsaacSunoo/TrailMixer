@@ -76,7 +76,7 @@ public class LoginController {
 		}
 		else {
 			mv.setViewName("trails/login");
-			errors.rejectValue("password", "error.password", "Invalid Passwoerd");
+			errors.rejectValue("password", "error.password", "Invalid Password");
 			return mv;
 		}
 	}
