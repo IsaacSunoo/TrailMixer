@@ -24,9 +24,6 @@
             <li class="nav-item">
         		<a class="nav-link" href="TrailMatches.do">Matches</a>
       		</li>
-            <li class="nav-item">
-                <a class="nav-link" href="HikeHomepage.do">Go Hike</a>
-            </li>
         </ul>
     </div>
     <div class="mx-auto order-0">
