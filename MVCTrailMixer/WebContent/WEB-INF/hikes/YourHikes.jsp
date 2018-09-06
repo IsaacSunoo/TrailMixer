@@ -38,7 +38,7 @@
 <!--  Current hikes: -->
 	<!--  Displays a list of hikes the user is signed up for -->
 	
-	${trail.trail }
+	${trail.trails }
 	
 	<!--  options: -->
 		<!--  view the members of the group (check out their profiles) -->

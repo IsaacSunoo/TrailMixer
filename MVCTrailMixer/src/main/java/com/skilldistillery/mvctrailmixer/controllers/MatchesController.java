@@ -37,7 +37,6 @@ public class MatchesController {
 			mv.setViewName("redirect:login.do");
 			return mv;
 		}
-//		else if() {
 			User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
 //			Profile profile = udao.findProfileById(userInSession.getId());
 			List<Preference> preferences = udao.getPreferencesByProfileId(userInSession.getId());
@@ -61,7 +60,6 @@ public class MatchesController {
 				mv.setViewName("hikes/matches");
 				return mv;
 			}
-//		}
 		else {
 			mv.setViewName("redirect:ListOfTrails.do");
 			return mv;

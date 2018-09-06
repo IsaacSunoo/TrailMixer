@@ -1,5 +1,7 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
 import com.skilldistillery.mvctrailmixer.data.UserDAO;
 import com.skilldistillery.trailmixer.entities.Profile;
 import com.skilldistillery.trailmixer.entities.Trail;
+import com.skilldistillery.trailmixer.entities.User;
 
 @Controller
 public class HikeController {
@@ -60,17 +63,19 @@ public class HikeController {
 	}
 	
 	@RequestMapping(path="addHike.do", method=RequestMethod.POST)
-	public ModelAndView addHike(@RequestParam(value="profileId", defaultValue="0") int profileId, @RequestParam(value="trailId", defaultValue="0") int trailId) {
+	public ModelAndView addHike(@RequestParam int trailId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		if (profileId == 0) {
+		if (session.getAttribute("UserInSession") == null) {
 			mv.setViewName("redirect:login.do");
 			return mv;
 		}
-//		not finished
-		Profile profile = udao.getProfileById(profileId);
-		Trail trail = tdao.getTrailDetails(trailId);
-		profile.addTrail(trail);
-		mv.addObject("trail", profile);
+//		not finished -- http 500 lazy loading
+		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
+		Profile profile = udao.getProfileById(userInSession.getId());
+		List<Trail> trails = profile.getTrails();
+//		Trail trail = tdao.getTrailDetails(trailId);
+		trails.add(tdao.getTrailDetails(trailId));
+		mv.addObject("trails", trails);
 		mv.setViewName("YourHikes");
 		return mv;
 	}
