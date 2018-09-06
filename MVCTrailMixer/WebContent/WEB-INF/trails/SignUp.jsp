@@ -38,7 +38,7 @@
 
 <div class="signUp">
 	<img src="image/hanging lake.jpg" alt="Hanging lake">
-	<form:form action="addUser.do" method="POST" modelAttribute="user" class="signUpForm">
+	<form:form action="SignUp.do" method="POST" modelAttribute="user" class="signUpForm">
 	<form:label path="username">Enter Email Address:</form:label>
 	<form:input path="username" />
 	<br />
