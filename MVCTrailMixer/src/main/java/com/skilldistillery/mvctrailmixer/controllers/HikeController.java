@@ -20,8 +20,6 @@ import com.skilldistillery.trailmixer.entities.User;
 @Controller
 public class HikeController {
 	
-//	private Profile profile = new Profile();
-	
 	@Autowired
 	private UserDAO udao;
 	
@@ -29,10 +27,10 @@ public class HikeController {
 	private TrailsDAO tdao;
 
 	@RequestMapping(path="ViewHikes.do", method = RequestMethod.GET)
-	public ModelAndView viewHikes() {
+	public ModelAndView viewHikes(int profileId) {
 		ModelAndView mv = new ModelAndView(); 
-		// get list of trails for profile Id 
-		// add list to object 
+		List<Trail> trails = udao.getListOfTrailsByProfileId(profileId); 
+		mv.addObject("trails", trails); 
 		mv.setViewName("hikes/YourHikes");
 		return mv;
 	}

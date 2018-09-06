@@ -250,6 +250,11 @@ public class UserDAOImpl implements UserDAO {
 		em.persist(preference);
 		em.flush();
 		return profile;
-
+	}
+	
+	public List<Trail> getListOfTrailsByProfileId(int profileId) {
+		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", profileId).getResultList().get(0);
+		return prof.getTrails(); 
 	}
 }
