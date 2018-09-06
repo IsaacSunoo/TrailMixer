@@ -1,6 +1,7 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,7 +99,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path="SignUp.do", method = RequestMethod.POST)
-	public String newUser(@ModelAttribute("user") User newUser, BindingResult result, Model model, RedirectAttributes redir,
+	public String newUser(@ModelAttribute("user") @Valid User newUser, BindingResult result, Model model, RedirectAttributes redir,
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("age") int age)
@@ -111,9 +112,12 @@ public class LoginController {
 				
 		User inputedUser = dao.addUser(newUser, firstName, lastName, age);
 		
+		
+		
+		
 		Profile profile = dao.findProfileById(newUser.getId());
 		
-		return "redirect: profile.do";
+		return "redirect: login.do";
 	}
 	
 	

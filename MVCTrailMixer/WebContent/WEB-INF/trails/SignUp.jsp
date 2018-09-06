@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,12 +43,15 @@
 	
 		<form:label path="username">Enter Email Address:</form:label>
 		<form:input path="username" />
+		<form:errors path="username"/>
 		<br />
 		<form:label path="password">Enter Password:</form:label>
 		<form:input path="password" />
+		<form:errors path="password" />
 		<br />
 		<label for="firstName">First Name:</label>
 		<input type="text" name="firstName">
+		
 		<br>
 		<label for="lastName">Last Name:</label>
 		<input type="text" name="lastName">
