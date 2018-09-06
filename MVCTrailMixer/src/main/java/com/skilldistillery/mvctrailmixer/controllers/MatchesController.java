@@ -1,5 +1,6 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -36,28 +37,31 @@ public class MatchesController {
 			mv.setViewName("redirect:login.do");
 			return mv;
 		}
-		User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
-		Profile profile = udao.findProfileById(userInSession.getId());
-		List<Preference> preferences = udao.getPreferencesByProfileId(profile.getId());
-		List<Trail> trails = tdao.getListOfTrails();
-		
-		if (preferences != null) {
-			for (Trail trail : trails) {
-				Address addr = tdao.getTrailDetails(trail.getId()).getAddress();
-				if (trail.getAddress().getCity()
-						.equalsIgnoreCase(profile.getPreferences().get(0).getArea().getCity())) {
-					if (trail.getDifficulty().getId() <= profile.getPreferences().get(0).getDifficulty().getId()) {
-						if (trail.getAltitude() <= profile.getPreferences().get(0).getAltitude()) {
-							if (trail.getDistance() <= profile.getPreferences().get(0).getDistance()) {
-								mv.addObject("trails", trail);
+//		else if() {
+			User userInSession = (User) session.getAttribute(LoginController.USER_IN_SESSION_KEY);
+//			Profile profile = udao.findProfileById(userInSession.getId());
+			List<Preference> preferences = udao.getPreferencesByProfileId(userInSession.getId());
+			List<Trail> trails = tdao.getListOfTrails();
+			List<Trail> preferredTrails = new ArrayList<>();
+			if (!preferences.isEmpty()) {
+				for (Trail trail : trails) {
+					Address addr = tdao.getTrailDetails(trail.getId()).getAddress();
+					if (trail.getAddress().getCity()
+							.equalsIgnoreCase(preferences.get(0).getArea().getCity())) {
+						if (trail.getDifficulty().getId() <= preferences.get(0).getDifficulty().getId()) {
+							if (trail.getAltitude() <= preferences.get(0).getAltitude()) {
+								if (trail.getDistance() <= preferences.get(0).getDistance()) {
+									preferredTrails.add(trail);
+								}
 							}
 						}
 					}
-				}
-			} 
-			mv.setViewName("hikes/matches");
-			return mv;
-		}
+				} 
+				mv.addObject("trails", preferredTrails);
+				mv.setViewName("hikes/matches");
+				return mv;
+			}
+//		}
 		else {
 			mv.setViewName("redirect:ListOfTrails.do");
 			return mv;
