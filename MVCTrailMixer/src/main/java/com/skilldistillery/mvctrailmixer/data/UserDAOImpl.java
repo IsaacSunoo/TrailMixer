@@ -173,8 +173,8 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Area findArea(String city) {
 		String query = "SELECT a FROM Area a WHERE a.city = :city";
-		Area area = em.createQuery(query, Area.class).setParameter("city", city).getSingleResult(); 
-		return area; 
+		List<Area> area = em.createQuery(query, Area.class).setParameter("city", city).getResultList(); 
+		return area.get(0); 
 	}
 
 	@Override
