@@ -19,28 +19,28 @@
 				<td><input type="hidden" name="profileId" value="${profile.id}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="profile.firstName" for="firstName">First Name: </form:label></td>
-				<td><form:input path="profile.firstName" type="text" name="firstName" value="${profile.firstName}" /></td>
+				<td><label for="firstName">First Name: </label></td>
+				<td><input type="text" name="firstName" value="${profile.firstName}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="profile.lastName" for="lastName">Last Name: </form:label></td>
-				<td><form:input path="profile.lastName" type="text" name="lastName" value="${profile.lastName}" /></td>
+				<td><label for="lastName">Last Name: </label></td>
+				<td><input type="text" name="lastName" value="${profile.lastName}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="profile.age" for="age">Age: </form:label></td>
-				<td><form:input path="profile.age" type="text" name="age" value="${profile.age}" /></td>
+				<td><label for="age">Age: </label></td>
+				<td><input type="text" name="age" value="${profile.age}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="profile.image" for="image">Image URL: </form:label></td>
-				<td><form:input path="profile.image" type="text" name="image" value="${profile.image}" /></td>
+				<td><label for="image">Image URL: </label></td>
+				<td><input type="text" name="image" value="${profile.image}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="profile.gender" for="gender">Gender: </form:label></td>
-				<td><form:input path="profile.gender" type="text" name="gender" value="${profile.gender}" /></td>
+				<td><label for="gender">Gender: </label></td>
+				<td><input type="text" name="gender" value="${profile.gender}" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="profile.bio" for="bio">Bio: </form:label></td>
-				<td><form:input path="profile.bio" type="text" name="bio" value="${profile.bio}" /></td>
+				<td><label for="bio">Bio: </label></td>
+				<td><input type="text" name="bio" value="${profile.bio}" /></td>
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-dark">Done</button>
@@ -69,7 +69,7 @@
 			</tr>	
 		</c:forEach>
 		</table> 
-		<button type="submit" class="btn btn-dark">Edit</button>
+		<button type="submit" class="btn btn-dark">Edit Preferences</button>
 		</form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

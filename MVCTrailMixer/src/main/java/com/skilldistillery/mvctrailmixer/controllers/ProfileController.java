@@ -65,9 +65,9 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(path="EditProfile.do", method = RequestMethod.POST)
-	public ModelAndView editProfile(Profile prof) {
+	public ModelAndView editProfile(int profileId, String firstName, String lastName, int age, String image, String gender, String bio) {
 		ModelAndView mv = new ModelAndView();
-		Profile updatedProfile = dao.updateProfile(prof); 
+		Profile updatedProfile = dao.updateProfile(profileId, firstName, lastName, age, image, gender, bio); 
 		mv.addObject("profile", updatedProfile);
 		mv.setViewName("trails/profile");
 		return mv;
