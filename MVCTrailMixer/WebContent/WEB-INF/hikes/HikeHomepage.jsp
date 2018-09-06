@@ -50,7 +50,7 @@ Need someone to go hiking with? With our Find A Hike feature, you can search thr
 to find the people you'd like to go hiking with. You can also see which trail they are going on 
 so that you pick the perfect hike for you!	
 
-<form action="FindHike.do" method="GET">
+<form action="TrailMatches.do" method="GET">
 	<button type="submit" class="btn btn-dark">Find a Hike</button>
 </form>
 

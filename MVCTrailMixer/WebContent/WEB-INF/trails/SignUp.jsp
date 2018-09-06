@@ -39,14 +39,33 @@
 <div class="signUp">
 	<img src="image/hanging lake.jpg" alt="Hanging lake">
 	<form:form action="SignUp.do" method="POST" modelAttribute="user" class="signUpForm">
-	<form:label path="username">Enter Email Address:</form:label>
-	<form:input path="username" />
-	<br />
-	<form:label path="password">Enter Password:</form:label>
-	<form:input path="password" />
-	<br />
-
-	<button type="submit" class="btn btn-dark">Create Account</button>
+	
+		<form:label path="username">Enter Email Address:</form:label>
+		<form:input path="username" />
+		<br />
+		<form:label path="password">Enter Password:</form:label>
+		<form:input path="password" />
+		<br />
+		<label for="firstName">First Name:</label>
+		<input type="text" name="firstName">
+		<br>
+		<label for="lastName">Last Name:</label>
+		<input type="text" name="lastName">
+		<br>
+		<label for="age">Age:</label>
+		<input type="text" name="age">
+		<br>
+	<%-- 	<form:label path="firstName">First Name:</form:label>
+		<form:input path="firstName"/>
+		<br>
+		<form:label path="lastName">Last Name:</form:label>
+		<form:input path="lastName"/>
+		<br>
+		<form:label path="age">Age</form:label>
+		<form:input path="age"/>
+		<br> --%>
+		
+		<button type="submit" class="btn btn-dark">Create Account</button>
 	</form:form>
 	
 </div>

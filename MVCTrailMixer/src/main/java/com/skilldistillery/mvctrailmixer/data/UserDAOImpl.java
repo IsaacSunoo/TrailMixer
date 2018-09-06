@@ -89,12 +89,14 @@ public class UserDAOImpl implements UserDAO {
 	public User addUser(User user, String firstName, String lastName, int age) {
 		Profile profile = new Profile();
 		Address addr = em.find(Address.class, 1);
+		user.setActiveUser(1);
 		profile.setFirstName(firstName);
 		profile.setLastName(lastName);
 		profile.setAge(age);
 		profile.setUser(user);
 		profile.setAddress(addr);
 		
+		em.persist(user);
 		em.persist(profile);
 		em.flush();
 
@@ -200,8 +202,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public Profile getProfileById(int id) {
-		String query = "SELECT p FROM Profile p WHERE p.id = :id";
-		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getSingleResult();
+		String query = "SELECT p FROM Profile p JOIN FETCH p.trails WHERE p.id = :id";
+		Profile prof = em.createQuery(query, Profile.class).setParameter("id", id).getResultList().get(0);
 		return prof;
 	}
 
