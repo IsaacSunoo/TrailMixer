@@ -95,6 +95,7 @@ public class UserDAOImpl implements UserDAO {
 		profile.setUser(user);
 		profile.setAddress(addr);
 		
+		em.persist(user);
 		em.persist(profile);
 		em.flush();
 

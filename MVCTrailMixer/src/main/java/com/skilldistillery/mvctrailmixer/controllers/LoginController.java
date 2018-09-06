@@ -99,7 +99,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path="SignUp.do", method = RequestMethod.POST)
-	public String newUser(@ModelAttribute("user") /*@Valid*/ User newUser, BindingResult result, Model model, RedirectAttributes redir,
+	public String newUser(@ModelAttribute("user") User newUser, BindingResult result, Model model, RedirectAttributes redir,
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("age") int age)
@@ -107,7 +107,7 @@ public class LoginController {
 		
 			if(result.hasErrors()) {
 				model.addAttribute("user", new User());
-				return "login";
+				return "login";	
 			}
 				
 		User inputedUser = dao.addUser(newUser, firstName, lastName, age);
