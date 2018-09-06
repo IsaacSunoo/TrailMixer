@@ -64,8 +64,21 @@
 			<tr>
 				<td>Area:
 						<select name="area">
-							<option type="hidden" value="${preference.area.city}">
-							<option value="area">${preference.area.city}</option>
+							<c:if test="${preference.difficulty.name == 'Denver'}">
+								<option value="Denver" selected>Denver</option>
+							</c:if>
+							<c:if test="${preference.difficulty.name != 'Denver'}">
+								<option value="Denver">Denver</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name == 'Boulder'}">
+								<option value="Boulder" selected>Boulder</option>
+							</c:if>
+							
+							<c:if test="${preference.difficulty.name != 'Boulder'}">
+								<option value="Boulder">Boulder</option>
+							</c:if>
+							
 					</select>
 				</td>
 			</tr>

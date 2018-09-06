@@ -89,7 +89,6 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 		Preference pref = dao.updatePreference(id, difficulty, area, distance, altitude); 
 		mv.addObject("profile", pref.getProfile()); 
-//		mv.addObject("preferences", pref); 
 		mv.setViewName("trails/profile");
 		return mv;
 	}
