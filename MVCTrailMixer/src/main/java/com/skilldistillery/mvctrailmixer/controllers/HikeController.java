@@ -1,19 +1,31 @@
 package com.skilldistillery.mvctrailmixer.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
+import com.skilldistillery.mvctrailmixer.data.UserDAO;
+import com.skilldistillery.trailmixer.entities.ProfileTrail;
+
 @Controller
 public class HikeController {
 	
+	private List<ProfileTrail> pfs = new ArrayList<>();
 	
+	@Autowired
+	private UserDAO udao;
+	
+	@Autowired
+	private TrailsDAO tdao;
 
 	@RequestMapping(path="HikeHomepage.do", method = RequestMethod.GET)
 	public ModelAndView showHomepage(HttpSession session) {
@@ -49,21 +61,15 @@ public class HikeController {
 		return mv;
 	}
 	
-//	@RequestMapping(path="matches.do", method = RequestMethod.GET)
-//	public ModelAndView displayMatches() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("hikes/matches");
-//		return mv;
-//	}
-	
 	@RequestMapping(path="addHike.do", method=RequestMethod.POST)
-	public ModelAndView addHike(@RequestParam(value="proileId", defaultValue="0") int profileId, @RequestParam(value="trailId", defaultValue="0") int trailId) {
+	public ModelAndView addHike(@RequestParam(value="profileId", defaultValue="0") int profileId, @RequestParam(value="trailId", defaultValue="0") int trailId) {
 		ModelAndView mv = new ModelAndView();
 		if (profileId == 0) {
 			mv.setViewName("redirect:login.do");
 			return mv;
 		}
 //		not finished
+		
 		
 		return mv;
 	}
