@@ -29,7 +29,7 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="TrailMatches.do">Matches</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="login.do">Login</a>
+				<li class="nav-item"><a class="nav-link" href="login.do">Profile</a>
 				</li>
 			</ul>
 		</div>
