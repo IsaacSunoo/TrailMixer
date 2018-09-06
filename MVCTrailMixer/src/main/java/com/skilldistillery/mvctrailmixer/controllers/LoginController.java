@@ -56,14 +56,14 @@ public class LoginController {
 		if(daoUser == null) {
 			// show them the login page
 			mv.setViewName("trails/login"); 
-			errors.rejectValue("username", "error.username", "Invalid credentials");
+			errors.rejectValue("username", "error.username", "Invalid Username");
 			return mv;
 		}
 		else if (daoUser.getActiveUser() == 0){
 //			if the user is set to inactive, don't take them to the login page.
 //			instead, we need to ask them to set the account back to active
 			mv.setViewName("trails/login");
-			errors.rejectValue("username", "error.username", "Invalid credentials");
+			errors.rejectValue("username", "error.username", "Invalid Username");
 			return mv;
 		}
 		else if (daoUser.getPassword().equals(inputUser.getPassword())){
@@ -76,7 +76,7 @@ public class LoginController {
 		}
 		else {
 			mv.setViewName("trails/login");
-			errors.rejectValue("password", "error.password", "Invalid credentials");
+			errors.rejectValue("password", "error.password", "Invalid Passwoerd");
 			return mv;
 		}
 	}

@@ -5,6 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.Email;
+
 
 @Entity
 public class User {
@@ -13,8 +18,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Email
 	private String username;
 	
+	@Min(6)
+	@Max(36)
 	private String password;
 
 	@Column(name="active")

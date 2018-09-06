@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Profile {
@@ -26,12 +27,15 @@ public class Profile {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@NotNull
 	@Column(name = "first_name")
 	private String firstName;
-
+	
+	@NotNull
 	@Column(name = "last_name")
 	private String lastName;
 
+	@NotNull
 	private int age;
 
 	@OneToOne(cascade = CascadeType.PERSIST)

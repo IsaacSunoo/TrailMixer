@@ -43,9 +43,11 @@
 	<form:form action="login.do" method="POST" modelAttribute="user" class="loginForm">
 	<form:label path="username">Email:</form:label>
 	<form:input path="username" value=""/>
+	<form:errors path="username"/>
 	<br />
 	<form:label path="password">Password:</form:label>
 	<form:input path="password" value=""/>
+	<form:errors path="password"/>
 	<br />
 	<button type="submit" class="btn btn-dark">Login</button>
 	</form:form>

@@ -43,7 +43,6 @@
 	
 		<form:label path="username">Enter Email Address:</form:label>
 		<form:input path="username" />
-		<form:errors path="username"/>
 		<br />
 		<form:label path="password">Enter Password:</form:label>
 		<form:input path="password" />
