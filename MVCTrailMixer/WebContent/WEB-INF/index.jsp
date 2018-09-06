@@ -71,14 +71,6 @@
 </div>
 
 <br>
-<<<<<<< HEAD
-=======
-<div class="hikeButton">
-<form action="login.do" method="GET">
-	<button type="submit" class="btn btn-dark">Take A Hike!</button>
-</form>
-</div>
->>>>>>> 0b61cd08f13c1ac21643f10017f82837914e96fd
 
 <!-- About us section -->
 
