@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Login${accountCreated}</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -51,6 +51,9 @@
 	<br />
 	<button type="submit" class="btn btn-dark">Login</button>
 	</form:form>
+	
+	<c:if test="${accountCreatedSuccess}"> <p class="accountCreated">Account was successfully created!</p></c:if>
+	
 </div>
 
 

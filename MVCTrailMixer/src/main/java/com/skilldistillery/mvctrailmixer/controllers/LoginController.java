@@ -99,7 +99,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path="SignUp.do", method = RequestMethod.POST)
-	public String newUser(@ModelAttribute("user") @Valid User newUser, BindingResult result, Model model, RedirectAttributes redir,
+	public String newUser(@ModelAttribute("user") @Valid User newUser, BindingResult result, 
+			Model model, RedirectAttributes redir,
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("age") int age)
@@ -112,21 +113,14 @@ public class LoginController {
 				
 		User inputedUser = dao.addUser(newUser, firstName, lastName, age);
 		
-		
-		
-		
 		Profile profile = dao.findProfileById(newUser.getId());
 		
-		return "redirect: login.do";
+		
+		if (inputedUser != null) {
+			redir.addFlashAttribute("accountCreatedSuccess", true);
+		}
+		
+		return "redirect:login.do";
 	}
 	
-	
-	
 }
-//@RequestMapping(path="profile.do", method = RequestMethod.GET)
-//public ModelAndView getUserInfo(int id) {
-//	ModelAndView mv = new ModelAndView();
-//	User user = dao.getUserInformation(id);
-//	mv.addObject("user", user);
-//	return mv;
-//}
