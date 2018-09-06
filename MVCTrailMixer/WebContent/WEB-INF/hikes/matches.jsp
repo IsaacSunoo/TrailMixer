@@ -51,9 +51,9 @@
 	<c:when test="${! empty trails }">
 		<table>
 			<tr><h3>Your Trails</h3></tr>
-			<c:forEach var="trail" items="${trails }">
+			<c:forEach var="t" items="${trails }">
 				<tr>
-					<td>Trail Name: <a href="TrailDetails.do?trailId=${trail.id }">${trail.name}</a></td>
+					<td>Trail Name: <a href="TrailDetails.do?tId=${t.id}">${t.name}</a></td>
 				</tr>
 			</c:forEach>
 		</table>

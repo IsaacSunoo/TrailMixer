@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.mvctrailmixer.data.TrailsDAO;
-import com.skilldistillery.mvctrailmixer.data.TrailsDAOImpl;
 import com.skilldistillery.trailmixer.entities.Trail;
 
 @Controller 
 public class TrailController {
-	// @Autowired
-	private TrailsDAO dao = new TrailsDAOImpl(); 
+	 @Autowired
+	private TrailsDAO dao;
 	
 	// list of trails and details
 
@@ -29,12 +29,12 @@ public class TrailController {
 		mv.setViewName("trails/ListOfTrails");
 		return mv;
 	}
-	
+						  
 	@RequestMapping(path="TrailDetails.do", method = RequestMethod.GET)
-	public ModelAndView getDetails(@RequestParam Integer trailId) {
+	public ModelAndView getDetails(@RequestParam Integer tId) {
 		ModelAndView mv = new ModelAndView(); 
-		Trail trail = dao.getTrailDetails(trailId); 
-		Double rating = dao.getTrailRating(trailId);
+		Trail trail = dao.getTrailDetails(tId); 
+		Double rating = dao.getTrailRating(tId);
 		mv.addObject("rating", rating); 
 		mv.addObject("trail", trail); 
 		mv.setViewName("trails/TrailDetails");
