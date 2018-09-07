@@ -95,8 +95,8 @@
           <p class="about-text">
             Most of us live in urban areas, in busy cities where nature is tamed and does not take an important place in daily life.
              However, nature is more than just a place we can visit during our holidays or weekends. Nature is our origin and the place where all our subtle needs for beauty, mystery, and adventure are met. 
-             Nature holds many gifts for us if we prove willing to explore its magnificent diversity.  Here on Trail Mixer we pride ourselves on
-             joining individuals with a huge community of people with similiar interests. That being from adventure seekers looking to explore, people who are all about excerise, others who want hike a 14er, or just find a nice place to cliff jump, it is an endless trail of possibilities! 
+             Nature holds many gifts for us if we prove willing to explore its magnificent diversity.  Here on Trail Mixer, we pride ourselves on
+             joining individuals with a huge community of people with similar interests. That being from adventure seekers looking to explore, people who are all about excerise, others who want hike a 14er, or just find a nice place to cliff jump, it is an endless trail of possibilities! 
 
           </p>
          

@@ -42,7 +42,7 @@ public class ProfileController {
 		return mv; 
 	}
 	
-	@RequestMapping(path="DeleteProfile.do", method=RequestMethod.POST)
+	@RequestMapping(path="DeleteProfile.do", method=RequestMethod.GET)
 	public String deleteProfile(@RequestParam int profileId, Model model, HttpSession session) {
 		if (dao.deleteUser(profileId)) {
 			session.removeAttribute(LoginController.USER_IN_SESSION_KEY);
