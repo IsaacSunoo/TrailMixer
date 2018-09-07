@@ -47,7 +47,7 @@
 		<br />
 		
 		<form:label path="password">Enter Password:</form:label>
-		<form:input path="password" />
+		<form:input path="password" type="password" />
 		<form:errors path="password" />
 		<br />
 		
