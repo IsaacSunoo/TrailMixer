@@ -35,6 +35,13 @@
         <ul class="navbar-nav ml-auto">
         </ul>
     </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="login.do">Login</a>
+            </li>
+        </ul>
+     </div>
 </nav>
 
 <div class="signUp">
