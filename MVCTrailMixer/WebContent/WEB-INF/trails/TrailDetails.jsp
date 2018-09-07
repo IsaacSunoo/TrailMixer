@@ -58,7 +58,7 @@
 
 <br>
 
-	<table class="trailsTable2" bgcolor="silver">
+	<table class="trailsTable2" bgcolor="black">
 		<tr>
 			<td>Difficulty: </td>
 			<td>${trail.difficulty.name}</td>
