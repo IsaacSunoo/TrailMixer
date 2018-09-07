@@ -92,7 +92,6 @@ public class TrailController {
 			i = Integer.parseInt(search); 
 		}
 		catch (NumberFormatException nfe) {
-			
 		}
 		List<Trail> trails = null; 
 		switch (searchBy) {
