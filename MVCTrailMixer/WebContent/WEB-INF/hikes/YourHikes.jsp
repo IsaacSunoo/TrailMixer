@@ -14,24 +14,34 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Hikes</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="index.do">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="ListOfTrails.do">Trails</a>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div
+			class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="index.do">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="TrailMatches.do">Matches</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="login.do">Profile</a>
-				</li>
+				<li class="nav-item">
+                	<a class="nav-link" href="profile.do">Profile</a>
+            	</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="ListOfTrails.do">Trails</a></li>
+				<li class="nav-item">
+        		<a class="nav-link" href="TrailMatches.do">Matches</a>
+      		</li>
+			</ul>
+		</div>
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="#">Trail Details</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target=".dual-collapse2">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+			 <li class="nav-item">
+                <a class="nav-link" href="logout.do">Logout</a>
+            </li>
 			</ul>
 		</div>
 	</nav>
