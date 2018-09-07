@@ -128,12 +128,12 @@ text-align:center;
   border: 1px solid black;
   height: 200px;
   width: 300px;  
+  color: white;
 }
 
 .trailImage{
-	float: right; 
-	margin-right: 20%; 
-	margin-top: 5%; 
+	float: right;
+	margin: 80px;
 }
 
 .description {
