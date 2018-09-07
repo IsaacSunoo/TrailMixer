@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Matches</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -42,11 +43,12 @@
     </div>
 </nav>
 
+<div class="matchesPage">
 <h2>Matches</h2>
 
 <c:choose>
 	<c:when test="${! empty trails }">
-		<table>
+		<table class="matchesTable1">
 			<tr><h3>Your Trails</h3></tr>
 			<c:forEach var="t" items="${trails }">
 				<tr>
@@ -61,6 +63,8 @@
 	</c:otherwise>
 
 </c:choose>
+
+</div>
 
 <!--  display a list of trails that are the user's matches -->
 	<!--  sort and search bars for trail list -->
